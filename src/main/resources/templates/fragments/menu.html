@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
+    <link th:href="@{css/all.css}" rel="stylesheet">
+    <link th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{css/sf.css}" rel="stylesheet">
+</head>
+
+<body>  
+    <div th:fragment="navbar">
+        <!-- Left column -->
+        <div class="style-flex-row">
+            <div class="style-sidebar">
+                <header class="style-site-header">
+                    <div class="squarex"></div>
+                    <h1>Soft skill learning</h1>
+                </header>
+                <div class="profile-photo-container">
+                    <img src="images/profile-photo.jpg" alt="Profile Photo" class="img-responsive">  
+                    <div class="profile-photo-overlay"></div>
+                </div>      
+                <!-- Search box -->
+                <form class="style-search-form" role="search">
+                    <div class="input-group">
+                        <button type="submit" class="fa fa-search"></button>
+                        <input type="text" class="form-control" placeholder="Tìm kiếm khóa học" name="srch-term" id="srch-term">           
+                    </div>
+                </form>
+                <div class="mobile-menu-icon">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <nav class="style-left-nav">          
+                    <ul>
+                        <li><a href="#" class="active"><i class="fa fa-home fa-fw"></i>Trang chủ</a></li>
+                        <li><a href=""><i class="fa fa-file fa-fw"></i>Khóa học</a></li>
+                        <li><a href=""><i class="fa fa-graduation-cap fa-fw"></i>Giáo viên</a></li>
+                        <li><a href=""><i class="fa fa-user-group fa-fw"></i>Học sinh</a></li>
+                        <li><a href=""><i class="fa fa-headset fa-fw"></i>Hỗ trợ</a></li>
+                        <li><a href=""><i class="fa fa-eject fa-fw"></i>Đăng xuất</a></li>
+                    </ul>  
+                </nav>
+            </div>
+            <!-- Main content --> 
+            <div class="style-content col-1 light-gray-bg" style="overflow: hidden;">
+                <div class="top-nav-container">
+                    <div class="row">
+                        <nav class="style-top-nav col-lg-12 col-md-12">
+                            <ul class="text-uppercase">
+                                <li><a href="" class="active">Main page</a></li>
+                                <li><a href="">something</a></li>
+                                <li><a href="">something</a></li>
+                                <li><a href="">something</a></li>
+                            </ul>  
+                        </nav> 
+                    </div>
+                </div>
+                <!-- add iframe here --> 
+                <iframe th:src="@{/listmenu}" style="width: 100%; height: 100%;"></iframe>
+            </div>
+        </div>
+    </div>
+    <!-- Java Script -->
+    <script type="text/javascript" th:src="@{/javascript/jquery-1.11.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/javascript/jquery-migrate-1.2.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/javascript/sf-script.js}"></script>
+</body>
+
+</html>
