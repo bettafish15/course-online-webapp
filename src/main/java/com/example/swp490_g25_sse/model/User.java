@@ -5,45 +5,63 @@
 package com.example.swp490_g25_sse.model;
 
 import java.util.Date;
-import org.springframework.stereotype.Component;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 /**
  *
  * @author ADMIN
  */
-@Component
+@Entity(name = "users")
 public class User {
-    private int userId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String userName;
-    private String userPassword;
+    private String password;
     private String firstName;
     private String lastName;
-    private String userEmail;
-    private String userPhone;
-    private Date createDate;
-    private int role;
+    private String email;
+    private String phone;
+    
+    @OneToOne(targetEntity = Role.class, fetch=FetchType.EAGER)
+    private Role role;
+    
+    @CreatedDate
+    private Date createdAt;
+    
+    @LastModifiedDate
+    private Date updatedAt;
 
     public User() {
     }
 
-    public User(int userId, String userName, String userPassword, String firstName, String lastName, String userEmail, String userPhone, Date createDate, int role) {
-        this.userId = userId;
+    public User(Long id, String userName, String password, String firstName, String lastName, String email, String phone, Role role, Date createdAt, Date updatedAt) {
+        this.id = id;
         this.userName = userName;
-        this.userPassword = userPassword;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userEmail = userEmail;
-        this.userPhone = userPhone;
-        this.createDate = createDate;
+        this.email = email;
+        this.phone = phone;
         this.role = role;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
-    public int getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -54,12 +72,12 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -78,37 +96,43 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserPhone() {
-        return userPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public int getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(Role role) {
         this.role = role;
     }
-    
-    
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }
