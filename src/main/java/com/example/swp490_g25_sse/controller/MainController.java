@@ -4,6 +4,9 @@
  */
 package com.example.swp490_g25_sse.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,6 +24,14 @@ public class MainController {
 
     @GetMapping("/login")
     private String loginController() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+
+            /* The user is logged in :) */
+            return "redirect:/";
+        }
+        
         return "login";
     }
 }

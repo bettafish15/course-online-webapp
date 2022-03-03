@@ -10,42 +10,20 @@ package com.example.swp490_g25_sse.dto;
  */
 public class UserRegistrationDto {
 
-    private String userName;
-    private String password;
     private String firstName;
     private String lastName;
     private String email;
-    private String phone;
+    private String password;
 
-    public UserRegistrationDto(String userName, String password, String firstName, String lastName, String email, String phone) {
-        this.userName = userName;
-        this.password = password;
+    public UserRegistrationDto() {
+
+    }
+
+    public UserRegistrationDto(String firstName, String lastName, String email, String password) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
-
-        if (email != null) {
-            this.email = email;
-        }
-
-        if (phone != null) {
-            this.phone = phone;
-        }
-
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+        this.email = email;
         this.password = password;
     }
 
@@ -73,12 +51,11 @@ public class UserRegistrationDto {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
 }

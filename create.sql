@@ -1,28 +1,1153 @@
-create sequence hibernate_sequence start with 1 increment by 1;
-
     create table roles (
-       id bigint not null,
-        createdAt datetime2,
-        role varchar(255),
-        updatedAt datetime2,
+       id bigint identity not null,
+        name varchar(255),
         primary key (id)
     );
 
     create table users (
-       id bigint not null,
-        createdAt datetime2,
+       id bigint identity not null,
         email varchar(255),
-        firstName varchar(255),
-        lastName varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
         password varchar(255),
-        phone varchar(255),
-        updatedAt datetime2,
-        userName varchar(255),
-        role_id bigint,
         primary key (id)
     );
 
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
     alter table users 
-       add constraint FKp56c1712k691lhsyewcssf40f 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
        foreign key (role_id) 
        references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
+
+    create table roles (
+       id bigint identity not null,
+        name varchar(255),
+        primary key (id)
+    );
+
+    create table users (
+       id bigint identity not null,
+        email varchar(255),
+        first_name varchar(255),
+        last_name varchar(255),
+        password varchar(255),
+        primary key (id)
+    );
+
+    create table users_roles (
+       user_id bigint not null,
+        role_id bigint not null
+    );
+
+    alter table users 
+       add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email);
+
+    alter table users_roles 
+       add constraint FKj6m8fwv7oqv74fcehir1a9ffy 
+       foreign key (role_id) 
+       references roles;
+
+    alter table users_roles 
+       add constraint FK2o0jvgh89lemvvo17cbqvdxaa 
+       foreign key (user_id) 
+       references users;
