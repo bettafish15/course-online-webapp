@@ -1,9 +1,9 @@
 package com.example.swp490_g25_sse.service;
 
-import com.example.swp490_g25_sse.config.SecurityConfiguration;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.model.Role;
 import com.example.swp490_g25_sse.model.User;
+import com.example.swp490_g25_sse.repository.RoleRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import java.util.Arrays;
 import java.util.Collection;
@@ -23,7 +23,6 @@ import org.springframework.stereotype.Service;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author bettafish15
@@ -31,21 +30,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepository;
+    final private UserRepository userRepository;
+    final private RoleRepository roleRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
         super();
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override
     public User save(UserRegistrationDto registrationDto) {
+        Role existedRole = roleRepository.findFirstByName((registrationDto.getRole()));
+        Role role;
+
+        if (existedRole != null) {
+            role = existedRole;
+        } else {
+            role = new Role(registrationDto.getRole());
+        }
+
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(role));
 
         return userRepository.save(user);
     }

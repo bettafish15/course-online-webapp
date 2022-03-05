@@ -25,9 +25,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    
+
     private UserService userService;
-    
+
     Logger logger = LoggerFactory.getLogger(SecurityConfiguration.class);
 
     @Bean
@@ -50,16 +50,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.requestCache().disable();
+
         http.authorizeRequests().antMatchers(
+                "/",
                 "/registration**",
                 "/js/**",
                 "/css/**",
                 "/img/**").permitAll()
+                .antMatchers("/app/student/**").hasRole("STUDENT")
+                .antMatchers("/app/teacher/**").hasRole("TEACHER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
+                .defaultSuccessUrl("/app")
                 .and()
                 .logout()
                 .invalidateHttpSession(true)
