@@ -1,5 +1,8 @@
-#SQL configuration
+# spring boot configuration
+spring.data.rest.basePath=/api
 #server.port=8089
+
+#SQL configuration
 spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
 spring.datasource.url=jdbc:sqlserver://${MSSQL_HOST:localhost}:${MSSQL_PORT:1433};databaseName=SWP490_SSE
 spring.datasource.username=${MSSQL_USERNAME:sa}
