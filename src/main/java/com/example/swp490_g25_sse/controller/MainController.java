@@ -41,26 +41,24 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
-            if(auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_TEACHER"))){
+            if (auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_TEACHER"))) {
                 return "redirect:/app/teacher";
-            }
-            else if(auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_STUDENT"))){
+            } else if (auth.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_STUDENT"))) {
                 return "redirect:/app/student";
-            }else {
+            } else {
                 return "login";
             }
 
-            
         } else {
             return "login";
         }
     }
-    
+
     @GetMapping("/accountInfo")
     private String accountInfo() {
         return "account-info";
     }
-    
+
     @GetMapping("/accountSetting")
     private String accountSetting() {
         return "account-setting";

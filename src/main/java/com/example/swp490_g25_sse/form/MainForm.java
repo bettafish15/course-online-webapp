@@ -9,5 +9,5 @@ package com.example.swp490_g25_sse.form;
  * @author ADMIN
  */
 public class MainForm {
-    
+
 }

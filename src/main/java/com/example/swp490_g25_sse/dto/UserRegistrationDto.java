@@ -68,6 +68,5 @@ public class UserRegistrationDto {
     public void setRole(String role) {
         this.role = role;
     }
-    
-    
+
 }
