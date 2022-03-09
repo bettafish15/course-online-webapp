@@ -1,9 +1,13 @@
 package com.example.swp490_g25_sse.controller;
 
+import com.example.swp490_g25_sse.model.User;
+import com.example.swp490_g25_sse.service.CustomUserDetailsService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,7 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StudentController {
 
     @GetMapping("")
-    private String index() {
+    private String index(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
+        
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "course-screen";
     }
 }
