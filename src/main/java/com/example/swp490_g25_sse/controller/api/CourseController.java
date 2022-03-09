@@ -4,6 +4,8 @@
  */
 package com.example.swp490_g25_sse.controller.api;
 
+import com.example.swp490_g25_sse.dto.UserRegistrationDto;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
  * @author bettafish15
  */
 @RestController
-@RequestMapping("course")
+@RequestMapping("/api/course")
 public class CourseController {
 
-    @GetMapping(name = "/{id}", produces = "application/json")
+    @GetMapping(value = "/test", produces = "application/json")
+//    @PreAuthorize("hasRole('MODERATOR')")
+    public Object getTest() {
+        System.out.println("_____________________________________________________________");
+        return new UserRegistrationDto();
+    }
+
+    @GetMapping(value = "/{id}", produces = "application/json")
     public String getBook(@PathVariable long id) {
         System.out.println("_____________________________________________________________");
         return "lksadfjasdfjlasdjklf";

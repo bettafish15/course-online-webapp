@@ -4,6 +4,8 @@
  */
 package com.example.swp490_g25_sse.controller;
 
+import com.example.swp490_g25_sse.util.JwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class MainController {
+
+    @Autowired
+    JwtUtils jwtUtils;
 
     @GetMapping("/")
     private String index() {

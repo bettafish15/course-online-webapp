@@ -1,6 +1,7 @@
 # spring boot configuration
-spring.data.rest.basePath=/api
 #server.port=8089
+app.jwtSecret= bezKoderSecretKey
+app.jwtExpirationMs= 86400000e
 
 #SQL configuration
 spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
