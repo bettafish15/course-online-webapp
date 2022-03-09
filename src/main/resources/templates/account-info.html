@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -260,22 +260,22 @@
               </div>
             </div>
             <div class="col-8">
-              <form class="setting-details">
+              <form class="setting-details" th:action="@{/account-info}" th:object="${userInfo}" method="post">
                 <p class="detail-header">Thông tin cá nhân</p>
                 <div class="double-input">
                   <div class="text-input">
                     <label for="first-name">Họ</label>
-                    <input id="first-name" name="first-name" type="text" />
+                    <input id="first-name" name="first-name" type="text" th:field="*{lastName}"/>
                   </div>
                   <div class="text-input">
                     <label for="last-name">Tên</label>
-                    <input id="last-name" name="last-name" type="text" />
+                    <input id="last-name" name="last-name" type="text" th:field="*{firstName}"/>
                   </div>
                 </div>
                 <div class="double-input">
                   <div class="text-input">
                     <label for="mail">Email</label>
-                    <input id="mail" name="mail" type="email" />
+                    <input id="mail" name="mail" type="email" th:field="*{email}"/>
                   </div>
                   <div class="text-input">
                     <label for="phone">Số điện thoại</label>
