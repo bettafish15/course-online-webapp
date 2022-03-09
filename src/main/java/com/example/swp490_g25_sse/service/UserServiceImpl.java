@@ -79,7 +79,6 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-
         return new CustomUserDetailsService(user);
     }
 
