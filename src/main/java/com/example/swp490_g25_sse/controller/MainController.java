@@ -54,12 +54,12 @@ public class MainController {
         }
     }
 
-    @GetMapping("/accountInfo")
+    @GetMapping("/account-info")
     private String accountInfo() {
         return "account-info";
     }
 
-    @GetMapping("/accountSetting")
+    @GetMapping("/account-setting")
     private String accountSetting() {
         return "account-setting";
     }

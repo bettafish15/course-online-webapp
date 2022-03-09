@@ -2,8 +2,10 @@ package com.example.swp490_g25_sse.service;
 
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.model.Role;
+import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.User;
 import com.example.swp490_g25_sse.repository.RoleRepository;
+import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,14 +34,16 @@ public class UserServiceImpl implements UserService {
 
     final private UserRepository userRepository;
     final private RoleRepository roleRepository;
+    final private TeacherRepository teacherRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, TeacherRepository teacherRepository) {
         super();
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.teacherRepository = teacherRepository;
     }
 
     @Override
@@ -57,11 +61,17 @@ public class UserServiceImpl implements UserService {
                 registrationDto.getLastName(), registrationDto.getEmail(),
                 passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(role));
 
-        return userRepository.save(user);
+        User newUser = userRepository.save(user);
+        if (role.getName().equals("ROLE_TEACHER")) {
+            Teacher teacher = new Teacher(user);
+            teacherRepository.save(teacher);
+        }
+
+        return newUser;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public CustomUserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.trace("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         logger.trace(username);
         User user = userRepository.findByEmail(username);
@@ -69,7 +79,8 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+
+        return new CustomUserDetailsService(user);
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
