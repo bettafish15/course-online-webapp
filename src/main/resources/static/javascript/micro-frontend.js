@@ -19,7 +19,7 @@ const downloadMicroService = (serviceName, props) => {
                 .then(manifest => {
                     const script = document.createElement('script');
                     script.id = scriptId;
-                    script.src = `/javascript/${manifest.files['main.js']}`;
+                    script.src = `${manifest.files['main.js']}`;
                     script.onload = () => renderMicroService(serviceName, containerId, props);
                     document.head.appendChild(script);
 
@@ -29,7 +29,7 @@ const downloadMicroService = (serviceName, props) => {
                         link.rel = 'stylesheet';
                         link.type = 'text/css';
                         link.media = 'all';
-                        link.href = `/css/${manifest.files['main.css']}`;
+                        link.href = `${manifest.files['main.css']}`;
                         document.head.appendChild(link);
                     }
                 }).catch(err => console.error(err));

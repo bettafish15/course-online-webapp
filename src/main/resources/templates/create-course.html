@@ -173,7 +173,7 @@
                 </ul>
             </nav>
             <main class="main-dashboard col-10 p-0">
-                <div class="dashboard-wrapper">
+                <div class="dashboard-wrapper" id="hidingDiv">
                     <p class="dashboard-header">Tạo khóa học</p>
                     <form>
                         <div class="dashboard-container">
@@ -254,7 +254,7 @@
                                         d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                                         />
                                     </svg>
-                                    <a href="./create-lecture.html">Tạo khóa học</a>
+                                    <a onclick="hide()" href="javascript:void(0);">Tạo khóa học</a>
                                 </button>
                                 <button type="button" class="button-node cancel">
                                     <svg
@@ -277,7 +277,10 @@
                         </div>
                     </form>
                 </div>
+                <div id="root" class="dashboard-wrapper"></div>
             </main>
+            
+            
         </div>
 
         <script
@@ -361,8 +364,12 @@ document.querySelector(".add-pic").addEventListener("click", () => {
     updateFile();
 });
 
+function hide(){
+    $("#hidingDiv").hide();
+}
+
 (() => {
-    downloadMicroService(name, {
+    downloadMicroService("SoftSkillsLearning", {
         test: "asdf",
     })
 })()
