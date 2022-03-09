@@ -1,5 +1,7 @@
 package com.example.swp490_g25_sse.service;
 
+import com.example.swp490_g25_sse.dto.AccountInfoDto;
+import com.example.swp490_g25_sse.dto.UserInfoDto;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.model.Role;
 import com.example.swp490_g25_sse.model.Teacher;
@@ -7,19 +9,25 @@ import com.example.swp490_g25_sse.model.User;
 import com.example.swp490_g25_sse.repository.RoleRepository;
 import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -35,6 +43,7 @@ public class UserServiceImpl implements UserService {
     final private UserRepository userRepository;
     final private RoleRepository roleRepository;
     final private TeacherRepository teacherRepository;
+    
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -69,6 +78,8 @@ public class UserServiceImpl implements UserService {
 
         return newUser;
     }
+    
+    
 
     @Override
     public CustomUserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -89,5 +100,46 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public void setPasswordEncoder(BCryptPasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @Override
+    public User updateInfo(UserInfoDto userInfoDto, User currentUser) {
+        User user = userRepository.findFirstByEmail((userInfoDto.getEmail()));
+       
+        if( user == null){
+        
+            
+            currentUser.setEmail(userInfoDto.getEmail());
+            currentUser.setFirstName(userInfoDto.getFirstName());
+            currentUser.setLastName(userInfoDto.getLastName()); 
+        }
+        
+        
+
+        User updatedUser = userRepository.save(currentUser);
+        
+
+        return updatedUser;
+    }
+
+    @Override
+    public User updateAccount(AccountInfoDto accountInfoDto) {
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
+        
+        User currentAccount = userRepository.findFirstByEmail((currentUser.getUser().getEmail()));
+        
+        if(currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))){
+            throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, new String("Mật khẩu hiện tại không đúng".getBytes(), Charset.forName("UTF-8")));
+        }else if(!accountInfoDto.getNewPassword().equals(accountInfoDto.getConfirmNewPassword())){
+            throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, new String("Mật khẩu không trùng khớp".getBytes(), Charset.forName("UTF-8")));
+        }
+        currentAccount.setPassword(passwordEncoder.encode(accountInfoDto.getNewPassword()));
+        
+        User updatedAccount = userRepository.save(currentAccount);
+        return updatedAccount;
     }
 }
