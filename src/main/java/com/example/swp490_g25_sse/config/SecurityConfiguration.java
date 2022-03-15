@@ -92,6 +92,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //                .exceptionHandling()
                 //                .authenticationEntryPoint(unauthorizedHandler)
                 //                .and()
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(
                         "/",
@@ -102,6 +103,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .antMatchers("/app/student/**").hasRole("STUDENT")
                 .antMatchers("/app/teacher/**").hasRole("TEACHER")
+                .antMatchers(HttpMethod.POST, "/api/course").hasRole("TEACHER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -119,11 +121,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.POST, "/api/file");
-    }
-
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers(HttpMethod.POST, "/api/file");
+//    }
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;

@@ -8,6 +8,7 @@ import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +29,12 @@ public class CourseController {
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public String getBook(@PathVariable long id) {
+        System.out.println("_____________________________________________________________");
+        return "lksadfjasdfjlasdjklf";
+    }
+    
+    @PostMapping
+    public String getPost() {
         System.out.println("_____________________________________________________________");
         return "lksadfjasdfjlasdjklf";
     }

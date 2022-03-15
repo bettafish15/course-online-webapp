@@ -45,6 +45,14 @@ public class Lecture {
 
     @Column(name = "index_order")
     private Long indexOrder;
+    
+    public Lecture(Long week, Long name, String content, String resourceUrl, Long indexOrder) {
+        this.week = week;
+        this.name = name;
+        this.content = content;
+        this.resourceUrl = resourceUrl;
+        this.indexOrder = indexOrder;
+    }
 
     public Lecture(Course course, Long week, Long name, String content, String resourceUrl, Long indexOrder) {
         this.course = course;

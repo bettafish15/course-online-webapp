@@ -50,6 +50,15 @@ public class Course {
         this.title = title;
         this.content = content;
     }
+    
+    public Course(Teacher teacher, String imageUrl, String title, String content, List<Lecture> lectures, List<Test> tests) {
+        this.teacher = teacher;
+        this.imageUrl = imageUrl;
+        this.title = title;
+        this.content = content;
+        this.lectures = lectures;
+        this.tests = tests;
+    }
 
     public Long getId() {
         return id;
