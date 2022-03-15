@@ -35,6 +35,9 @@ public class Teacher {
     @OneToMany(mappedBy = "teacher")
     private Set<Course> courses;
 
+    public Teacher() {
+    }
+
     public Teacher(User user) {
         this.user = user;
     }

@@ -4,13 +4,13 @@
  */
 package com.example.swp490_g25_sse.repository;
 
-import com.example.swp490_g25_sse.model.Teacher;
+import com.example.swp490_g25_sse.model.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author bettafish15
  */
-public interface TeacherRepository extends JpaRepository<Teacher, Long> {
-    Teacher findFirstByUserId(long id);
+public interface TestRepository extends JpaRepository<Test, Long> {
+
 }

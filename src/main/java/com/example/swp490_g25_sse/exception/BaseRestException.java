@@ -5,18 +5,27 @@
 package com.example.swp490_g25_sse.exception;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
  * @author ADMIN
  */
-@ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends Exception {
+public class BaseRestException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
+    private HttpStatus status;
 
-    public ResourceNotFoundException(String message) {
+    public BaseRestException(HttpStatus status, String message) {
         super(message);
+        this.status = status;
     }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(HttpStatus status) {
+        this.status = status;
+    }
+
 }

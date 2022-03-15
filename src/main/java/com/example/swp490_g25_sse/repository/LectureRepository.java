@@ -4,10 +4,13 @@
  */
 package com.example.swp490_g25_sse.repository;
 
+import com.example.swp490_g25_sse.model.Lecture;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
- * @author ADMIN
+ * @author bettafish15
  */
-public class MainRepository {
-
+public interface LectureRepository extends JpaRepository<Lecture, Long> {
+    
 }

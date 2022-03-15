@@ -4,7 +4,9 @@
  */
 package com.example.swp490_g25_sse.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class Course {
 
     @ManyToOne
     @JoinColumn(name = "teacher_id", nullable = false)
+    @JsonIgnore
     private Teacher teacher;
 
     @Column(name = "image_url")
@@ -38,11 +41,14 @@ public class Course {
 
     private String content;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Lecture> lectures;
 
-    @OneToMany(mappedBy = "course")
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Test> tests;
+
+    public Course() {
+    }
 
     public Course(Teacher teacher, String imageUrl, String title, String content) {
         this.teacher = teacher;
@@ -50,7 +56,7 @@ public class Course {
         this.title = title;
         this.content = content;
     }
-    
+
     public Course(Teacher teacher, String imageUrl, String title, String content, List<Lecture> lectures, List<Test> tests) {
         this.teacher = teacher;
         this.imageUrl = imageUrl;

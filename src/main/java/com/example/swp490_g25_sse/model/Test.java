@@ -4,9 +4,11 @@
  */
 package com.example.swp490_g25_sse.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,20 +32,31 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "course_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", insertable = true, updatable = true)
+    @JsonIgnore
     private Course course;
 
-    private Long week;
+    private String week;
 
-    private Long name;
+    private String name;
 
     private String content;
 
     @Column(name = "index_order")
     private Long indexOrder;
 
-    public Test(Course course, Long week, Long name, String content, Long indexOrder) {
+    public Test() {
+    }
+
+    public Test(String week, String name, String content, Long indexOrder) {
+        this.week = week;
+        this.name = name;
+        this.content = content;
+        this.indexOrder = indexOrder;
+    }
+
+    public Test(Course course, String week, String name, String content, Long indexOrder) {
         this.course = course;
         this.week = week;
         this.name = name;
@@ -67,19 +80,19 @@ public class Test {
         this.course = course;
     }
 
-    public Long getWeek() {
+    public String getWeek() {
         return week;
     }
 
-    public void setWeek(Long week) {
+    public void setWeek(String week) {
         this.week = week;
     }
 
-    public Long getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Long name) {
+    public void setName(String name) {
         this.name = name;
     }
 
