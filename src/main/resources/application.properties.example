@@ -1,7 +1,7 @@
 # spring boot configuration
 #server.port=8089
 app.jwtSecret= bezKoderSecretKey
-app.jwtExpirationMs= 86400000e
+app.jwtExpirationMs= 86400000
 
 #SQL configuration
 spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
@@ -39,3 +39,16 @@ spring.jpa.properties.hibernate.use_sql_comments=true
 spring.jpa.properties.hibernate.format_sql=true
 
 spring.main.allow-circular-references=true
+
+# firebase storage
+FIREBASE_BUCKET_NAME=
+FIREBASE_PROJECT_ID=
+FIREBASE_PRIVATE_KEY=
+FIREBASE_TYPE=
+FIREBASE_PRIVATE_KEY_ID=
+FIREBASE_CLIENT_EMAIL=
+FIREBASE_CLIENT_ID=
+FIREBASE_AUTH_URI=
+FIREBASE_TOKEN_URI=
+FIREBASE_AUTH_PROVIDER_X509_CERT_URL=
+FIREBASE_CLIENT_X509_CERT_URL=
