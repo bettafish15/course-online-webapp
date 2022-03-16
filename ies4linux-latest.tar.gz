@@ -1,0 +1,1144 @@
+
+
+
+
+<!DOCTYPE html><html
+lang="pt-BR"><head><meta
+charset="UTF-8"><meta
+name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0"><title>Internet Explorer, Edge and other Browsers on Linux and Mac | Alura Cursos Online</title><meta
+name="description" content="Ies4Linux worked as a tool to run IE on Linux. Nowadays we have a ton of other tools, containers and virtualization options. Let's talk about advantage and disatvantage of each one"><link
+rel="canonical" href="https://www.alura.com.br/especial/internet-explorer-edge-browsers-on-linux"><link
+rel="icon" href="/assets/favicon.1621287442.ico" /><link
+href="https://fonts.googleapis.com/css?display=swap&family=Inter:wght@400;700;900|Noto+Serif:400,400i,700,700i" rel="stylesheet" crossorigin><link
+rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link
+rel="stylesheet" href="/bundle,base/_reset,base/base,base/buttons,base/colors,base/titulos.1619635891.css"><link
+rel="stylesheet" href="/bundle,artigos/artigos.1627305658.css"><link
+rel="stylesheet" href="/bundle,cosmos/cosmos-article-list,cosmos/cosmos-content,cosmos/cosmos-header,cosmos/cosmos-media,cosmos/cosmos-related,cosmos/cosmos-webseries,cosmos/cosmos,cosmos/cosmosPodcast,cosmos/highlight.1627325446.css"><meta
+property="og:locale" content="pt_BR"><meta
+property="og:description" content="Ies4Linux worked as a tool to run IE on Linux. Nowadays we have a ton of other tools, containers and virtualization options. Let's talk about advantage and disatvantage of each one"><meta
+property="og:title" content="Internet Explorer, Edge and other Browsers on Linux and Mac | Alura Cursos Online"><meta
+property="og:site_name" content="Alura"><meta
+property="og:url" content="https://www.alura.com.br/especial/internet-explorer-edge-browsers-on-linux"><meta
+property="og:image" content="https://source.unsplash.com/D5uqKOpDxnM/600x300"><meta
+property="og:image:alt" content="Alura logo"><meta
+property="fb:app_id" content="140078819399376"><meta
+property="og:type" content="website"><meta
+name="twitter:card" content="summary_large_image"><meta
+name="theme-color" content="#2A7AE4"> <script>;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TN542JN');</script> <script>!function (a) { var b, c = "soclminer-jssdk", d = a.getElementsByTagName("script")[0]; a.getElementById(c) || (b = a.createElement("script"), b.src = "https://plugins.soclminer.com.br/v3/sdk/all.min.js", d.parentNode.insertBefore(b, d)) }(document), window.soclInit = function () { socl.start("49a525fa-18fe-4032-ab66-f63315c9b1a6") };</script> <script>window.setTimeout(function(){var e=/(smcid|smid_|smpid_|smpushoptin_|smtp|soclId|onsiteview_).*/g;function t(e){for(var t=e+"=",i=decodeURIComponent(document.cookie).split(";"),o=0;o<i.length;o++){for(var a=i[o];" "==a.charAt(0);)a=a.substring(1);if(0==a.indexOf(t))return a.substring(t.length,a.length)}return""}function i(e,i,o){var a="",n=new Date;n.setTime(n.getTime()+864e5*o);var r=t(e);if(""==r)a=e+"="+i+";path=/;expires="+n.toGMTString()+";domain="+/\..*/.exec(window.location.host)[0];else{var s=JSON.parse(r),c=JSON.parse(i),m=Object.assign(s,c);a=e+"="+JSON.stringify(m)+";path=/;expires="+n.toGMTString()+";domain="+/\..*/.exec(window.location.host)[0]}document.cookie=a}var o={};try{for(var a=0,n=localStorage.length;a<n;a++){var r=localStorage.key(a);r.match(e)&&(o[r]=localStorage[r])}}catch(e){o={}}var s={};try{var c=document.cookie.match(/(^|;) ?(smClosedOnSite_.*?|smClickOnSite_.*?|pagesview_.*?|onsiteview_.*?|onsiteview_.*?|onsiteview_.*?|smViewOnSite|smClickOnSite|smViewedPushOptin|smClosedPushOptin|smpushoptin_.*?)=([^;]*)(;|$)/g);c&&(s=c.map(function(e){return[e.match(/(^|;) ?.*=/)[0].replace(/^; /,"").replace(/=$/,""),e.match(/=.*/)[0].replace(/;$/,"").replace(/^=/,"")]}).reduce(function(e,t){return e[t[0]]=t[1],e},{}))}catch(e){s={}}i("smDataLocalStorageCart",JSON.stringify(o),2),i("smDataCookieCart",JSON.stringify(s),2),function(e){var i=JSON.parse(t(e));if(i)for(var o in i)localStorage.getItem(o)||localStorage.setItem(o,i[o])}("smDataLocalStorageCart")},2e3);</script> </head><body
+class=""> <script src="/assets/js/avatarOnError.1623166499.js"></script> <noscript><iframe
+src="https://www.googletagmanager.com/ns.html?id=GTM-TN542JN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1067810189950610'); fbq('track', 'PageView');</script> <script src="/assets/js/courseIconFallback.1622570093.js"></script> <link
+rel="stylesheet" href="/assets/css/block/header.1627652889.css"><link
+rel="stylesheet" href="/assets/css/block/dia-do-programador.1617916014.css"><link
+rel="stylesheet" href="/assets/css/block/countdown.1616501197.css"><link
+rel="stylesheet" href="/assets/css/block/header.1627652889.css"><header
+class="header"><div
+class="container"><nav
+class="header__nav ">
+<a
+href="/" class="header__nav__link header__nav__link--logo">
+<img
+class="header__nav__link__logo" alt="Alura" src="/assets/img/alura-logo-white.1616501197.svg">
+</a><div
+class="header__nav__wrapper header__nav__wrapper--ctas"><div
+class="header-utilitario-busca" aria-label="Busca">
+<svg
+class="header-utilitario-busca-icone--home" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use
+xlink:href="/svg,1617922988/header#icon-header-busca-home"/>
+</svg></div>
+<a
+href="https://cursos.alura.com.br/loginForm?urlAfterLogin=https://cursos.alura.com.br/dashboard"
+class="header__nav__link header__nav__link--entrar">Entrar</a>
+<a
+href="/planos-cursos-online"
+class="header__nav__link header__nav__link--cta">Matricule-se</a></div><div
+class="header-barraBusca__wrapper"><div
+class="header-barraBusca"><div
+class="container"><form
+action="/busca" class="header-barraBusca-form">
+<label
+for="header-barraBusca-form-campoBusca">Qual curso procura?</label>
+<input
+type="search" id="header-barraBusca-form-campoBusca" name="query"
+class="header-barraBusca-form-serch-input"
+placeholder="O que você quer aprender?">
+<button
+class="header-barraBusca-form-submit" type="submit"></button></form></div></div></div><div
+class="nav__courses__wrapper header__nav__wrapper header__nav__wrapper--menu"><div
+class="nav__courses__link header-navegacao-cursos">
+<svg
+class="header-navegacao-cursos-icone" xmlns:xlink="http://www.w3.org/1999/xlink">
+<use
+xlink:href="/svg,1605191409/header#icon-header-icon-arrow"></use>
+</svg>
+<span>Todos os</span>
+<span>Cursos</span></div>
+<a
+href="/formacoes" class="nav__courses__link">
+<span>Nossas</span>
+<span>Formações</span>
+</a>
+<a
+href="/empresas" class="nav__courses__link">
+<span>Para</span>
+<span>Empresas</span>
+</a>
+<a
+href="/dev-em-t" class="nav__courses__link">
+<span>Dev</span>
+<span>em  &lt;T&gt;</span>
+</a></div></nav></div><div
+class="--border-header-top"><div
+class="container"><ul
+class="header-navegacao-cursos-lista"><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-programacao" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>Programação</span></div>
+</a><div
+class="header-color--link" style="color: #00c86f;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-front-end" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>Front-end</span></div>
+</a><div
+class="header-color--link" style="color: #6bd1ff;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-data-science" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>Data Science</span></div>
+</a><div
+class="header-color--link" style="color: #9cd33b;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-devops" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>DevOps</span></div>
+</a><div
+class="header-color--link" style="color: #f16165;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-design-ux" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>UX & Design</span></div>
+</a><div
+class="header-color--link" style="color: #dc6ebe;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-mobile" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>Mobile</span></div>
+</a><div
+class="header-color--link" style="color: #ffba05;"></div></li><li
+class="header-cursos-lista-categoria ">
+<a
+href="/cursos-online-inovacao-gestao" class="unlinkify"><div
+class="header-lista-categoria-nome">
+<span>Inovação & Gestão</span></div>
+</a><div
+class="header-color--link" style="color: #ff8c2a;"></div></li></ul></div></div></header><div
+class="artigos-topo"><div
+class="container"><div
+class="artigos-topo__label">
+Especial na Alura</div></div></div> <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.alura.com.br/especial/internet-explorer-edge-browsers-on-linux"
+  },
+  "headline": "Internet Explorer, Edge and other Browsers on Linux and Mac",
+  "description": "Ies4Linux worked as a tool to run IE on Linux. Nowadays we have a ton of other tools, containers and virtualization options. Let's talk about advantage and disatvantage of each one",
+  "image": "https://source.unsplash.com/D5uqKOpDxnM/600x300",
+  "datePublished": "2019-12-05",
+    "dateModified": "2019-12-05",
+    "author": {
+        "@type": "Organization",
+    "name": "Alura"
+      },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Alura",
+    "url": "https://www.alura.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.alura.com.br/assets/img/amp/logo-publisher.1616501197.png",
+      "height" : 60, 
+      "width" : 600 
+    }
+  }
+}</script> <div
+class="cosmos-container cosmos-header"><h1>Internet Explorer, Edge and other Browsers on Linux and Mac</h1><div
+class="cosmos-header-info"><div
+class="cosmos-author">
+<img
+class="cosmos-author-img" src="https://cursos.alura.com.br/assets/images/forum/avatar_s.png" alt="Sergio Lopes"><div
+class="cosmos-author-name">Sergio Lopes</div>
+<time
+class="cosmos-author-date" datetime="2019-12-05 02:30">05/12/2019</time></div><div
+class="cosmos-related-item cosmos-related-item__formacao">
+<a
+class="cosmos-related-link-formacao" href="/formacao-front-end"><div
+class="cosmos-flex--text">
+<img
+class="cosmos-related-item-image" src="https://www.alura.com.br/assets/api/formacoes/categorias/front-end.svg"><div
+class="cosmos--margin"><p
+class="cosmos-text-category">Esse artigo faz parte da</p><p
+class="cosmos-related-item-title">Formação Front-end</p></div></div>
+</a></div></div></div><div
+class="cosmos-container cosmos-content"><p><strong>Ies4Linux</strong> worked as a tool to run <strong>Internet Explorer</strong> on <strong>Linux</strong>. Nowadays we have a ton of other tools, containers and virtualization options to test a website on different browsers and mobile systems:</p><h2>Microsoft Virtual Machines for Linux and Mac</h2><p>The new Internet Explorer and Edge can not be run on Wine anymore. So Microsoft has its own VMs for this:</p><p><a
+href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/</a></p><p>Virtual Box, vagrant, VMWare and others are supported.</p><h2>Remote testing on Edge</h2><p>You can also test your HTML and pages using the new tools offered by Microsoft:</p><p><a
+href="https://developer.microsoft.com/en-us/microsoft-edge/tools/remote/" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/microsoft-edge/tools/remote/</a></p></div><div
+class="cosmos-container cosmos-header"><div
+class="cosmos-related-item cosmos-related-item__formacao">
+<a
+class="cosmos-related-link-formacao" href="/formacao-front-end"><div
+class="cosmos-flex--text">
+<img
+class="cosmos-related-item-image" src="https://www.alura.com.br/assets/api/formacoes/categorias/front-end.svg"><div
+class="cosmos--margin"><p
+class="cosmos-text-category">Esse artigo faz parte da</p><p
+class="cosmos-related-item-title">Formação Front-end</p></div></div>
+</a></div><div
+class="cosmos-related-item cosmos-related-item__formacao">
+<a
+href="/cursos-online-front-end">
+<span
+class="cosmos-related-item-title">Cursos de Front-end</span>
+</a></div></div><link
+rel="stylesheet" href="/assets/css/block/planosPagamentoOld.1621287442.css"><section
+class="planos-pagamento" id="planos-cursos-online"><h2 class="planos-pagamento__titulo"></h2><div
+class="container"><div
+class="planos-pagamento__planos "><div
+class="animation-trigger --animate"></div><ul
+class="planos-pagamento__vantagens-mobile"><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">1275 cursos</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de programação, UX, agilidade, data science, transformação digital, mobile, front-end, marketing e infra.</p></div></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Certificado de participação</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Certificado de que assistiu o curso e finalizou as atividades</p></div></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">App para Android e iPhone/iPad</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Estude até mesmo offline através das nossas apps Android e iOS em smartphones e tablets</p></div></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Start</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de introdução a tecnologia através de games, apps e ciência</p></div></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Língua</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Reforço online de inglês e espanhol para aprimorar seu conhecimento</p></div></div></li></ul><div
+class="planos-pagamento__plano planos-pagamento__plano--premium"
+data-payment-plan  data-payment-plan-price="900"><div
+class="planos-pagamento__header"><h4 class="planos-pagamento__nome">Premium</h4></div><ul
+class="planos-pagamento__vantagens"><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">1275 cursos</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de programação, UX, agilidade, data science, transformação digital, mobile, front-end, marketing e infra.</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Certificado de participação</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Certificado de que assistiu o curso e finalizou as atividades</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">App para Android e iPhone/iPad</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Estude até mesmo offline através das nossas apps Android e iOS em smartphones e tablets</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Start</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de introdução a tecnologia através de games, apps e ciência</p></div></div><div
+class="planos-pagamento__checkmark ">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Língua</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Reforço online de inglês e espanhol para aprimorar seu conhecimento</p></div></div><div
+class="planos-pagamento__checkmark ">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li></ul><div
+class="planos-pagamento__precos ">
+<span
+class="planos-pagamento__numero-parcelas">
+12X
+</span><div
+class="planos-pagamento__preco-parcela
+">
+<span
+class="planos-pagamento__valor-parcela">R$75</span></div><div
+class="planos-pagamento__preco-vista">
+<span
+class="planos-pagamento__label-vista">à vista</span>
+<span
+class="planos-pagamento__valor-vista">R$900</span></div></div><a
+class="planos-pagamento__cta" href="/compra/premium/">
+Matricule-se
+</a></div><div
+class="planos-pagamento__plano planos-pagamento__plano--premiumplus"
+data-payment-plan  data-payment-plan-price="1.200"><div
+class="planos-pagamento__header"><h4 class="planos-pagamento__nome">Premium Plus</h4></div><ul
+class="planos-pagamento__vantagens"><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">1275 cursos</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de programação, UX, agilidade, data science, transformação digital, mobile, front-end, marketing e infra.</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Certificado de participação</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Certificado de que assistiu o curso e finalizou as atividades</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">App para Android e iPhone/iPad</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Estude até mesmo offline através das nossas apps Android e iOS em smartphones e tablets</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Start</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de introdução a tecnologia através de games, apps e ciência</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Língua</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Reforço online de inglês e espanhol para aprimorar seu conhecimento</p></div></div><div
+class="planos-pagamento__checkmark ">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li></ul><div
+class="planos-pagamento__precos ">
+<span
+class="planos-pagamento__numero-parcelas">
+12X
+</span><div
+class="planos-pagamento__preco-parcela
+">
+<span
+class="planos-pagamento__valor-parcela">R$100</span></div><div
+class="planos-pagamento__preco-vista">
+<span
+class="planos-pagamento__label-vista">à vista</span>
+<span
+class="planos-pagamento__valor-vista">R$1.200</span></div></div><a
+class="planos-pagamento__cta" href="/compra/premiumplus/">
+Matricule-se
+</a></div><div
+class="planos-pagamento__plano planos-pagamento__plano--max"
+data-payment-plan  data-payment-plan-price="1.440"><div
+class="planos-pagamento__header"><h4 class="planos-pagamento__nome">Max</h4></div><ul
+class="planos-pagamento__vantagens"><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">1275 cursos</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de programação, UX, agilidade, data science, transformação digital, mobile, front-end, marketing e infra.</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Certificado de participação</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Certificado de que assistiu o curso e finalizou as atividades</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">App para Android e iPhone/iPad</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Estude até mesmo offline através das nossas apps Android e iOS em smartphones e tablets</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Start</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Cursos de introdução a tecnologia através de games, apps e ciência</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li><li
+class="planos-pagamento__vantagem"><div
+class="planos-pagamento__wrapper planos-pagamento__wrapper--com-descricao">
+<span
+class="planos-pagamento__label">Acesso à Alura Língua</span><div
+class="planos-pagamento__legenda-tooltip"><p
+class="planos-pagamento__legenda-descricao">Reforço online de inglês e espanhol para aprimorar seu conhecimento</p></div></div><div
+class="planos-pagamento__checkmark planos-pagamento__checkmark--ativo">
+<svg><use
+xlink:href="/svg,1616501197/planosPagamento#icon-planosPagamento-checked" /></svg></div></li></ul><div
+class="planos-pagamento__precos ">
+<span
+class="planos-pagamento__numero-parcelas">
+12X
+</span><div
+class="planos-pagamento__preco-parcela
+">
+<span
+class="planos-pagamento__valor-parcela">R$120</span></div><div
+class="planos-pagamento__preco-vista">
+<span
+class="planos-pagamento__label-vista">à vista</span>
+<span
+class="planos-pagamento__valor-vista">R$1.440</span></div></div><a
+class="planos-pagamento__cta" href="/compra/max/">
+Matricule-se
+</a></div></div></div><a
+class="planos-pagamento__b2b" href="/empresas">
+<span>Conheça os <strong>Planos para Empresas</strong></span>
+</a><div
+class="planosPagamento-vantagens"><div
+class="container"><div
+class="planosPagamento-vantagens-vantagem acesso">
+<img
+src="/assets/img/home/icon-plan-calendar.1617662393.svg"><p>Acesso completo <br
+/> durante 1 ano</p></div><div
+class="planosPagamento-vantagens-vantagem horas">
+<img
+src="/assets/img/home/icon-plan-moon.1617662393.svg"><p>Estude 24h/dia <br
+/> onde e quando quiser</p></div><div
+class="planosPagamento-vantagens-vantagem novos">
+<img
+src="/assets/img/home/icon-plan-reload.1617662393.svg"><p>Novos cursos <br
+/> todas as semanas</p></div></div></div></section> <script src="/assets/js/planosPagamentoOld.1616501197.js"></script> <div
+class="artigos-topo"><div
+class="container"><div
+class="artigos-topo__label">
+Especial na Alura</div></div></div><link
+rel="stylesheet" href="/assets/css/block/footer.1622581180.css"><footer
+class="footer"><div
+class="container"><div
+class="footer-navegue"><h2 class="footer-navegacao-titulo">Navegação</h2><ul
+class="footer-navegue-lista"><li
+class="footer-navegue-lista-link"><a
+href="/planos-cursos-online" gtm-data='footer_primeira_secao_053'>Planos</a></li><li
+class="footer-navegue-lista-link"><a
+href="/cursos-online-tecnologia" gtm-data='footer_primeira_secao_054'>Todos os cursos</a></li><li
+class="footer-navegue-lista-link"><a
+href="/cases">Alura Cases</a></li><li
+class="footer-navegue-lista-link"><a
+href="/guias">Guia de carreira</a></li><li
+class="footer-navegue-lista-link"><a
+href="/instrutores" gtm-data='footer_primeira_secao_056'>Instrutores</a></li><li
+class="footer-navegue-lista-link"><a
+href="/quero-ser-instrutor" gtm-data='footer_primeira_secao_057'>Como virar instrutor</a></li><li
+class="footer-navegue-lista-link"><a
+href="/artigos" gtm-data='footer_primeira_secao_058'>Artigos</a></li><li
+class="footer-navegue-lista-link"><a
+href="/escolas">Para Escolas</a></li><li
+class="footer-navegue-lista-link"><a
+href="/podcasts">Podcasts</a></li><li
+class="footer-navegue-lista-link"><a
+href="/politica-de-privacidade" gtm-data='footer_primeira_secao_061'>Política de Privacidade</a></li><li
+class="footer-navegue-lista-link"><a
+href="/termos-de-uso" gtm-data='footer_primeira_secao_062'>Termos de Uso</a></li><li
+class="footer-navegue-lista-link"><a
+href="/sobre" gtm-data='footer_primeira_secao_063'>Sobre nós</a></li><li
+class="footer-navegue-lista-link"><a
+href="/como-funciona" gtm-data='footer_primeira_secao_064'>Como Funciona</a></li><li
+class="footer-navegue-lista-link"><a
+href="/dev-em-t" gtm-data='footer_primeira_secao_065'>Dev em &lt;T&gt;</a></li><li
+class="footer-navegue-lista-link"><a
+href="https://suporte.alura.com.br/" gtm-data='footer_primeira_secao_066'>Perguntas frequentes</a></li><li
+class="footer-navegue-lista-link"><a
+href="https://status.alura.com.br/">Status</a></li></ul><h2 class="footer-navegacao-titulo">Fale com a gente</h2><ul
+class="footer-navegue-lista"><li
+class="footer-navegue-lista-link whatsapp-icon"><a
+href="https://api.whatsapp.com/send?phone=5511984510286">Whatsapp</a></li><li
+class="footer-navegue-lista-link"><a
+href="https://www.alura.com.br/contato">Email e telefone</a></li></ul></div><div
+class="footer-card-hotLinks social-mobile"><p
+class="footer-navegue-lista-link --description">
+<span
+class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span
+class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div
+class="footer-card-hotLinks-info footer-card-redes">
+<a
+href="https://www.youtube.com/alura" gtm-data='footer_primeira_secao_065' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use
+xlink:href="/svg,1617662393/footer#icon-footer-youtube"/></svg>
+<span>YouTube</span>
+</a>
+<a
+href="https://www.facebook.com/AluraCursosOnline/" gtm-data='footer_primeira_secao_066' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use
+xlink:href="/svg,1617662393/footer#icon-footer-facebook"/></svg>
+<span>Facebook</span>
+</a>
+<a
+href="https://twitter.com/aluraonline" gtm-data='footer_primeira_secao_067' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use
+xlink:href="/svg,1617662393/footer#icon-footer-twitter"/></svg>
+<span>Twitter</span>
+</a>
+<a
+href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data='footer_primeira_secao_073' target="_blank" rel="noopener" title="Instagram da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use
+xlink:href="/svg,1617662393/footer#icon-footer-instagram"/></svg>
+<span>Instagram</span>
+</a></div><div
+class="footer-card-hotLinks-info footer-card-mobile">
+<a
+href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&hl=pt_BR" gtm-data='footer_primeira_secao_069' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use
+xlink:href="/svg,1617662393/footer#icon-footer-googleplay"/></svg>
+<span>Google Play Store</span>
+</a>
+<a
+href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data='footer_primeira_secao_070' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use
+xlink:href="/svg,1617662393/footer#icon-footer-appstore"/></svg>
+<span>AppStore</span>
+</a></div></div><div
+class="footer-column footer-column-cards"><link
+rel="stylesheet" href="/assets/css/block/activeCampaignNewsletterForm.1618510781.css"><div
+class="newsletter"><h2 class="newsletter-titulo">Novidades e Lançamentos</h2><form
+id="newsletter-form__activecampaign" class="newsletter-form" action="/api/activecampaign" method="POST"><input
+type="hidden" name="list" value="14">
+<input
+type="hidden" name="retorno" value="/newsletter-cadastrado"><label
+for="email-newsletter">Email</label>
+<input
+type="email" name="email" class="newsletter-input" placeholder="Seu e-mail" id="email-newsletter"><button
+type="submit" class="newsletter-button buttonForm">Receber</button>
+<span
+class="newsletter-message-error newsletter-message-error--disabled">Não foi possível assinar a newsletter</span></form></div> <script>(function() {
+            function criaCampo(nome, valor, form) {
+                if (valor === null) return;
+
+                var input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = nome;
+                input.value = valor;
+
+                form.appendChild(input);
+            }
+
+            function param(name) {
+                var url = location.href;
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+                var regexS = "[\\?&]"+name+"=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec( url );
+                return results == null ? null : results[1];
+            }
+
+            function showNewsletterError() {
+                document.querySelector('.newsletter-message-error').classList.remove('newsletter-message-error--disabled');
+            }
+
+            function valida() {
+                var isValid = true;
+                var inputList = document.querySelector('#newsletter-form__activecampaign')['list'];
+                var inputEmail = document.querySelector('#newsletter-form__activecampaign')['email'];
+
+                isValid = validaEmail(inputEmail.value) && validaList(inputList.value);
+
+                if(!isValid) {
+                    showNewsletterError();
+                }
+
+                return isValid;
+            }
+
+            function validaList(list) {
+                return list != '-1';
+            }
+
+            function validaEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            var form = document.querySelector('#newsletter-form__activecampaign');
+            if(!form) return;
+
+            criaCampo('utm_source', param('utm_source'), form);
+            criaCampo('utm_campaign', param('utm_campaign'), form);
+            criaCampo('utm_medium', param('utm_medium'), form);
+            criaCampo('utm_term', param('utm_term'), form);
+            criaCampo('utm_content', param('utm_content'), form);
+            criaCampo('full_url', location.href, form);
+            criaCampo('user_agent', navigator.userAgent, form);
+            criaCampo('referral', document.referrer, form);
+
+            form.onsubmit = valida;
+
+        })();</script> <div
+class="footer-navegue empresa-governo"><h2 class="footer-navegacao-titulo">Alura na sua empresa</h2><ul
+class="footer-navegue-lista"><li
+class="footer-navegue-lista-link --description">Desenvolva seu time com apoio da nossa solução</li><li
+class="footer-navegue-lista-link --description"><a
+href="https://www.alura.com.br/empresas">Conheça mais</a></li></ul><h2 class="footer-navegacao-titulo">Comunidade</h2><ul
+class="footer-navegue-lista"><li
+class="footer-navegue-lista-link"><a
+href="https://www.scuba.dev.br/" gtm-data="footer_primeira_secao_067">Scuba Dev</a></li><li
+class="footer-navegue-lista-link"><a
+href="/imersao" gtm-data="footer_primeira_secao_068">Imersões</a></li><li
+class="footer-navegue-lista-link"><a
+href="/depoimentos" gtm-data="footer_primeira_secao_069">Depoimentos</a></li><li
+class="footer-navegue-lista-link"><a
+href="/instrutores" gtm-data="footer_primeira_secao_061">Nossos Instrutores</a></li></ul><h2 class="footer-navegacao-titulo">Parceiros</h2><ul
+class="footer-navegue-lista"><li
+class="footer-navegue-lista-link --description">
+<img
+src="/assets/img/footer/scale-up-endeavor.1617662393.png" alt="Programa de aceleração Scale-Up Endeavor" class="footer-navegue-lista__image"></li><li
+class="footer-navegue-lista-link --description --partners">
+Nós, da Alura, somos uma das Scale-Ups selecionadas pela Endeavor, programa de aceleração das empresas que mais crescem no país.</li></ul></div></div><div
+class="footer-info"><div
+class="footer-logos">
+<a
+class="footer-logos-home" gtm-data='footer_primeira_secao_050' href="/">
+<img
+src="/assets/img/home/alura-logo.1616501197.svg" alt="Alura" class="footer-logo">
+</a></div><div
+class="footer-card-hotLinks social-desktop"><p
+class="footer-navegue-lista-link --description">
+<span
+class="footer-empresa-item">AOVS Sistemas de Informática S.A</span>
+<span
+class="footer-empresa-item">CNPJ 05.555.382/0001-33</span></p><h2 class="footer-card-hotLinks-titulo">Nossas redes e apps</h2><div
+class="footer-card-hotLinks-info footer-card-redes">
+<a
+href="https://www.youtube.com/alura" gtm-data='footer_primeira_secao_065' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="YouTube da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-youtube"><use
+xlink:href="/svg,1617662393/footer#icon-footer-youtube"/></svg>
+<span>YouTube</span>
+</a>
+<a
+href="https://www.facebook.com/AluraCursosOnline/" gtm-data='footer_primeira_secao_066' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Facebook da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-facebook"><use
+xlink:href="/svg,1617662393/footer#icon-footer-facebook"/></svg>
+<span>Facebook</span>
+</a>
+<a
+href="https://twitter.com/aluraonline" gtm-data='footer_primeira_secao_067' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Twitter da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-twitter"><use
+xlink:href="/svg,1617662393/footer#icon-footer-twitter"/></svg>
+<span>Twitter</span>
+</a>
+<a
+href="https://instagram.com/aluraonline" class="footer-card-hotLinks-link" gtm-data='footer_primeira_secao_073' target="_blank" rel="noopener" title="Instagram da Alura">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-instagram"><use
+xlink:href="/svg,1617662393/footer#icon-footer-instagram"/></svg>
+<span>Instagram</span>
+</a></div><div
+class="footer-card-hotLinks-info footer-card-mobile">
+<a
+href="https://play.google.com/store/apps/details?id=br.com.alura.mobi&hl=pt_BR" gtm-data='footer_primeira_secao_069' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na Google Play Store">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use
+xlink:href="/svg,1617662393/footer#icon-footer-googleplay"/></svg>
+<span>Google Play Store</span>
+</a>
+<a
+href="https://itunes.apple.com/br/app/alura-cursos-online/id1225776635" gtm-data='footer_primeira_secao_070' class="footer-card-hotLinks-link" target="_blank" rel="noopener" title="Baixar na AppStore">
+<svg
+class="footer-card-hotLinks-icon footer-card-hotLinks-mobile"><use
+xlink:href="/svg,1617662393/footer#icon-footer-appstore"/></svg>
+<span>AppStore</span>
+</a></div></div></div></div></footer><section
+class="footer_categorias-formacoes"><div
+class="container"><div
+class="footer_categorias_wrapper"><h2 class="footer_categorias_title">Cursos</h2><div
+class="footer_categorias_categorias footer-navegue-lista-link"><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-programacao">Cursos de Programação</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-programacao/logica">
+Lógica                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/python">
+Python                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/php">
+PHP                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/java">
+Java                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/dotnet">
+.NET                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/node-js">
+Node JS                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/linguagem-c">
+C                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/computacao">
+Computação                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/jogos">
+Jogos                                    </a>
+|                                                                    <a
+href="/cursos-online-programacao/internet-das-coisas">
+IoT                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-front-end">Cursos de Front-end</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-front-end/front-end">
+HTML, CSS                                    </a>
+|                                                                    <a
+href="/cursos-online-front-end/reactjs">
+React                                    </a>
+|                                                                    <a
+href="/cursos-online-front-end/angular">
+Angular                                    </a>
+|                                                                    <a
+href="/cursos-online-front-end/javascript">
+JavaScript                                    </a>
+|                                                                    <a
+href="/cursos-online-front-end/jquery">
+jQuery                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-data-science">Cursos de Data Science</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-data-science/data-science">
+Ciência de dados                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/business-intelligence">
+BI                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/sql">
+SQL e Banco de Dados                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/excel">
+Excel                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/machine-learning">
+Machine Learning                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/nosql">
+NoSQL                                    </a>
+|                                                                    <a
+href="/cursos-online-data-science/estatistica">
+Estatística                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-devops">Cursos de DevOps</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-devops/aws">
+AWS                                    </a>
+|                                                                    <a
+href="/cursos-online-devops/azure">
+Azure                                    </a>
+|                                                                    <a
+href="/cursos-online-devops/containers">
+Docker                                    </a>
+|                                                                    <a
+href="/cursos-online-devops/seguranca">
+Segurança                                    </a>
+|                                                                    <a
+href="/cursos-online-devops/infraestrutura-como-codigo">
+IaC                                    </a>
+|                                                                    <a
+href="/cursos-online-devops/linux-comandos-e-processos">
+Linux                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-design-ux">Cursos de UX & Design</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-design-ux/wwww">
+Photoshop e Illustrator                                    </a>
+|                                                                    <a
+href="/cursos-online-design-ux/ux">
+Usabilidade e UX                                    </a>
+|                                                                    <a
+href="/cursos-online-design-ux/video">
+Vídeo e Motion                                    </a>
+|                                                                    <a
+href="/cursos-online-design-ux/3d">
+3D                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-mobile">Cursos de Mobile</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-mobile/multiplataforma">
+Flutter, React Native                                    </a>
+|                                                                    <a
+href="/cursos-online-mobile/ios">
+iOS e Swift                                    </a>
+|                                                                    <a
+href="/cursos-online-mobile/android">
+Android, Kotlin                                    </a>
+|                                                                    <a
+href="/cursos-online-mobile/jogos">
+Jogos                                    </a></div></div><div
+class="footer_categorias_categoria">
+<a
+href="/cursos-online-inovacao-gestao">Cursos de Inovação & Gestão</a><div
+class="footer_categorias_subcategorias">
+<a
+href="/cursos-online-inovacao-gestao/agilidade">
+Métodos Ágeis                                    </a>
+|                                                                    <a
+href="/cursos-online-inovacao-gestao/softskills-carreira">
+Softskills                                    </a>
+|                                                                    <a
+href="/cursos-online-inovacao-gestao/gestao-corporativa">
+Liderança e Gestão                                    </a>
+|                                                                    <a
+href="/cursos-online-inovacao-gestao/startup-empreendedorismo">
+Startups                                    </a>
+|                                                                    <a
+href="/cursos-online-inovacao-gestao/vendas">
+Vendas                                    </a></div></div></div></div></div></section><style>@media not all and (min-width: 1000px){
+		.grupoCaelum{
+			display: none;
+		}
+	}
+
+	.grupoCaelum{
+		background: #fff;
+		height: 400px;
+		border-top: 1px solid #EBEBEE;
+	}
+
+	.grupoCaelum .container{
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding-top: 0;
+		padding-bottom: 0;
+		height: 100%;
+	}
+
+		.grupoCaelum-list{
+			display: flex;
+			list-style: none;
+			width: 60%;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-top: 20px;
+		}
+
+		.grupoCaelum-title{
+			width: 20%;
+		}
+
+		.grupoCaelum-column {
+			display: inline-block;
+			padding-left: 19px;
+			width: 240px;
+			height: 350px;
+			min-width: 160px;
+		}
+			.grupoCaelum-column-title {
+				font-size: 10px;
+				color: #d7e0e5;
+				text-transform: uppercase;
+				font-weight: 600;
+				margin-bottom: 19px;
+			}
+
+			.grupoCaelum-column-list {
+				list-style: none;
+			}
+
+			.column-item-title {
+				font-size: 11px;
+				text-align: center;
+				vertical-align: middle;
+				display: inline-block;
+				margin-left: 6.5px;
+			}
+
+		.grupoCaelum-column:not(:first-child) {
+			border-left: solid 1px #e3e9ed;
+		}
+
+		.grupoCaelum-title {
+			display: inline-block;
+			text-decoration: none;
+			color: #657176;
+			letter-spacing: normal;
+			font-size: 18px;
+			margin-top: 54px;
+		}
+
+	.column-item-logo {
+		width: 30px;
+		height: 30px;
+		vertical-align: middle;
+		display: inline-block;
+	}
+
+	.column-item {
+		margin-bottom: 17px;
+	}
+
+	.column-item a{
+		text-decoration: none;
+		color: #657176;
+	}</style><footer
+class="caelum-footer"><div
+class="grupoCaelum"><div
+class="container"><p
+class="grupoCaelum-title">Grupo Alura</p><ul
+class="grupoCaelum-list"><li
+class="grupoCaelum-column"><p
+class="grupoCaelum-column-title">Educação</p><ul
+class="grupoCaelum-column-list"><li
+class="column-item">
+<a
+target="_blank" href="https://www.caelum.com.br">
+<svg
+class="column-item-logo">
+<use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-novo-logo-caelum">
+<span
+class="column-item-title">Caelum</span>
+</svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.casadocodigo.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-cdc"><span
+class="column-item-title">Casa do Código</span></svg>
+</a></li></ul></li><li
+class="grupoCaelum-column"><p
+class="grupoCaelum-column-title">Educação Online</p><ul
+class="grupoCaelum-column-list"><li
+class="column-item">
+<a
+target="_blank" href="https://www.alura.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-alura"><span
+class="column-item-title">Alura</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.alura.com.br/empresas">
+<svg
+class="column-item-logo" style="fill: white;"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-alura"><span
+class="column-item-title">Alura Para Empresas</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.aluracursos.com">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-alura"><span
+class="column-item-title">Alura LATAM</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.alurastart.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-alurastart"><span
+class="column-item-title">Alura Start</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.musicdot.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-musicdot"><span
+class="column-item-title">MusicDot</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.aluralingua.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-aluralingua"><span
+class="column-item-title">Alura Língua</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" style="fill: #657176" href="https://www.cursospm3.com.br/">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-pm3"><span
+class="column-item-title">PM3 - Cursos de Produto</span></svg>
+</a></li></ul></li><li
+class="grupoCaelum-column"><p
+class="grupoCaelum-column-title">Comunidade</p><ul
+class="grupoCaelum-column-list"><li
+class="column-item">
+<a
+target="_blank" href="https://hipsters.tech">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-hipsterstech"><span
+class="column-item-title">Hipsters ponto Tech</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://scuba.dev.br">
+<svg
+class="column-item-logo" style="fill: #657176"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-scubadev"><span
+class="column-item-title">Scuba Dev</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://layerspontotech.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-layerstech"><span
+class="column-item-title">Layers ponto Tech</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://likeaboss.com.br">
+<svg
+class="column-item-logo" style="fill: #657176"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-likeaboss"><span
+class="column-item-title">Like a Boss</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.carreirasemfronteiras.com.br">
+<svg
+class="column-item-logo" style="fill: #657176"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-carreira-sem-fronteiras"><span
+class="column-item-title">Carreira sem Fronteiras</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://hipsters.jobs">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-hipstersjobs"><span
+class="column-item-title">Hipsters ponto Jobs</span></svg>
+</a></li><li
+class="column-item">
+<a
+target="_blank" href="https://www.guj.com.br">
+<svg
+class="column-item-logo"><use
+xlink:href="/svg,1618405973/caelumFooter#icon-caelumFooter-guj"><span
+class="column-item-title">GUJ</span></svg>
+</a></li></ul></li></ul></div></div></footer> <script>(function(){
+    var match = location.pathname.match(/\/(bf-|black-?friday\/)([^\/]+)/);
+    if (match != null) {
+        var links = document.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            var href = links[i].getAttribute('href');
+            if (href[0] === '/') {
+                links[i].setAttribute('href', '/bf-' + match[2] + href);
+            }
+        }
+    }
+})();</script> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <script src="/assets/js/lib/svg4everybody.min.1616501197.js" async></script> <script src="/assets/js/header/menu.1616501197.js" async></script> <script src="/assets/js/header/busca.1616501197.js" async></script> <script src="/assets/js/header/cursos.1617821052.js" async></script> <script src="/assets/js/detect.1616501197.js" async></script> <script src="/assets/js/video.1616501197.js" async></script> <script src="/assets/js/Countdown.1616501197.js" async></script> <script>var userId = (document.cookie.match('alura.userId=([^;]+)')||[null,null])[1];
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+
+  	ga('create', 'UA-42101548-1', 'alura.com.br', 'tracker0', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker0.set', 'userId', userId);
+
+	ga('tracker0.require', 'displayfeatures');
+	ga('tracker0.send', 'pageview');
+  	ga('create', 'UA-42101548-9', 'alura.com.br', 'tracker1', {'siteSpeedSampleRate': 50});
+
+	if (userId) ga('tracker1.set', 'userId', userId);
+
+	ga('tracker1.require', 'displayfeatures');
+	ga('tracker1.send', 'pageview');</script> <script async src='//www.google-analytics.com/analytics.js'></script> <script src="/assets/js/footer/footer.1616501197.js" async></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.0/highlight.min.js"></script> <script>hljs.initHighlightingOnLoad();</script> <script>(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1029027,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');</script> <script type="text/javascript">_linkedin_partner_id = "465017";
+			window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+			window._linkedin_data_partner_ids.push(_linkedin_partner_id);</script> <script type="text/javascript">(function(){var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript";b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);})();</script> <noscript>
+<img
+height="1" width="1" style="display:none;" alt=""
+src="https://dc.ads.linkedin.com/collect/?pid=465017&fmt=gif" />
+</noscript></body></html>
