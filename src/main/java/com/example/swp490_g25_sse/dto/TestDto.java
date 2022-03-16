@@ -10,6 +10,7 @@ package com.example.swp490_g25_sse.dto;
  */
 public class TestDto {
 
+    public Long id;
     public String week;
     public Long index;
     public String content;
@@ -55,6 +56,14 @@ public class TestDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

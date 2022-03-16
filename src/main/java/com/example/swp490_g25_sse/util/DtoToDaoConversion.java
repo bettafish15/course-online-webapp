@@ -22,7 +22,10 @@ public class DtoToDaoConversion {
         List<Lecture> lectures = new ArrayList<>();
 
         for (int i = 0; i < dtos.size(); i++) {
-            lectures.add(new Lecture(course, dtos.get(i).getWeek(), dtos.get(i).getName(), dtos.get(i).getContent(), dtos.get(i).getResourceUrl(), dtos.get(i).getIndex()));
+            Lecture lecture = new Lecture(course, dtos.get(i).getWeek(), dtos.get(i).getName(),
+                    dtos.get(i).getContent(), dtos.get(i).getResourceUrl(), dtos.get(i).getIndex());
+
+            lectures.add(lecture);
         }
 
         return lectures;
@@ -32,7 +35,10 @@ public class DtoToDaoConversion {
         List<Test> tests = new ArrayList<>();
 
         for (int i = 0; i < dtos.size(); i++) {
-            tests.add(new Test(course, dtos.get(i).getWeek(), dtos.get(i).getName(), dtos.get(i).getContent(), dtos.get(i).getIndex()));
+            Test test = new Test(course, dtos.get(i).getWeek(), dtos.get(i).getName(), dtos.get(i).getContent(),
+                    dtos.get(i).getIndex());
+
+            tests.add(test);
         }
 
         return tests;

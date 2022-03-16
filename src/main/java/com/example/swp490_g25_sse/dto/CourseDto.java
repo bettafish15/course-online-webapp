@@ -12,6 +12,7 @@ import java.util.List;
  */
 public class CourseDto {
 
+    public Long id;
     public String courseTitle;
     public String courseImgUrl;
     public String content;
@@ -21,7 +22,8 @@ public class CourseDto {
     public CourseDto() {
     }
 
-    public CourseDto(String courseTitle, String courseImgUrl, String content, List<LectureDto> lectureDtos, List<TestDto> testDtos) {
+    public CourseDto(String courseTitle, String courseImgUrl, String content, List<LectureDto> lectureDtos,
+            List<TestDto> testDtos) {
         this.courseTitle = courseTitle;
         this.courseImgUrl = courseImgUrl;
         this.content = content;
@@ -67,6 +69,14 @@ public class CourseDto {
 
     public void setTestDtos(List<TestDto> testDtos) {
         this.testDtos = testDtos;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

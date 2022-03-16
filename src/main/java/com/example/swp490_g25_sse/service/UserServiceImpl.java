@@ -128,7 +128,7 @@ public class UserServiceImpl implements UserService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
         
-        User currentAccount = userRepository.findFirstByEmail((currentUser.getUser().getEmail()));
+        User currentAccount = currentUser.getUser();
         
         if(currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))){
             throw new ResponseStatusException(

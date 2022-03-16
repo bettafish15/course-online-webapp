@@ -12,5 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author bettafish15
  */
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
-    
+
 }

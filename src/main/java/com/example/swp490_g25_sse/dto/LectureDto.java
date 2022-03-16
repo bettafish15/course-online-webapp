@@ -10,6 +10,7 @@ package com.example.swp490_g25_sse.dto;
  */
 public class LectureDto {
 
+    public Long id;
     public String week;
     public Long index;
     public String resourceUrl;
@@ -65,6 +66,14 @@ public class LectureDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

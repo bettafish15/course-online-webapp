@@ -15,11 +15,13 @@ import java.util.Optional;
  */
 public interface CourseService {
 
-    Optional<Course> getCourseById(long id);
+	Optional<Course> getCourseById(long id);
 
-    Course createCourse(CourseDto courseDto);
+	Course createCourse(CourseDto courseDto);
 
-    List<Course> getCourses();
-    
-    Optional<Course> deleteCourse(long id);
+	List<Course> getCourses();
+
+	Optional<Course> deleteCourse(long id);
+
+	Course updateCourse(CourseDto courseDto, long id);
 }
