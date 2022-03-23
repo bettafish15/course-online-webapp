@@ -18,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,12 +44,12 @@ public class UserServiceImpl implements UserService {
     final private UserRepository userRepository;
     final private RoleRepository roleRepository;
     final private TeacherRepository teacherRepository;
-    
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, TeacherRepository teacherRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+            TeacherRepository teacherRepository) {
         super();
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
@@ -78,12 +79,11 @@ public class UserServiceImpl implements UserService {
 
         return newUser;
     }
-    
-    
 
     @Override
     public CustomUserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.trace("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        logger.trace(
+                "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         logger.trace(username);
         User user = userRepository.findByEmail(username);
 
@@ -104,41 +104,44 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateInfo(UserInfoDto userInfoDto, User currentUser) {
-        User user = userRepository.findFirstByEmail((userInfoDto.getEmail()));
-       
-        if( user == null){
-        
-            
-            currentUser.setEmail(userInfoDto.getEmail());
-            currentUser.setFirstName(userInfoDto.getFirstName());
-            currentUser.setLastName(userInfoDto.getLastName()); 
+        User userInDatabase = userRepository.findFirstByEmail((userInfoDto.getEmail()));
+
+        if (userInDatabase != null && userInDatabase.getId() != currentUser.getId()) {
+            // throw 1 cai gi day
+            return currentUser;
         }
-        
-        
+
+        String prefix = "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/";
+        String subfix = "?alt=media";
+        currentUser.setEmail(userInfoDto.getEmail());
+        currentUser.setFirstName(userInfoDto.getFirstName());
+        currentUser.setLastName(userInfoDto.getLastName());
+        currentUser.setImageURL(prefix + userInfoDto.getImageURL() + subfix);
 
         User updatedUser = userRepository.save(currentUser);
-        
 
         return updatedUser;
     }
 
     @Override
     public User updateAccount(AccountInfoDto accountInfoDto) {
-        
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
-        
+
         User currentAccount = currentUser.getUser();
-        
-        if(currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))){
+
+        if (currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))) {
             throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, new String("Mật khẩu hiện tại không đúng".getBytes(), Charset.forName("UTF-8")));
-        }else if(!accountInfoDto.getNewPassword().equals(accountInfoDto.getConfirmNewPassword())){
+                    HttpStatus.BAD_REQUEST,
+                    new String("Mật khẩu hiện tại không đúng".getBytes(), Charset.forName("UTF-8")));
+        } else if (!accountInfoDto.getNewPassword().equals(accountInfoDto.getConfirmNewPassword())) {
             throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, new String("Mật khẩu không trùng khớp".getBytes(), Charset.forName("UTF-8")));
+                    HttpStatus.BAD_REQUEST,
+                    new String("Mật khẩu không trùng khớp".getBytes(), Charset.forName("UTF-8")));
         }
         currentAccount.setPassword(passwordEncoder.encode(accountInfoDto.getNewPassword()));
-        
+
         User updatedAccount = userRepository.save(currentAccount);
         return updatedAccount;
     }

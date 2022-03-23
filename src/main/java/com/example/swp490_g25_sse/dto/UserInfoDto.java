@@ -12,15 +12,17 @@ public class UserInfoDto {
     private String firstName;
     private String lastName;
     private String email;
-    
-    
+    private String imageURL;
+
     public UserInfoDto() {
-       
+
     }
-    public UserInfoDto(String firstName, String lastName, String email) {
+
+    public UserInfoDto(String firstName, String lastName, String email, String imageURL) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.imageURL = imageURL;
     }
 
     public String getFirstName() {
@@ -45,5 +47,13 @@ public class UserInfoDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 }

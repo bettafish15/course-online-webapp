@@ -28,9 +28,9 @@
             <div class="col-4 main-setting">
               <div class="setting-info">
                 <div class="setting-avatar">
-                  <img src="/images/bruno-lopes.jpeg" />
+                  <img th:src="${userInfo.imageURL}"  />
                 </div>
-                <span class="setting-name">Bruno Lopes</span>
+                <span class="setting-name" id="setting-name" ></span>
               </div>
               <div class="settings">
                 <svg
@@ -113,7 +113,8 @@
                   </div>
                   <div class="text-input">
                     <label for="phone">Ảnh đại diện</label>
-                    <input type="file" onchange="uploadAvatar()"/>
+                    <input type="file" id="uploadAvatar" required/>
+                    <input hidden id="avatar" th:field="*{imageURL}"/>
                   </div>
                 </div>
                 <div class="button-control">
@@ -150,7 +151,13 @@
       });
     }
 
-    const uploadAvatar = () => {
+    const avaURL = document.getElementById("avatar");
+    const uploadAvatarElement = document.getElementById("uploadAvatar");
+    uploadAvatarElement.addEventListener("change", function(event){
+      event.preventDefault();
+      const data = new FormData();
+      data.append("file", event.target.files[0]);
+
       fetch("/api/file", {
       method: "POST",
       headers: {
@@ -162,7 +169,22 @@
         return response.json();
       }).then((data) => {
         console.log(data[1]);
+        avaURL.value = data[1];
+        console.log(avaURL.value);
       })
-    }
+    })
+
   </script>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+      var firstName= /*[[${userInfo.firstName}]]*/ 'value';
+      var lastName= /*[[${userInfo.lastName}]]*/ 'value';
+
+      var settingName = firstName + " " + lastName;
+    console.log(settingName);
+    document.getElementById("setting-name").textContent = settingName;
+  /*]]>*/
+  </script>
+  
 </html>

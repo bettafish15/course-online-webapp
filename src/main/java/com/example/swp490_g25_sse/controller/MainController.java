@@ -79,7 +79,8 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         UserInfoDto userInfo = new UserInfoDto(userDetails.getUser().getFirstName(),
-                userDetails.getUser().getLastName(), userDetails.getUser().getEmail());
+                userDetails.getUser().getLastName(), userDetails.getUser().getEmail(),
+                userDetails.getUser().getImageURL());
 
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
@@ -88,12 +89,14 @@ public class MainController {
 
     @PostMapping("/account-info")
     private String updateUserInfo(@ModelAttribute("userInfo") UserInfoDto userInfo) {
+        System.out.println("aklsdfjlsakdfjlsdfjaskdfjlasjdlfasdjlkfjlkasdjlkf");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
         if (userInfo.getEmail().equals("") || userInfo.getEmail() == null) {
             System.out.println("Error");
         }
 
+        System.out.println(userInfo.getFirstName());
         userService.updateInfo(userInfo, currentUser.getUser());
         return "redirect:/account-info";
     }
