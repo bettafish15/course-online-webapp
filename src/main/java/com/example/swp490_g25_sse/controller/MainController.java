@@ -88,15 +88,20 @@ public class MainController {
     }
 
     @PostMapping("/account-info")
-    private String updateUserInfo(@ModelAttribute("userInfo") UserInfoDto userInfo) {
-        System.out.println("aklsdfjlsakdfjlsdfjaskdfjlasjdlfasdjlkfjlkasdjlkf");
+    private String updateUserInfo(@ModelAttribute("userInfo") UserInfoDto userInfo, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
         if (userInfo.getEmail().equals("") || userInfo.getEmail() == null) {
             System.out.println("Error");
         }
 
-        System.out.println(userInfo.getFirstName());
+        if (currentUser.getRole() == "ROLE_STUDENT") {
+            model.addAttribute("user", "student");
+        }
+        if (currentUser.getRole() == "ROLE_TEACHER") {
+            model.addAttribute("user", "teacher");
+        }
+
         userService.updateInfo(userInfo, currentUser.getUser());
         return "redirect:/account-info";
     }
@@ -107,6 +112,12 @@ public class MainController {
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         AccountInfoDto accountInfo = new AccountInfoDto();
         model.addAttribute("accountInfo", accountInfo);
+        if (userDetails.getRole() == "ROLE_STUDENT") {
+            model.addAttribute("user", "student");
+        }
+        if (userDetails.getRole() == "ROLE_TEACHER") {
+            model.addAttribute("user", "teacher");
+        }
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-setting";
     }

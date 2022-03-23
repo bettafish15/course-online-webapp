@@ -79,12 +79,14 @@ public class TeacherController {
 
         model.addAttribute("userName", currentUser.getUser().getFirstName());
         model.addAttribute("courses", courses);
-        return "home-course";
+        model.addAttribute("user", "teacher");
+        return "teacher/home-course";
     }
 
     @GetMapping("/create-course")
-    private String createCourse() {
-        return "create-course";
+    private String createCourse(Model model) {
+        model.addAttribute("user", "teacher");
+        return "teacher/create-course";
     }
 
     @GetMapping("/update-course/{id}")
@@ -93,6 +95,7 @@ public class TeacherController {
         Optional<Course> course = courseService.getCourseById(courseId);
         System.out.println(course.get());
         model.addAttribute("course", course.get());
-        return "update-course";
+        model.addAttribute("user", "teacher");
+        return "teacher/update-course";
     }
 }

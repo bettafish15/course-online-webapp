@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /*
@@ -43,8 +44,23 @@ public class StudentController {
 
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("courses", courses);
+        model.addAttribute("user", "student");
 
         // System.out.println(top4Course.getContent().get(0).getImageUrl());
-        return "course-screen";
+        return "student/course-screen";
+    }
+
+    @GetMapping("/course/{id}")
+    private String courseOverview(@PathVariable String id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
+
+        Course course = courseService.getCourseById(Long.parseLong(id)).get();
+
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
+        model.addAttribute("course", course);
+
+        // System.out.println(top4Course.getContent().get(0).getImageUrl());
+        return "student/course-overview";
     }
 }

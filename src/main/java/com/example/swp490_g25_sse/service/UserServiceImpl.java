@@ -4,9 +4,11 @@ import com.example.swp490_g25_sse.dto.AccountInfoDto;
 import com.example.swp490_g25_sse.dto.UserInfoDto;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.model.Role;
+import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.User;
 import com.example.swp490_g25_sse.repository.RoleRepository;
+import com.example.swp490_g25_sse.repository.StudentRepository;
 import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import java.nio.charset.Charset;
@@ -44,16 +46,18 @@ public class UserServiceImpl implements UserService {
     final private UserRepository userRepository;
     final private RoleRepository roleRepository;
     final private TeacherRepository teacherRepository;
+    final private StudentRepository studentRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
-            TeacherRepository teacherRepository) {
+            TeacherRepository teacherRepository, StudentRepository studentRepository) {
         super();
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.teacherRepository = teacherRepository;
+        this.studentRepository = studentRepository;
     }
 
     @Override
@@ -75,6 +79,11 @@ public class UserServiceImpl implements UserService {
         if (role.getName().equals("ROLE_TEACHER")) {
             Teacher teacher = new Teacher(user);
             teacherRepository.save(teacher);
+        }
+
+        if (role.getName().equals("ROLE_STUDENT")) {
+            Student student = new Student(user);
+            studentRepository.save(student);
         }
 
         return newUser;
