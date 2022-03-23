@@ -4,6 +4,7 @@
  */
 package com.example.swp490_g25_sse.model;
 
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -33,7 +34,7 @@ public class Teacher {
     private User user;
 
     @OneToMany(mappedBy = "teacher")
-    private Set<Course> courses;
+    private List<Course> courses;
 
     public Teacher() {
     }
@@ -58,11 +59,11 @@ public class Teacher {
         this.user = user;
     }
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return this.courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 

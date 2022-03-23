@@ -82,7 +82,7 @@ public class MainController {
                 userDetails.getUser().getLastName(), userDetails.getUser().getEmail());
 
         model.addAttribute("userInfo", userInfo);
-
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-info";
     }
 
@@ -100,8 +100,11 @@ public class MainController {
 
     @GetMapping("/account-setting")
     private String accountSetting(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         AccountInfoDto accountInfo = new AccountInfoDto();
         model.addAttribute("accountInfo", accountInfo);
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-setting";
     }
 

@@ -47,9 +47,18 @@
     <script>
 
 downloadMicroService("SoftSkillsLearning", {
-        mode: "create",
+        mode: "update",
     })
-
-
     </script>
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+      
+       var course = /*[[${course}]]*/ 'User Name';
+       console.log(course);
+
+     /*]]>*/
+</script> 
+    
 </html>

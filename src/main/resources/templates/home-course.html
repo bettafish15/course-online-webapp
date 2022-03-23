@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+  lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,6 +13,8 @@
     <link rel="stylesheet" href="/css/system-screen.css" />
     <link rel="stylesheet" href="/css/common-teacher-screen.css" />
     <link rel="stylesheet" href="/css/home-course.css" />
+    <link rel="stylesheet" href="/css/popup.css" />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -18,208 +24,74 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="row">
-      <aside class="sidebar col-2">
-        <div class="logo-img">
-          <img src="/images/Logo.png" class="img-fluid" />
-        </div>
-        <div class="sidebar__navmenu">
-          <ul class="navmenu">
-            <li class="navmenu-item">
-              <div class="item-wrapper active">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="navmenu-icon"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-                  />
-                </svg>
-                <a href="/app/teacher" class="navmenu-link">Khóa học</a>
-              </div>
-            </li>
-            <li class="navmenu-item">
-              <div class="item-wrapper">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="navmenu-icon"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <a href="/app/teacher/create-course" class="navmenu-link"
-                  >Tạo khóa học</a
-                >
-              </div>
-            </li>
-            <li class="navmenu-item">
-              <div class="item-wrapper">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="navmenu-icon"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"
-                  />
-                </svg>
-                <a href="/forum-questions.html" class="navmenu-link"
-                  >Diễn đàn câu hỏi</a
-                >
-              </div>
-            </li>
-            <li class="navmenu-item">
-              <div class="item-wrapper">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="navmenu-icon"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
-                  />
-                </svg>
-                <a href="/students-response.html" class="navmenu-link"
-                  >Phản hồi từ học sinh</a
-                >
-              </div>
-            </li>
-          </ul>
-        </div>
-      </aside>
+    <div id="overlay" class="row">
+      <div th:replace="fragments/teacher-sidebar"></div>
 
       <!-- NAVBAR FOR USER -->
-      <nav class="navbar1">
-        <ul class="nav-list">
-          <li class="item">
-            <div class="input-nav-group">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="search-icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                class="search-input"
-                type="text"
-                placeholder="Tìm kiếm khóa học"
-              />
-            </div>
-            <a href="/account-info">
-              <div class="user-group">
-                <div><img class="user-img" src="/images/user.png" /></div>
-                <span class="user-name">Juniorx</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="user-icon"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </a>
-            <div class="button-group">
-              <a href="/logout" class="btn1 btn-signout"
-                >Đăng xuất</a
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="btn-icon signout"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </div>
-          </li>
-        </ul>
-      </nav>
+      <div th:replace="fragments/navbar"></div>
       <main class="main-dashboard col-10 p-0">
         <div class="dashboard-wrapper">
           <p class="dashboard-header">Danh sách khóa học đã tạo</p>
 
           <div class="dashboard-container">
-            <div class="course-card">
-              <div class="course-img">
-                <img src="/images/course-1-img.png" />
+            <th:block th:each="course : ${courses}">
+              <div class="course-card">
+                <div class="course-img">
+                  <img th:src="${course.imageUrl}" />
+                </div>
+                <div class="course-info">
+                  <p class="course-title" th:utext="${course.title}"></p>
+                  <div
+                    class="course-description"
+                    th:utext="${course.content}"
+                  ></div>
+                </div>
+                <p class="course-views">Người đăng ký: 4652 người</p>
+                <div class="button-control">
+                  <button type="button" class="btn btn-success" th:with="id=${course.id}" th:onclick="updateCourse([[${id}]])">
+                    Chỉnh sửa
+                    
+                  </button>
+                  <!-- <button type="button" class="btn btn-danger" th:with="url = @{/api/course/{id}(id=${course.id})}" th:onclick="deleteCourse([[${url}]])">Xóa</button> -->
+                  <button type="button" class="btn btn-danger" th:with="id=${course.id}" th:onclick="showOverlayAndGetCourseId([[${id}]])">
+                    Xóa
+                  </button>
+                </div>
               </div>
-              <div class="course-info">
-                <p class="course-title">
-                  Những tình huống luyện kỹ năng giao tiếp 1
-                </p>
-                <p class="course-description">
-                  Mô tả: Là khóa học bao gồm những câu hỏi được chọn lọc cho mục
-                  đích luyện tập kỹ năng giao tiếp
-                </p>
-              </div>
-              <p class="course-views">Người đăng ký: 4652 người</p>
-              <div class="button-control">
-                <button type="button" class="btn btn-success">
-                  <a href="./edit-course.html">Chỉnh sửa</a>
-                </button>
-                <button type="button" class="btn btn-danger">Xóa</button>
-              </div>
-            </div>
-            <div class="course-card">
-              <div class="course-img">
-                <img src="/images/course-2-img.png" />
-              </div>
-              <div class="course-info">
-                <p class="course-title">
-                  Những tình huống luyện kỹ năng giao tiếp 2
-                </p>
-                <p class="course-description">
-                  Mô tả: Là khóa học bao gồm những câu hỏi được chọn lọc cho mục
-                  đích luyện tập kỹ năng giao tiếp
-                </p>
-              </div>
-              <p class="course-views">Người đăng ký: 5452 người</p>
-              <div class="button-control">
-                <button type="button" class="btn btn-success">
-                  <a href="./edit-course.html">Chỉnh sửa</a>
-                </button>
-                <button type="button" class="btn btn-danger">Xóa</button>
-              </div>
-            </div>
+            </th:block>
           </div>
         </div>
       </main>
+
+      
+    </div>
+    <!-- popup -->
+    <div id="id01" class="modal">
+      
+      <form class="modal-content" action="/action_page.php">
+        <div class="container">
+          <h1>CẢNH BÁO</h1>
+          <p>Bạn có chắc chắn muốn xóa bài học này?</p>
+
+          <div class="clearfix">
+            <button
+              type="button"
+              onclick="closeOverlay()"
+              class="cancelbtn"
+            >
+              Hủy
+            </button>
+            <button 
+              type="button"
+              onclick="deleteCourse()"
+              class="deletebtn"
+            >
+              Xác nhận
+            </button>
+            <input type="hidden" id="course-id" value=""></div>
+          </div>
+        </div>
+      </form>
     </div>
 
     <script
@@ -234,6 +106,10 @@
     ></script>
   </body>
   <script>
+    var isCreate;
+
+    var courseId = document.getElementById("course-id").value;
+
     // add active class to nav-menu
     const menus = document.querySelectorAll(".item-wrapper");
     for (const menu of menus) {
@@ -247,11 +123,69 @@
     }
 
     // click to delete course
-    const btns = document.querySelectorAll(".btn-danger");
-    for (const btn of btns) {
-      btn.addEventListener("click", (e) => {
-        e.target.closest(".course-card").remove();
+    // const btns = document.querySelectorAll(".btn-danger");
+    // for (const btn of btns) {
+    //   btn.addEventListener("click", (e) => {
+    //     e.target.closest(".course-card").remove();
+    //   });
+    // }
+
+    //getData to edit
+    // const getData = (id) => {
+    //   console.log(id);
+    //   fetch("/app/teacher/update-course/"+id, {method: "GET", headers: {
+    //   'Content-Type': 'application/json'}}).then(data => data.json()).then(data => console.log(data));
+    // }
+
+    //deleteCourse
+    const deleteCourse = () => {
+      fetch("/api/course/"+courseId, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((data) => {console.log(data)
+      window.location.reload();
       });
+    };
+
+    //insert course id
+    const courses = document.getElementsByClassName("course-card");
+    //show pop up when delete
+    //show modal and overlay
+    const showOverlay = () => {
+      document.getElementById("overlay").classList.add("overlay");
+      document.getElementById("id01").style.display = "block";
+    };
+
+    const closeOverlay = () => {
+      document.getElementById("overlay").classList.remove("overlay");
+      document.getElementById('id01').style.display='none'
+    }
+
+    const onDeleteCourse = () => {
+      document.getElementById("overlay").classList.remove("overlay");
+      document.getElementById('id01').style.display='none'
+    }
+
+    // Get the modal
+    var modal = document.getElementById("id01");
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    const showOverlayAndGetCourseId = (id) => {
+      showOverlay();
+      courseId = id;
+    }
+
+    const updateCourse = (id) => {
+      const url = "/app/teacher/update-course/"+id
+      window.location.href = url;
     }
   </script>
 </html>

@@ -82,7 +82,7 @@ public class CourseController {
         }
 
         Optional<Course> result = courseService.deleteCourse(id);
-
+        System.out.println("=======================================");
         return result.get();
     }
 

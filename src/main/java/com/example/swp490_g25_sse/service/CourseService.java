@@ -6,6 +6,9 @@ package com.example.swp490_g25_sse.service;
 
 import com.example.swp490_g25_sse.dto.CourseDto;
 import com.example.swp490_g25_sse.model.Course;
+
+import org.springframework.data.domain.Page;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -24,4 +27,6 @@ public interface CourseService {
 	Optional<Course> deleteCourse(long id);
 
 	Course updateCourse(CourseDto courseDto, long id);
+
+	Page<Course> getMostEnrolledCourses();
 }
