@@ -11,6 +11,9 @@ import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.util.List;
 import java.util.Optional;
@@ -89,7 +92,9 @@ public class CourseController {
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
-    public Course updateCourse(@PathVariable long id, @RequestBody CourseDto dto) {
+    public Course updateCourse(@PathVariable long id, @RequestBody CourseDto dto) throws JsonProcessingException {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        System.out.println(ow.writeValueAsString(dto));
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
 
