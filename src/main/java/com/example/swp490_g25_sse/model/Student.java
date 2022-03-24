@@ -22,8 +22,8 @@ import javax.persistence.UniqueConstraint;
  * @author bettafish15
  */
 @Entity()
-@Table(name = "teachers", uniqueConstraints = @UniqueConstraint(columnNames = "user_id"))
-public class Teacher {
+@Table(name = "students", uniqueConstraints = @UniqueConstraint(columnNames = "user_id"))
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +33,10 @@ public class Teacher {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "teacher")
-    private List<Course> courses;
-
-    public Teacher() {
+    public Student() {
     }
 
-    public Teacher(User user) {
+    public Student(User user) {
         this.user = user;
     }
 
@@ -58,13 +55,4 @@ public class Teacher {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public List<Course> getCourses() {
-        return this.courses;
-    }
-
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
-    }
-
 }

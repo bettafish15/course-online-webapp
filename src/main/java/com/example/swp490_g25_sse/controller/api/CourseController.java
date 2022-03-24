@@ -11,6 +11,9 @@ import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.util.List;
 import java.util.Optional;
@@ -44,6 +47,8 @@ public class CourseController {
     @GetMapping(value = "/{id}", produces = "application/json")
     public Course getCourseById(@PathVariable long id) {
         Optional<Course> course = courseService.getCourseById(id);
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
+        System.out.println(course.get().getLectures());
         if (course.isEmpty()) {
             throw new BaseRestException(HttpStatus.NOT_FOUND, "Not Found");
         }
@@ -82,12 +87,14 @@ public class CourseController {
         }
 
         Optional<Course> result = courseService.deleteCourse(id);
-
+        System.out.println("=======================================");
         return result.get();
     }
 
     @PutMapping(value = "/{id}", produces = "application/json")
-    public Course updateCourse(@PathVariable long id, @RequestBody CourseDto dto) {
+    public Course updateCourse(@PathVariable long id, @RequestBody CourseDto dto) throws JsonProcessingException {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        System.out.println(ow.writeValueAsString(dto));
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
 

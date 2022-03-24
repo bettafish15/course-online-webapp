@@ -70,4 +70,8 @@ public class CustomUserDetailsService implements UserDetails {
     public User getUser() {
         return user;
     }
+
+    public String getRole() {
+        return user.getRoles().iterator().next().getName();
+    }
 }

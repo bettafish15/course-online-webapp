@@ -4,9 +4,11 @@ import com.example.swp490_g25_sse.dto.AccountInfoDto;
 import com.example.swp490_g25_sse.dto.UserInfoDto;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.model.Role;
+import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.User;
 import com.example.swp490_g25_sse.repository.RoleRepository;
+import com.example.swp490_g25_sse.repository.StudentRepository;
 import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import java.nio.charset.Charset;
@@ -18,6 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -43,16 +46,18 @@ public class UserServiceImpl implements UserService {
     final private UserRepository userRepository;
     final private RoleRepository roleRepository;
     final private TeacherRepository teacherRepository;
-    
+    final private StudentRepository studentRepository;
 
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, TeacherRepository teacherRepository) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+            TeacherRepository teacherRepository, StudentRepository studentRepository) {
         super();
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.teacherRepository = teacherRepository;
+        this.studentRepository = studentRepository;
     }
 
     @Override
@@ -76,14 +81,18 @@ public class UserServiceImpl implements UserService {
             teacherRepository.save(teacher);
         }
 
+        if (role.getName().equals("ROLE_STUDENT")) {
+            Student student = new Student(user);
+            studentRepository.save(student);
+        }
+
         return newUser;
     }
-    
-    
 
     @Override
     public CustomUserDetailsService loadUserByUsername(String username) throws UsernameNotFoundException {
-        logger.trace("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        logger.trace(
+                "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         logger.trace(username);
         User user = userRepository.findByEmail(username);
 
@@ -104,41 +113,44 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateInfo(UserInfoDto userInfoDto, User currentUser) {
-        User user = userRepository.findFirstByEmail((userInfoDto.getEmail()));
-       
-        if( user == null){
-        
-            
-            currentUser.setEmail(userInfoDto.getEmail());
-            currentUser.setFirstName(userInfoDto.getFirstName());
-            currentUser.setLastName(userInfoDto.getLastName()); 
+        User userInDatabase = userRepository.findFirstByEmail((userInfoDto.getEmail()));
+
+        if (userInDatabase != null && userInDatabase.getId() != currentUser.getId()) {
+            // throw 1 cai gi day
+            return currentUser;
         }
-        
-        
+
+        String prefix = "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/";
+        String suffix = "?alt=media";
+        currentUser.setEmail(userInfoDto.getEmail());
+        currentUser.setFirstName(userInfoDto.getFirstName());
+        currentUser.setLastName(userInfoDto.getLastName());
+        currentUser.setImageURL(prefix + userInfoDto.getImageURL() + suffix);
 
         User updatedUser = userRepository.save(currentUser);
-        
 
         return updatedUser;
     }
 
     @Override
     public User updateAccount(AccountInfoDto accountInfoDto) {
-        
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
-        
+
         User currentAccount = currentUser.getUser();
-        
-        if(currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))){
+
+        if (currentAccount.getPassword().equals(passwordEncoder.encode(accountInfoDto.getCurrentPassword()))) {
             throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, new String("Mật khẩu hiện tại không đúng".getBytes(), Charset.forName("UTF-8")));
-        }else if(!accountInfoDto.getNewPassword().equals(accountInfoDto.getConfirmNewPassword())){
+                    HttpStatus.BAD_REQUEST,
+                    new String("Mật khẩu hiện tại không đúng".getBytes(), Charset.forName("UTF-8")));
+        } else if (!accountInfoDto.getNewPassword().equals(accountInfoDto.getConfirmNewPassword())) {
             throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST, new String("Mật khẩu không trùng khớp".getBytes(), Charset.forName("UTF-8")));
+                    HttpStatus.BAD_REQUEST,
+                    new String("Mật khẩu không trùng khớp".getBytes(), Charset.forName("UTF-8")));
         }
         currentAccount.setPassword(passwordEncoder.encode(accountInfoDto.getNewPassword()));
-        
+
         User updatedAccount = userRepository.save(currentAccount);
         return updatedAccount;
     }

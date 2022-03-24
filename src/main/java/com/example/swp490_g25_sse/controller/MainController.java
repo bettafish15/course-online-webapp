@@ -79,19 +79,27 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         UserInfoDto userInfo = new UserInfoDto(userDetails.getUser().getFirstName(),
-                userDetails.getUser().getLastName(), userDetails.getUser().getEmail());
+                userDetails.getUser().getLastName(), userDetails.getUser().getEmail(),
+                userDetails.getUser().getImageURL());
 
         model.addAttribute("userInfo", userInfo);
-
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-info";
     }
 
     @PostMapping("/account-info")
-    private String updateUserInfo(@ModelAttribute("userInfo") UserInfoDto userInfo) {
+    private String updateUserInfo(@ModelAttribute("userInfo") UserInfoDto userInfo, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
         if (userInfo.getEmail().equals("") || userInfo.getEmail() == null) {
             System.out.println("Error");
+        }
+
+        if (currentUser.getRole() == "ROLE_STUDENT") {
+            model.addAttribute("user", "student");
+        }
+        if (currentUser.getRole() == "ROLE_TEACHER") {
+            model.addAttribute("user", "teacher");
         }
 
         userService.updateInfo(userInfo, currentUser.getUser());
@@ -100,8 +108,17 @@ public class MainController {
 
     @GetMapping("/account-setting")
     private String accountSetting(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         AccountInfoDto accountInfo = new AccountInfoDto();
         model.addAttribute("accountInfo", accountInfo);
+        if (userDetails.getRole() == "ROLE_STUDENT") {
+            model.addAttribute("user", "student");
+        }
+        if (userDetails.getRole() == "ROLE_TEACHER") {
+            model.addAttribute("user", "teacher");
+        }
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-setting";
     }
 

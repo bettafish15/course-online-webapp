@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -68,7 +71,9 @@ public class CourseServiceImpl implements CourseService {
 				dto.getContent());
 
 		course = courseRepository.save(course);
-		List<Lecture> lectures = DtoToDaoConversion.convertLectureDtosToListOfLectureModel(dto.getLectureDtos(), course);
+		List<Lecture> lectures = DtoToDaoConversion.convertLectureDtosToListOfLectureModel(dto.getLectureDtos(),
+				course);
+		System.out.println(lectures);
 		List<Test> tests = DtoToDaoConversion.convertTestDtosToListOfTestModel(dto.getTestDtos(), course);
 		lectureRepository.saveAll(lectures);
 		testRepository.saveAll(tests);
@@ -110,7 +115,8 @@ public class CourseServiceImpl implements CourseService {
 					lecture = lectureRepository.getById(lectureDto.id);
 					if (lecture.getCourse().getId() != course.getId()) {
 						System.out.println("=======================================================================");
-						throw new BaseRestException(HttpStatus.FORBIDDEN, "there is a lecture that is not belong to this course");
+						throw new BaseRestException(HttpStatus.FORBIDDEN,
+								"there is a lecture that is not belong to this course");
 					}
 					lecture.setName(lectureDto.getName());
 					lecture.setContent(lectureDto.getContent());
@@ -134,7 +140,8 @@ public class CourseServiceImpl implements CourseService {
 					test = testRepository.getById(testDto.id);
 					if (test.getCourse().getId() != course.getId()) {
 						System.out.println("=======================================================================");
-						throw new BaseRestException(HttpStatus.FORBIDDEN, "there is a test that is not belong to this course");
+						throw new BaseRestException(HttpStatus.FORBIDDEN,
+								"there is a test that is not belong to this course");
 					}
 					test.setName(testDto.getName());
 					test.setContent(testDto.getContent());
@@ -156,6 +163,13 @@ public class CourseServiceImpl implements CourseService {
 		course = courseOptionalWrapper.get();
 
 		return course;
+	}
+
+	@Override
+	public Page<Course> getMostEnrolledCourses() {
+		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
+		Page<Course> courses = courseRepository.findAll(PageRequest.of(0, 4));
+		return courses;
 	}
 
 }
