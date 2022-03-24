@@ -73,6 +73,7 @@ public class CourseServiceImpl implements CourseService {
 		course = courseRepository.save(course);
 		List<Lecture> lectures = DtoToDaoConversion.convertLectureDtosToListOfLectureModel(dto.getLectureDtos(),
 				course);
+		System.out.println(lectures);
 		List<Test> tests = DtoToDaoConversion.convertTestDtosToListOfTestModel(dto.getTestDtos(), course);
 		lectureRepository.saveAll(lectures);
 		testRepository.saveAll(tests);

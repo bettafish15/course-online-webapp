@@ -63,4 +63,18 @@ public class StudentController {
         // System.out.println(top4Course.getContent().get(0).getImageUrl());
         return "student/course-overview";
     }
+
+    @GetMapping("/learn/{id}")
+    private String learn(@PathVariable String id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
+
+        Course course = courseService.getCourseById(Long.parseLong(id)).get();
+
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
+        model.addAttribute("course", course);
+
+        // System.out.println(top4Course.getContent().get(0).getImageUrl());
+        return "student/learn";
+    }
 }

@@ -19,7 +19,7 @@
 
 <body>
     <div class="row">
-        <div th:replace="fragments/teacher-sidebar"></div>
+        <div th:replace="fragments/student-course-overview-sidebar"></div>
 
         <!-- NAVBAR FOR USER -->
         <div th:replace="fragments/navbar"></div>
@@ -41,7 +41,7 @@
 <script>
 
     downloadMicroService("SoftSkillsLearning", {
-        mode: "create",
+        mode: "read",
         prefix: "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/",
         suffix: "?alt=media"
     })

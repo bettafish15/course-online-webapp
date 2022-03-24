@@ -121,11 +121,11 @@ public class UserServiceImpl implements UserService {
         }
 
         String prefix = "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/";
-        String subfix = "?alt=media";
+        String suffix = "?alt=media";
         currentUser.setEmail(userInfoDto.getEmail());
         currentUser.setFirstName(userInfoDto.getFirstName());
         currentUser.setLastName(userInfoDto.getLastName());
-        currentUser.setImageURL(prefix + userInfoDto.getImageURL() + subfix);
+        currentUser.setImageURL(prefix + userInfoDto.getImageURL() + suffix);
 
         User updatedUser = userRepository.save(currentUser);
 

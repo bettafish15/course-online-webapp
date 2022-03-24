@@ -44,6 +44,8 @@ public class CourseController {
     @GetMapping(value = "/{id}", produces = "application/json")
     public Course getCourseById(@PathVariable long id) {
         Optional<Course> course = courseService.getCourseById(id);
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
+        System.out.println(course.get().getLectures());
         if (course.isEmpty()) {
             throw new BaseRestException(HttpStatus.NOT_FOUND, "Not Found");
         }
