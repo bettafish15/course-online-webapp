@@ -47,6 +47,9 @@ public class Course {
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Test> tests;
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Question> questions;
+
     public Course() {
     }
 
@@ -57,7 +60,8 @@ public class Course {
         this.content = content;
     }
 
-    public Course(Teacher teacher, String imageUrl, String title, String content, List<Lecture> lectures, List<Test> tests) {
+    public Course(Teacher teacher, String imageUrl, String title, String content, List<Lecture> lectures,
+            List<Test> tests) {
         this.teacher = teacher;
         this.imageUrl = imageUrl;
         this.title = title;
@@ -120,6 +124,14 @@ public class Course {
 
     public void setTests(List<Test> tests) {
         this.tests = tests;
+    }
+
+    public List<Question> getQuestions() {
+        return this.questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
 }
