@@ -48,6 +48,9 @@ public class UserServiceImpl implements UserService {
     final private TeacherRepository teacherRepository;
     final private StudentRepository studentRepository;
 
+    @Autowired
+    private Environment env;
+
     private BCryptPasswordEncoder passwordEncoder;
     Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
@@ -120,8 +123,8 @@ public class UserServiceImpl implements UserService {
             return currentUser;
         }
 
-        String prefix = "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/";
-        String suffix = "?alt=media";
+        String prefix = env.getProperty("FIREBASE_PREFIX");
+        String suffix = env.getProperty("FIREBASE_SUFFIX");
         currentUser.setEmail(userInfoDto.getEmail());
         currentUser.setFirstName(userInfoDto.getFirstName());
         currentUser.setLastName(userInfoDto.getLastName());

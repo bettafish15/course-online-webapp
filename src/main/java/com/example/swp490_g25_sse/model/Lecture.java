@@ -5,7 +5,11 @@
 package com.example.swp490_g25_sse.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.List;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,6 +40,9 @@ public class Lecture {
     @JoinColumn(name = "course_id", insertable = true, updatable = true)
     @JsonIgnore
     private Course course;
+
+    @OneToMany(mappedBy = "lecture", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<LectureResult> lectureResults;
 
     private String week;
 

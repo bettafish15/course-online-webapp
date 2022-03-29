@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +31,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/app/teacher")
 public class TeacherController {
+
+    @Autowired
+    private Environment env;
 
     @Autowired
     private CourseService courseService;
@@ -86,6 +90,13 @@ public class TeacherController {
     @GetMapping("/create-course")
     private String createCourse(Model model) {
         model.addAttribute("user", "teacher");
+
+        String prefix = env.getProperty("FIREBASE_PREFIX");
+        String suffix = env.getProperty("FIREBASE_SUFFIX");
+
+        model.addAttribute("firebasePrefix", prefix);
+        model.addAttribute("firebaseSuffix", suffix);
+
         return "teacher/create-course";
     }
 
@@ -96,6 +107,13 @@ public class TeacherController {
         System.out.println(course.get());
         model.addAttribute("course", course.get());
         model.addAttribute("user", "teacher");
+
+        String prefix = env.getProperty("FIREBASE_PREFIX");
+        String suffix = env.getProperty("FIREBASE_SUFFIX");
+
+        model.addAttribute("firebasePrefix", prefix);
+        model.addAttribute("firebaseSuffix", suffix);
+
         return "teacher/update-course";
     }
 }

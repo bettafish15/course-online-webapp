@@ -1,6 +1,8 @@
 # spring boot configuration
 #server.port=8089
 spring.jackson.serialization.fail-on-empty-beans=false
+spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
+spring.main.allow-circular-references=true
 app.jwtSecret= bezKoderSecretKey
 app.jwtExpirationMs= 86400000
 
@@ -10,8 +12,6 @@ spring.datasource.url=jdbc:sqlserver://${MSSQL_HOST:localhost}:${MSSQL_PORT:1433
 spring.datasource.username=${MSSQL_USERNAME:sa}
 spring.datasource.password=${MSSQL_PASSWORD:123}
 spring.jpa.show-sql=true
-spring.main.allow-circular-references=true
-spring.jackson.serialization.FAIL_ON_EMPTY_BEANS=false
 
 ## Hibernate Properties
 # The SQL dialect makes Hibernate generate better SQL for the chosen database
@@ -31,7 +31,7 @@ spring.thymeleaf.cache=false
 # spring.jpa.properties.javax.persistence.schema-generation.scripts.create-source=metadata
 
 # flyway
-spring.flyway.enabled=false
+spring.flyway.enabled=true
 
 # logging 
 logging.level.org.hibernate.SQL=DEBUG
@@ -39,8 +39,6 @@ logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
 spring.jpa.properties.hibernate.show_sql=true
 spring.jpa.properties.hibernate.use_sql_comments=true
 spring.jpa.properties.hibernate.format_sql=true
-
-spring.main.allow-circular-references=true
 
 # firebase storage
 FIREBASE_BUCKET_NAME=
@@ -54,3 +52,5 @@ FIREBASE_AUTH_URI=
 FIREBASE_TOKEN_URI=
 FIREBASE_AUTH_PROVIDER_X509_CERT_URL=
 FIREBASE_CLIENT_X509_CERT_URL=
+FIREBASE_PREFIX=
+FIREBASE_SUFFIX=

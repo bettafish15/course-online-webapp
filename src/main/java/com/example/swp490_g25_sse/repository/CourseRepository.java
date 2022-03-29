@@ -4,8 +4,6 @@
  */
 package com.example.swp490_g25_sse.repository;
 
-import java.util.List;
-
 import com.example.swp490_g25_sse.model.Course;
 
 import org.springframework.data.domain.Page;
