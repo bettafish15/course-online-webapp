@@ -37,9 +37,6 @@ public class QuestionServiceImpl implements QuestionService {
 
         Question question = new Question(student, course, questionDto.getTitle(), questionDto.getTag(),
                 questionDto.getContent());
-        System.out.println("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
-        System.out.println(student.getId());
-        System.out.println(course.getId());
 
         Question newQuestion = questionRepository.save(question);
         // question = questionRepository.save(question);
@@ -57,6 +54,12 @@ public class QuestionServiceImpl implements QuestionService {
     public List<Question> getQuestionsByCourseIdAndUserId(long courseId, long studentId) {
         List<Question> questions = questionRepository.findByCourseIdAndStudentId(courseId, studentId);
         return questions;
+    }
+
+    @Override
+    public Optional<Question> getQuestionById(long id) {
+        Optional<Question> question = questionRepository.findById(id);
+        return question;
     }
 
 }

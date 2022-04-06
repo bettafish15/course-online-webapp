@@ -14,4 +14,6 @@ public interface QuestionService {
 
     List<Question> getQuestionsByCourseIdAndUserId(long courseId, long userId);
 
+    Optional<Question> getQuestionById(long id);
+
 }

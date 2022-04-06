@@ -16,4 +16,6 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     List<Question> findByCourseId(long id);
 
     List<Question> findByCourseIdAndStudentId(long courseId, long studentId);
+
+    Optional<Question> findFirstById(long id);
 }

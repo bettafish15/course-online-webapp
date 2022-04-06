@@ -41,7 +41,7 @@
                     <img th:src="${question.student.user.imageURL}" />
                   </div>
                   <div class="more-info">
-                    <a href="#" class="question" th:utext="${question.title}"></a>
+                    <a th:href="@{'/app/student/forum/answer/' + ${course.id} + '/' + ${question.id} }" class="question" th:utext="${question.title}"></a>
                     <div class="date" th:utext="${question.student.user.firstName}"></div>
                   </div>
                 </div>
