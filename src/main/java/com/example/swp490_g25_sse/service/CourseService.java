@@ -5,12 +5,16 @@
 package com.example.swp490_g25_sse.service;
 
 import com.example.swp490_g25_sse.dto.CourseDto;
+import com.example.swp490_g25_sse.dto.CourseOverviewDto;
+import com.example.swp490_g25_sse.dto.MilestoneDto;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Student;
+import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 
 import org.springframework.data.domain.Page;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -24,6 +28,10 @@ public interface CourseService {
 	Course createCourse(CourseDto courseDto);
 
 	List<Course> getCourses();
+
+	List<CourseOverviewDto> overview(StudentCourseEnrollment enroll);
+
+	List<MilestoneDto> milestone(StudentCourseEnrollment enroll);
 
 	Optional<Course> deleteCourse(long id);
 

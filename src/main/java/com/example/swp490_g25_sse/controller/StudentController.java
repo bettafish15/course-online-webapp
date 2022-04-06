@@ -1,7 +1,10 @@
 package com.example.swp490_g25_sse.controller;
 
+import java.io.OutputStream;
 import java.util.List;
 
+import com.example.swp490_g25_sse.dto.CourseOverviewDto;
+import com.example.swp490_g25_sse.dto.MilestoneDto;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
@@ -162,6 +165,8 @@ public class StudentController {
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
+        StudentCourseEnrollment enroll = studentCourseEnrollmentService.getEnrollmentInfo(student, course);
+        List<CourseOverviewDto> courseOverview = courseService.overview(enroll);
 
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
@@ -172,7 +177,8 @@ public class StudentController {
 
         model.addAttribute("firebasePrefix", prefix);
         model.addAttribute("firebaseSuffix", suffix);
-        model.addAttribute("enrollmentId", studentCourseEnrollmentService.getEnrollmentInfo(student, course).getId());
+        model.addAttribute("enrollmentId", enroll.getId());
+        model.addAttribute("courseOverview", courseOverview);
 
         if (!isEnrolled) {
             return "redirect:/app/student/course/" + id;
@@ -183,13 +189,16 @@ public class StudentController {
     }
 
     @GetMapping("/learn/{id}/milestone")
-    private String courseMileStone(@PathVariable String id, Model model) {
+    private String courseMileStone(@PathVariable String id, @RequestParam(name = "week") Integer week,
+            Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
 
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
+        StudentCourseEnrollment enroll = studentCourseEnrollmentService.getEnrollmentInfo(student, course);
+        List<MilestoneDto> milestone = courseService.milestone(enroll);
 
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
@@ -200,7 +209,9 @@ public class StudentController {
 
         model.addAttribute("firebasePrefix", prefix);
         model.addAttribute("firebaseSuffix", suffix);
-        model.addAttribute("enrollmentId", studentCourseEnrollmentService.getEnrollmentInfo(student, course).getId());
+        model.addAttribute("enrollmentId", enroll.getId());
+        model.addAttribute("milestone", milestone);
+        model.addAttribute("currentWeek", week);
 
         if (!isEnrolled) {
             return "redirect:/app/student/course/" + id;

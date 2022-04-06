@@ -35,13 +35,11 @@
               <div class="milestone">
                 <div>
                   <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li class="active">4</li>
-                    <li>5</li>
-                    <li>6</li>
-                    <li>7</li>
+                    <th:block th:each="item, iter : ${milestone}">
+                      <li type="button" th:text="${iter.index + 1}" th:with="id=${iter.index + 1}"
+                        th:onclick="nextWeek([[${id}]])">
+                      </li>
+                    </th:block>
                   </ul>
                   <table>
                     <tr>
@@ -51,10 +49,15 @@
                       <th>Điểm</th>
                     </tr>
                     <tr>
-                      <td>Alfreds Futterkiste</td>
-                      <td>Maria Anders</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
+                      <th:block th:each="item, iter : ${milestone[currentWeek - 1].results}">
+                        <td th:text="${item.test.name}">Alfreds Futterkiste</td>
+                        <td th:text="${item.isFinished ? 'Đã hoàn thành' : '___'}">
+                          Maria Anders</td>
+                        <td>___</td>
+                        <td th:text="${item.isFinished ? item.mark : '___'}">
+                          Germany
+                        </td>
+                      </th:block>
                     </tr>
                   </table>
                 </div>
@@ -84,6 +87,10 @@
       }
       menu.classList.add("active");
     });
+  }
+
+  const nextWeek = (id) => {
+    window.location.href = `?week=${id}`
   }
 </script>
 

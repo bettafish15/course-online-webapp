@@ -4,6 +4,9 @@
  */
 package com.example.swp490_g25_sse.repository;
 
+import java.util.List;
+
+import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Lecture;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,5 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author bettafish15
  */
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
+  Integer countByCourseAndWeek(Course course, String week);
 
+  List<Lecture> findByCourseAndWeek(Course course, String week);
 }

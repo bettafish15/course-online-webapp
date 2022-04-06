@@ -32,19 +32,21 @@
             <div class="course-title pt-4">
               <span th:text="${course.title}"></span>
 
-              <div class="week-card">
-                <p>Tuan 1</p>
-                <div>
-                  <div class="left-div" style="width: 50%; float:left">
-                    <p>Bài học đã hoàn thành</p>
-                    <p>Bài kiểm tra đã hoàn thành</p>
-                  </div>
-                  <div class="right-div" style="width: 40%; float:right">
-                    <p>0/2 Bài</p>
-                    <p>0/2 Bài</p>
+              <th:block th:each="course : ${courseOverview}">
+                <div class="week-card">
+                  <p th:text="${course.week}">Tuan 1</p>
+                  <div>
+                    <div class="left-div" style="width: 50%; float:left">
+                      <p>Bài học đã hoàn thành</p>
+                      <p>Bài kiểm tra đã hoàn thành</p>
+                    </div>
+                    <div class="right-div" style="width: 40%; float:right">
+                      <p th:text="${course.finishedLecture + '/' + course.totalLecture  + ' Bài'}">0/2 Bài</p>
+                      <p th:text="${course.finishedTest + '/' + course.totalTest  + ' Bài'}">0/2 Bài</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </th:block>
             </div>
           </div>
         </div>
