@@ -16,6 +16,7 @@ public class LectureDto {
     public String resourceUrl;
     public String content;
     public String name;
+    public Boolean isFinished;
 
     public LectureDto() {
     }
@@ -74,6 +75,15 @@ public class LectureDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public Boolean getIsFinished() {
+        return this.isFinished;
+    }
+
+    public void setIsFinished(Boolean isFinished) {
+        this.isFinished = isFinished;
     }
 
 }

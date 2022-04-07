@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,7 @@
 
 <body>
     <div class="row">
-        <div th:replace="fragments/student-course-overview-sidebar"></div>
+        <div th:replace="fragments/student-course-learn-sidebar"></div>
 
         <!-- NAVBAR FOR USER -->
         <div th:replace="fragments/navbar"></div>
@@ -38,14 +38,19 @@
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
         crossorigin="anonymous"></script>
 </body>
-<script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var firebasePrefix = /*[[${firebasePrefix}]]*/ '';
+    var firebaseSuffix = /*[[${firebaseSuffix}]]*/ '';
+    var enrollmentId = /*[[${enrollmentId}]]*/ '';
 
     downloadMicroService("SoftSkillsLearning", {
         mode: "read",
-        prefix: "https://firebasestorage.googleapis.com/v0/b/soft-skill-bc141.appspot.com/o/",
-        suffix: "?alt=media"
+        prefix: firebasePrefix,
+        suffix: firebaseSuffix,
+        enrollmentId: enrollmentId
     })
-
+    /*]]>*/
 
 </script>
 

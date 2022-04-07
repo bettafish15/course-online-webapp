@@ -75,3 +75,33 @@
   background-color: #1ab060;
   border-radius: 50%;
 }
+
+.week-card {
+  background-color: white;
+  border-radius: 5px;
+  height: 207px;
+  font-size: 2.6rem;
+  font-weight: 700;
+}
+
+.week-card > p {
+  padding: 10px;
+  background-color: #c4c4c4;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.week-card > div {
+  padding: 20px;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.week-card .left-div {
+  margin-left: 40px;
+}
+
+.week-card .right-div {
+  padding-left: 20px;
+  border-left: 1px solid #c4c4c4;
+}

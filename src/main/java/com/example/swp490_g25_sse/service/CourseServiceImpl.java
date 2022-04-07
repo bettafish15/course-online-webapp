@@ -5,23 +5,39 @@
 package com.example.swp490_g25_sse.service;
 
 import com.example.swp490_g25_sse.dto.CourseDto;
+import com.example.swp490_g25_sse.dto.CourseOverviewDto;
 import com.example.swp490_g25_sse.dto.LectureDto;
+import com.example.swp490_g25_sse.dto.MilestoneDto;
 import com.example.swp490_g25_sse.dto.TestDto;
 import com.example.swp490_g25_sse.exception.BaseRestException;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Lecture;
+import com.example.swp490_g25_sse.model.LectureResult;
+import com.example.swp490_g25_sse.model.Student;
+import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.Test;
+import com.example.swp490_g25_sse.model.TestResult;
 import com.example.swp490_g25_sse.model.User;
 import com.example.swp490_g25_sse.repository.CourseRepository;
 import com.example.swp490_g25_sse.repository.LectureRepository;
+import com.example.swp490_g25_sse.repository.LectureResultRepository;
+import com.example.swp490_g25_sse.repository.StudentCourseEnrollmentRepository;
 import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.repository.TestRepository;
+import com.example.swp490_g25_sse.repository.TestResultRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import com.example.swp490_g25_sse.util.DtoToDaoConversion;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,7 +66,15 @@ public class CourseServiceImpl implements CourseService {
 	private TestRepository testRepository;
 
 	@Autowired
+	private LectureResultRepository lectureResultRepository;
+
+	@Autowired
+	private TestResultRepository testResultRepository;
+	@Autowired
 	private TeacherRepository teacherRepository;
+
+	@Autowired
+	private StudentCourseEnrollmentRepository enrollmentRepository;
 
 	@Override
 	public Optional<Course> getCourseById(long id) {
@@ -170,6 +194,136 @@ public class CourseServiceImpl implements CourseService {
 		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
 		Page<Course> courses = courseRepository.findAll(PageRequest.of(0, 4));
 		return courses;
+	}
+
+	@Override
+	public Boolean isAlreadyEnrolled(Course course, Student student) {
+		StudentCourseEnrollment enroll = enrollmentRepository.findFirstByStudentAndCourse(student, course);
+		return enroll != null;
+	}
+
+	@Override
+	public List<Course> getStudentCourses(Student student, Boolean isFinished) {
+		Page<StudentCourseEnrollment> enrolls = enrollmentRepository.findByStudentAndIsFinished(student, isFinished,
+				PageRequest.of(0, 4));
+		System.out.println(enrolls.getContent().size());
+		List<Course> courses = enrolls.toList().stream().map(enroll -> enroll.getCourse()).collect(Collectors.toList());
+
+		return courses;
+	}
+
+	@Override
+	public List<CourseOverviewDto> overview(StudentCourseEnrollment enroll) {
+		Course course = enroll.getCourse();
+		List<CourseOverviewDto> result = new ArrayList<>();
+
+		List<Lecture> lectures = course.getLectures();
+		List<Test> tests = course.getTests();
+
+		Map<String, CourseOverviewDto> map = new HashMap<String, CourseOverviewDto>();
+
+		for (int i = 0; i < lectures.size(); i++) {
+			String week = lectures.get(i).getWeek();
+
+			if (map.get(week) == null) {
+				CourseOverviewDto courseOverview = new CourseOverviewDto();
+				courseOverview.setWeek(week);
+				courseOverview.setTotalLecture(lectureRepository.countByCourseAndWeek(course, week));
+				courseOverview.setTotalTest(0);
+				courseOverview.setFinishedTest(0);
+
+				List<Lecture> currentWeekLectures = lectureRepository.findByCourseAndWeek(course, week);
+				Integer finishedLecture = currentWeekLectures.stream().filter(lecture -> {
+					LectureResult temp = lectureResultRepository.findFirstByEnrollmentAndLecture(enroll, lecture);
+
+					return temp.getIsFinished();
+				}).toList().size();
+
+				courseOverview.setFinishedLecture(finishedLecture);
+
+				map.put(week, courseOverview);
+			}
+		}
+
+		for (int i = 0; i < tests.size(); i++) {
+			String week = tests.get(i).getWeek();
+
+			if (map.get(week) == null) {
+				CourseOverviewDto courseOverview = new CourseOverviewDto();
+				courseOverview.setWeek(week);
+				courseOverview.setTotalTest(testRepository.countByCourseAndWeek(course, week));
+
+				List<Test> currentWeekTests = testRepository.findByCourseAndWeek(course, week);
+				Integer finishedTest = currentWeekTests.stream().filter(test -> {
+					TestResult temp = testResultRepository.findFirstByEnrollmentAndTest(enroll, test);
+
+					return temp.getIsFinished();
+				}).toList().size();
+
+				courseOverview.setFinishedTest(finishedTest);
+				courseOverview.setFinishedLecture(0);
+				courseOverview.setTotalLecture(0);
+
+				map.put(week, courseOverview);
+			} else {
+				CourseOverviewDto courseOverview = map.get(week);
+
+				courseOverview.setTotalTest(testRepository.countByCourseAndWeek(course, week));
+
+				List<Test> currentWeekTests = testRepository.findByCourseAndWeek(course, week);
+				Integer finishedTest = currentWeekTests.stream().filter(test -> {
+					TestResult temp = testResultRepository.findFirstByEnrollmentAndTest(enroll, test);
+
+					return temp.getIsFinished();
+				}).toList().size();
+
+				courseOverview.setFinishedTest(finishedTest);
+
+				map.put(week, courseOverview);
+			}
+		}
+
+		for (Map.Entry<String, CourseOverviewDto> entry : map.entrySet()) {
+			result.add(entry.getValue());
+		}
+
+		return result.stream().sorted((o1, o2) -> o1.getWeek().compareTo(o2.getWeek())).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<MilestoneDto> milestone(StudentCourseEnrollment enroll) {
+		Course course = enroll.getCourse();
+		List<MilestoneDto> result = new ArrayList<>();
+
+		List<Test> tests = course.getTests();
+
+		Map<String, MilestoneDto> map = new HashMap<String, MilestoneDto>();
+
+		for (int i = 0; i < tests.size(); i++) {
+			String week = tests.get(i).getWeek();
+
+			if (map.get(week) == null) {
+				MilestoneDto milestone = new MilestoneDto();
+				milestone.setWeek(week);
+
+				List<Test> currentWeekTests = testRepository.findByCourseAndWeek(course, week);
+				List<TestResult> testResult = currentWeekTests.stream().map(test -> {
+					TestResult temp = testResultRepository.findFirstByEnrollmentAndTest(enroll, test);
+
+					return temp;
+				}).toList();
+
+				milestone.setResults(testResult);
+
+				map.put(week, milestone);
+			}
+		}
+
+		for (Map.Entry<String, MilestoneDto> entry : map.entrySet()) {
+			result.add(entry.getValue());
+		}
+
+		return result.stream().sorted((o1, o2) -> o1.getWeek().compareTo(o2.getWeek())).collect(Collectors.toList());
 	}
 
 }

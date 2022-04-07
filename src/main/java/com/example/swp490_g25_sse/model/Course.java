@@ -6,6 +6,8 @@ package com.example.swp490_g25_sse.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -49,6 +51,9 @@ public class Course {
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Question> questions;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<StudentCourseEnrollment> students;
 
     public Course() {
     }
@@ -134,4 +139,11 @@ public class Course {
         this.questions = questions;
     }
 
+    public Set<StudentCourseEnrollment> getStudents() {
+        return this.students;
+    }
+
+    public void setStudents(Set<StudentCourseEnrollment> students) {
+        this.students = students;
+    }
 }

@@ -32,3 +32,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+dump.rdb
+metrics.json

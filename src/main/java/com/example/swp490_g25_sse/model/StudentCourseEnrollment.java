@@ -29,16 +29,16 @@ public class StudentCourseEnrollment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id", nullable = false)
     @JsonIgnore
     private Course course;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "student_id", nullable = false)
     @JsonIgnore
     private Student student;
-    
+
     private boolean isFinished;
 
     public StudentCourseEnrollment() {
@@ -65,7 +65,6 @@ public class StudentCourseEnrollment {
     public void setStudent(Student student) {
         this.student = student;
     }
-
 
     public Course getCourse() {
         return this.course;
