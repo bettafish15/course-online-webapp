@@ -19,17 +19,17 @@
   </head>
   <body>
     <div class="row">
-      <div th:replace="fragments/student-course-overview-sidebar"></div>
+      <div th:replace="fragments/student-course-learn-sidebar"></div>
 
       <!-- NAVBAR FOR USER -->
       <div th:replace="fragments/navbar"></div>
       <main class="main-dashboard col-10 p-0">
         <div class="dashboard-wrapper">
           <p class="dashboard-header">Diễn đàn câu hỏi</p>
-          
+
           <div class="dashboard-container">
-          
-            
+
+
             <div class="question-wrapper">
               <div v class="question-info">
               </div>
@@ -45,7 +45,7 @@
               <input type="hidden" th:value="${studentId}" th:attr="name='studentId'">
               <input class="submit" type="submit" placeholder="Save">
             </form>
-            
+
           </div>
         </div>
       </main>
