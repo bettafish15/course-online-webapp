@@ -50,6 +50,9 @@ public class Course {
     private List<Test> tests;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private List<Question> questions;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private Set<StudentCourseEnrollment> students;
 
     public Course() {
@@ -126,6 +129,14 @@ public class Course {
 
     public void setTests(List<Test> tests) {
         this.tests = tests;
+    }
+
+    public List<Question> getQuestions() {
+        return this.questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 
     public Set<StudentCourseEnrollment> getStudents() {

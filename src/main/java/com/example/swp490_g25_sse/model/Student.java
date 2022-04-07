@@ -34,6 +34,9 @@ public class Student {
     private User user;
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Question> questions;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private Set<StudentCourseEnrollment> courses;
 
     public Student() {
