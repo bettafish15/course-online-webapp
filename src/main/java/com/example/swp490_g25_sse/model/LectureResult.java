@@ -67,10 +67,6 @@ public class LectureResult {
     this.lecture = lecture;
   }
 
-  public Boolean isIsFinished() {
-    return this.isFinished;
-  }
-
   public Boolean getIsFinished() {
     return this.isFinished;
   }

@@ -6,7 +6,9 @@ import com.example.swp490_g25_sse.model.Test;
 import com.example.swp490_g25_sse.model.TestResult;
 
 public interface TestResultService {
-	TestResult createTestReport(StudentCourseEnrollment enrollment, Test test);
+  TestResult createTestReport(StudentCourseEnrollment enrollment, Test test);
 
   TestResult updateTestResult(StudentCourseEnrollment enrollment, Test test, Boolean isFinished, Integer mark);
+
+  TestResult findFirstByEnrollmentAndTest(StudentCourseEnrollment enroll, Test test);
 }

@@ -26,5 +26,12 @@ public class LectureResultServiceImpl implements LectureResultService {
     lectureResult.setIsFinished(true);
     return lectureResultRepository.save(lectureResult);
   }
-  
+
+  @Override
+  public LectureResult findFirstByEnrollmentAndLecture(StudentCourseEnrollment enroll, Lecture lecture) {
+    LectureResult lectureResult = lectureResultRepository.findFirstByEnrollmentAndLecture(enroll, lecture);
+
+    return lectureResult;
+  }
+
 }

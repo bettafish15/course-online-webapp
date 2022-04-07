@@ -28,4 +28,11 @@ public class TestResultServiceImpl implements TestResultService {
     return testResultRepository.save(result);
   }
 
+  @Override
+  public TestResult findFirstByEnrollmentAndTest(StudentCourseEnrollment enroll, Test test) {
+    TestResult result = testResultRepository.findFirstByEnrollmentAndTest(enroll, test);
+
+    return result;
+  }
+
 }

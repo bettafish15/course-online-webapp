@@ -49,15 +49,17 @@
                       <th>Điểm</th>
                     </tr>
                     <tr>
-                      <th:block th:each="item, iter : ${milestone[currentWeek - 1].results}">
-                        <td th:text="${item.test.name}">Alfreds Futterkiste</td>
-                        <td th:text="${item.isFinished ? 'Đã hoàn thành' : '___'}">
-                          Maria Anders</td>
-                        <td>___</td>
-                        <td th:text="${item.isFinished ? item.mark : '___'}">
-                          Germany
-                        </td>
-                      </th:block>
+                      <div th:if="${milestone.size() != 0}">
+                        <th:block th:each="item, iter : ${milestone[currentWeek - 1].results}">
+                          <td th:text="${item.test.name}">Alfreds Futterkiste</td>
+                          <td th:text="${item.isFinished ? 'Đã hoàn thành' : '___'}">
+                            Maria Anders</td>
+                          <td>___</td>
+                          <td th:text="${item.isFinished ? item.mark : '___'}">
+                            Germany
+                          </td>
+                        </th:block>
+                      </div>
                     </tr>
                   </table>
                 </div>

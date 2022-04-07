@@ -5,14 +5,18 @@
 package com.example.swp490_g25_sse.controller.api;
 
 import com.example.swp490_g25_sse.dto.CourseDto;
+import com.example.swp490_g25_sse.dto.LectureDto;
+import com.example.swp490_g25_sse.dto.TestDto;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.exception.BaseRestException;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Lecture;
+import com.example.swp490_g25_sse.model.LectureResult;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.Test;
+import com.example.swp490_g25_sse.model.TestResult;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
 import com.example.swp490_g25_sse.service.LectureResultService;
@@ -64,17 +68,76 @@ public class CourseController {
     private LectureResultService lectureResultService;
 
     @Autowired
+    private StudentCourseEnrollmentService studentCourseEnrollmentService;
+
+    @Autowired
     private TestResultService testResultService;
 
     @GetMapping(value = "/{id}", produces = "application/json")
-    public Course getCourseById(@PathVariable long id) {
+    public CourseDto getCourseById(@PathVariable long id) {
         Optional<Course> course = courseService.getCourseById(id);
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
         System.out.println(course.get().getLectures());
         if (course.isEmpty()) {
             throw new BaseRestException(HttpStatus.NOT_FOUND, "Not Found");
         }
-        return course.get();
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
+
+        Student student = studentService.getStudentInfo(userDetails.getUser());
+        StudentCourseEnrollment enroll = studentCourseEnrollmentService.getEnrollmentInfo(student, course.get());
+
+        CourseDto courseResult = new CourseDto();
+        courseResult.setId(course.get().getId());
+        courseResult.setContent(course.get().getContent());
+        courseResult.setCourseImgUrl(course.get().getImageUrl());
+        courseResult.setCourseTitle(course.get().getTitle());
+
+        courseResult.setLectureDtos(
+                course.get().getLectures().stream().map(item -> {
+                    LectureDto lectureDto = new LectureDto();
+                    lectureDto.setContent(item.getContent());
+                    lectureDto.setId(item.getId());
+                    lectureDto.setIndex(item.getIndexOrder());
+                    lectureDto.setName(item.getName());
+                    lectureDto.setResourceUrl(item.getResourceUrl());
+                    lectureDto.setWeek(item.getWeek());
+
+                    LectureResult lectureResult = lectureResultService.findFirstByEnrollmentAndLecture(enroll, item);
+
+                    if (lectureResult == null) {
+                        lectureDto.setIsFinished(false);
+                    } else {
+
+                        lectureDto.setIsFinished(lectureResult.getIsFinished());
+                    }
+
+                    return lectureDto;
+                }).toList());
+
+        courseResult.setTestDtos(
+                course.get().getTests().stream().map(item -> {
+                    TestDto testDto = new TestDto();
+                    testDto.setContent(item.getContent());
+                    testDto.setId(item.getId());
+                    testDto.setIndex(item.getIndexOrder());
+                    testDto.setName(item.getName());
+                    testDto.setWeek(item.getWeek());
+
+                    TestResult testResult = testResultService.findFirstByEnrollmentAndTest(enroll, item);
+
+                    if (testResult == null) {
+                        testDto.setIsFinished(false);
+                        testDto.setMark(0);
+                    } else {
+                        testDto.setIsFinished(testResult.getIsFinished());
+                        testDto.setMark(testResult.getMark());
+                    }
+                    return testDto;
+                }).toList());
+
+        return courseResult;
     }
 
     @GetMapping(produces = "application/json")
