@@ -23,7 +23,7 @@
     <div th:replace="fragments/navbar"></div>
     <main class="main-dashboard col-10 p-0 bg-w">
       <div class="dashboard-content">
-        <form th:action="@{/app/student/forum/creat/{id}(id=${course.id})}" class="question-from" th:object="${question}" method="post">
+        <form th:action="@{/app/forum/creat/{id}(id=${course.id})}" class="question-from" th:object="${question}" method="post">
           <div class="question">
             Question
           </div>

@@ -26,12 +26,13 @@
       <main class="main-dashboard col-10 p-0">
         <div class="dashboard-wrapper">
           <p class="dashboard-header">Diễn đàn câu hỏi</p>
-          <a th:href="@{/app/student/forum/creat/{id}(id=${course.id})}">create question</a>
+          <a th:href="@{/app/forum/creat/{id}(id=${course.id})}" class="create-btn-wrapper"><button
+            class="create-btn">Create post</button></a>
           <div class="dashboard-container">
             <div class="tabs-header">
-              <a th:href="@{/app/student/forum/{id}(id=${course.id})}">Bài đăng</a>
+              <a th:href="@{/app/forum/{id}(id=${course.id})}">Bài đăng</a>
               <!-- <a href="#">Phân loại</a> -->
-              <a th:href="@{/app/student/forum/question/{id}(id=${course.id})}">Bài đăng của bạn</a>
+              <a th:href="@{/app/forum/question/{id}(id=${course.id})}">Bài đăng của bạn</a>
             </div>
             <th:block th:each="question : ${questions}">
             <div class="question-wrapper">

@@ -21,9 +21,14 @@ public class Answer {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = false)
+    @JoinColumn(name = "student_id", nullable = true)
     @JsonIgnore
     private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "teacher_id", nullable = true)
+    @JsonIgnore
+    private Teacher teacher;
 
     @ManyToOne
     @JoinColumn(name = "question_id", nullable = false)
@@ -36,6 +41,12 @@ public class Answer {
     public Answer(String content, Student student, Question question) {
         this.content = content;
         this.student = student;
+        this.question = question;
+    }
+
+    public Answer(String content, Teacher teacher, Question question) {
+        this.content = content;
+        this.teacher = teacher;
         this.question = question;
     }
 
