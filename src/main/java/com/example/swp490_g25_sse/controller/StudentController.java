@@ -82,9 +82,39 @@ public class StudentController {
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
 
         Student student = studentService.getStudentInfo(userDetails.getUser());
+        String contentStr = "";
+        String[] contentPart;
+        char lastChar;
+        String rawContent = "";
+        String content = "";
         List<Course> courses = null;
         courses = courseService.getStudentCourses(student, isFinished);
+        if (courses != null) {
+            for (int i = 0; i < courses.size(); i++) {
+                contentStr = courses.get(i).getContent();
+                contentPart = contentStr.split("><");
+                lastChar = contentPart[0].charAt(contentPart[0].length() - 1);
 
+                if (String.valueOf(lastChar).equalsIgnoreCase("p")) {
+                    rawContent = contentPart[0] + ">";
+                    if (rawContent.length() >= 255) {
+                        content = rawContent.substring(0, 255) + "...";
+                    } else {
+                        content = rawContent;
+                    }
+                } else {
+                    rawContent = contentPart[0];
+                    if (rawContent.length() >= 255) {
+                        content = rawContent.substring(0, 255) + "...";
+                    } else {
+                        content = rawContent;
+                    }
+                }
+
+                courses.get(i).setContent(content);
+
+            }
+        }
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("courses", courses);
         model.addAttribute("user", "student");
