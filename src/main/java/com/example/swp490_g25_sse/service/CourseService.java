@@ -42,4 +42,6 @@ public interface CourseService {
 	List<Course> getStudentCourses(Student student, Boolean isFinished);
 
 	Boolean isAlreadyEnrolled(Course course, Student student);
+
+	Boolean isCourseFinished(StudentCourseEnrollment enroll);
 }

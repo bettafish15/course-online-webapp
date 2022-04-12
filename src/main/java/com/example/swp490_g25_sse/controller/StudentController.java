@@ -4,14 +4,17 @@ import java.io.OutputStream;
 import java.util.List;
 
 import com.example.swp490_g25_sse.dto.CourseOverviewDto;
+import com.example.swp490_g25_sse.dto.FeedbackDto;
 import com.example.swp490_g25_sse.dto.MilestoneDto;
 import com.example.swp490_g25_sse.model.Course;
+import com.example.swp490_g25_sse.model.Feedback;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.StudentService;
 import com.example.swp490_g25_sse.service.TestResultService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
+import com.example.swp490_g25_sse.service.FeedbackService;
 import com.example.swp490_g25_sse.service.LectureResultService;
 import com.example.swp490_g25_sse.service.StudentCourseEnrollmentService;
 
@@ -25,6 +28,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +48,9 @@ public class StudentController {
 
     @Autowired
     private Environment env;
+
+    @Autowired
+    private FeedbackService feedbackService;
 
     @Autowired
     private CourseService courseService;
@@ -78,6 +85,10 @@ public class StudentController {
 
     @GetMapping("/registeredCourses")
     private String registeredCourses(Model model, @RequestParam(name = "isFinished") Boolean isFinished) {
+        if (isFinished == null) {
+            isFinished = true;
+        }
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
 
@@ -89,7 +100,7 @@ public class StudentController {
         String content = "";
         List<Course> courses = null;
         courses = courseService.getStudentCourses(student, isFinished);
-        if (courses != null) {
+        if (!courses.isEmpty()) {
             for (int i = 0; i < courses.size(); i++) {
                 contentStr = courses.get(i).getContent();
                 contentPart = contentStr.split("><");
@@ -124,6 +135,38 @@ public class StudentController {
         return "student/registered-course";
     }
 
+    @GetMapping("/course/{id}/feedback")
+    private String feedback(@PathVariable String id, Model model) {
+        model.addAttribute("id", id);
+
+        return "student/feedback";
+    }
+
+    @ModelAttribute("feedback")
+    public FeedbackDto feedbackDto() {
+        return new FeedbackDto();
+    }
+
+    @PostMapping("/course/{id}/feedback")
+    private String giveFeedback(@PathVariable String id,
+            @ModelAttribute("feedback") FeedbackDto feedbackDto, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
+
+        model.addAttribute("feedback", new FeedbackDto());
+        Course course = courseService.getCourseById(Long.parseLong(id)).get();
+        Student student = studentService.getStudentInfo(userDetails.getUser());
+        Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
+        model.addAttribute("userName", userDetails.getUser().getFirstName());
+        model.addAttribute("course", course);
+        model.addAttribute("isEnrolled", isEnrolled);
+
+        feedbackService.createNewFeedback(feedbackDto, student, course);
+
+        // System.out.println(top4Course.getContent().get(0).getImageUrl());
+        return "student/feedback-successful";
+    }
+
     @GetMapping("/course/{id}")
     private String courseInformation(@PathVariable String id, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -132,7 +175,6 @@ public class StudentController {
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
-
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);

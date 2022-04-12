@@ -11,5 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface StudentCourseEnrollmentRepository extends JpaRepository<StudentCourseEnrollment, Long> {
    StudentCourseEnrollment findFirstByStudentAndCourse(Student student, Course course);
 
+   java.util.List<StudentCourseEnrollment> findByStudent(Student student);
+
    Page<StudentCourseEnrollment> findByStudentAndIsFinished(Student student, Boolean isFinished, Pageable pageable);
 }

@@ -204,9 +204,13 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public List<Course> getStudentCourses(Student student, Boolean isFinished) {
+		List<StudentCourseEnrollment> studentEnrollments = enrollmentRepository.findByStudent(student);
+
+		studentEnrollments.stream().forEach(enroll -> this.isCourseFinished(enroll));
+
 		Page<StudentCourseEnrollment> enrolls = enrollmentRepository.findByStudentAndIsFinished(student, isFinished,
 				PageRequest.of(0, 4));
-		System.out.println(enrolls.getContent().size());
+
 		List<Course> courses = enrolls.toList().stream().map(enroll -> enroll.getCourse()).collect(Collectors.toList());
 
 		return courses;
@@ -324,6 +328,43 @@ public class CourseServiceImpl implements CourseService {
 		}
 
 		return result.stream().sorted((o1, o2) -> o1.getWeek().compareTo(o2.getWeek())).collect(Collectors.toList());
+	}
+
+	@Override
+	public Boolean isCourseFinished(StudentCourseEnrollment enroll) {
+		if (enroll.getIsFinished()) {
+			return true;
+		}
+
+		Course course = enroll.getCourse();
+
+		List<Lecture> lectures = course.getLectures();
+		List<Test> tests = course.getTests();
+
+		Boolean isAllLectureFinished = lectures.stream().allMatch(lecture -> {
+			LectureResult result = lectureResultRepository.findFirstByEnrollmentAndLecture(enroll, lecture);
+
+			return result.getIsFinished();
+		});
+
+		if (!isAllLectureFinished) {
+			return false;
+		}
+
+		Boolean isAllTestFinished = tests.stream().allMatch(test -> {
+			TestResult result = testResultRepository.findFirstByEnrollmentAndTest(enroll, test);
+
+			return result.getIsFinished();
+		});
+
+		if (!isAllTestFinished) {
+			return false;
+		}
+
+		enroll.setIsFinished(true);
+		enrollmentRepository.save(enroll);
+
+		return true;
 	}
 
 }
