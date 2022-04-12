@@ -24,7 +24,7 @@
         </div>
         <a href="/account-info">
           <div class="user-group">
-            <div><img class="user-img" src="/images/user.png" /></div>
+            <div><img class="user-img" th:src="${userImgUrl}"/></div>
             <span class="user-name" th:text="${userName}"></span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -80,6 +80,13 @@
   transition: all 0.2s ease-in-out;
 }
 
+.user-group .user-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .user-group .user-name {
   font-size: 1.6rem;
   color: #95999c;

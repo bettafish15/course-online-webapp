@@ -16,8 +16,16 @@
 
 <body>
   <div class="row">
-    <div th:if="'teacher' == ${user}" th:replace="fragments/teacher-sidebar"></div>
-    <div th:if="'student' == ${user}" th:replace="fragments/student-course-list-sidebar"></div>
+    <div th:text="${user}"></div>
+    <th:block th:switch="${user}">
+      <th:block th:case="'teacher'">
+        <div th:replace="fragments/teacher-sidebar"></div>
+      </th:block>
+      <th:block th:case="'student'">
+        <div th:replace="fragments/student-course-list-sidebar"></div>
+      </th:block>
+    </th:block>
+    
 
     <!-- NAVBAR FOR USER -->
     <div th:replace="fragments/navbar"></div>

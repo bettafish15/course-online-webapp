@@ -71,10 +71,11 @@ public class StudentController {
     private String index(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
-
         Page<Course> top4Course = courseService.getMostEnrolledCourses();
         List<Course> courses = top4Course.getContent();
+        String userImgUrl = userDetails.getUser().getImageURL();
 
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("courses", courses);
         model.addAttribute("user", "student");
@@ -126,6 +127,11 @@ public class StudentController {
 
             }
         }
+
+        String userImgUrl = userDetails.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
+
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("courses", courses);
         model.addAttribute("user", "student");
@@ -175,6 +181,9 @@ public class StudentController {
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
+        String userImgUrl = userDetails.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
@@ -210,7 +219,9 @@ public class StudentController {
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
+        String userImgUrl = userDetails.getUser().getImageURL();
 
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
 
@@ -239,7 +250,9 @@ public class StudentController {
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
         StudentCourseEnrollment enroll = studentCourseEnrollmentService.getEnrollmentInfo(student, course);
         List<CourseOverviewDto> courseOverview = courseService.overview(enroll);
+        String userImgUrl = userDetails.getUser().getImageURL();
 
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
@@ -271,7 +284,9 @@ public class StudentController {
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
         StudentCourseEnrollment enroll = studentCourseEnrollmentService.getEnrollmentInfo(student, course);
         List<MilestoneDto> milestone = courseService.milestone(enroll);
+        String userImgUrl = userDetails.getUser().getImageURL();
 
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);

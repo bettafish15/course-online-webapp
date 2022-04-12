@@ -82,6 +82,16 @@ public class MainController {
                 userDetails.getUser().getLastName(), userDetails.getUser().getEmail(),
                 userDetails.getUser().getImageURL());
 
+        String userImgUrl = userDetails.getUser().getImageURL();
+
+        if (userDetails.getRole().equals("ROLE_STUDENT")) {
+            model.addAttribute("user", "student");
+        }
+        if (userDetails.getRole().equals("ROLE_TEACHER")) {
+            model.addAttribute("user", "teacher");
+        }
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         return "account-info";

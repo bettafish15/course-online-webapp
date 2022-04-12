@@ -67,6 +67,7 @@ public class UserServiceImpl implements UserService {
     public User save(UserRegistrationDto registrationDto) {
         Role existedRole = roleRepository.findFirstByName((registrationDto.getRole()));
         Role role;
+        String imgUrl = "/images/default-user-icon.jpg";
 
         if (existedRole != null) {
             role = existedRole;
@@ -76,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(role));
+                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(role), imgUrl);
 
         User newUser = userRepository.save(user);
         if (role.getName().equals("ROLE_TEACHER")) {

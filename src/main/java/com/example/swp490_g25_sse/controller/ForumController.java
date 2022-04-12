@@ -55,8 +55,10 @@ public class ForumController {
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
 
         List<Question> questions = questionService.getQuestionsByCourseId(Long.parseLong(id));
-
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
+        String userImgUrl = userDetails.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("questions", questions);
         model.addAttribute("course", course);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
@@ -71,7 +73,9 @@ public class ForumController {
         Long studentId = student.getId();
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
         List<Question> questions = questionService.getQuestionsByCourseIdAndUserId(Long.parseLong(id), studentId);
-        System.out.println(questions);
+        String userImgUrl = user.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("questions", questions);
         model.addAttribute("course", course);
         model.addAttribute("userName", user.getUser().getFirstName());
@@ -87,6 +91,9 @@ public class ForumController {
         Long studentId = student.getId();
         Question question = new Question();
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
+        String userImgUrl = user.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("question", question);
         model.addAttribute("course", course);
         model.addAttribute("studentId", studentId);
@@ -111,6 +118,9 @@ public class ForumController {
             Course course = courseService.getCourseById(Long.parseLong(courseId)).get();
             Answer answer = new Answer();
             List<Answer> answers = answerService.getAnswersByQuestionId(Long.parseLong(id));
+            String userImgUrl = user.getUser().getImageURL();
+
+            model.addAttribute("userImgUrl", userImgUrl);
             model.addAttribute("question", question);
             model.addAttribute("course", course);
             model.addAttribute("answer", answer);
@@ -125,6 +135,9 @@ public class ForumController {
             Course course = courseService.getCourseById(Long.parseLong(courseId)).get();
             Answer answer = new Answer();
             List<Answer> answers = answerService.getAnswersByQuestionId(Long.parseLong(id));
+            String userImgUrl = user.getUser().getImageURL();
+
+            model.addAttribute("userImgUrl", userImgUrl);
             model.addAttribute("question", question);
             model.addAttribute("course", course);
             model.addAttribute("answer", answer);
@@ -146,10 +159,11 @@ public class ForumController {
     private String getCourseQuestions(Model model, @PathVariable String id) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
-
         List<Question> questions = questionService.getQuestionsByCourseId(Long.parseLong(id));
-
         Course course = courseService.getCourseById(Long.parseLong(id)).get();
+        String userImgUrl = userDetails.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("questions", questions);
         model.addAttribute("course", course);
         model.addAttribute("userName", userDetails.getUser().getFirstName());

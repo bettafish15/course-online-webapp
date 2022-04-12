@@ -32,8 +32,7 @@
               <div class="body-question">
                 <div class="authors">
                   <div class="username" th:utext="${question.student.user.firstName}"></div>
-                  <!-- <img th:src="${question.student.user.imageURL}" alt=""> -->
-                  <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
+                  <img th:src="${question.student.user.imageURL}" alt="">
                 </div>
                 <div class="question-content">
                   <div th:utext="${question.content}"></div>
@@ -51,7 +50,7 @@
                 </form>
               </div>
                       
-          
+              
               <script src="/javascript/forum.js"></script>   
             </div>
             <!--Comments Section-->
@@ -63,7 +62,8 @@
                     </div>
                     <div class="username" th:unless="${answer.student != null}" th:utext="${answer.teacher.user.firstName}">
                     </div>
-                    <img src="https://cdn.pixabay.com/photo/2015/11/06/13/27/ninja-1027877_960_720.jpg" alt="">
+                    <img th:if="${answer.student != null}" th:src="${answer.student.user.imageURL}" alt="">
+                    <img th:unless="${answer.student != null}" th:src="${answer.teacher.user.imageURL}" alt="">
                   </div>
                   <div class="question-content" th:utext="${answer.content}"></div>
                 </div>

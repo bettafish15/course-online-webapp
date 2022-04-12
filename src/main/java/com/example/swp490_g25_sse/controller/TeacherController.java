@@ -81,6 +81,9 @@ public class TeacherController {
 
         }
 
+        String userImgUrl = currentUser.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", currentUser.getUser().getFirstName());
         model.addAttribute("courses", courses);
         model.addAttribute("user", "teacher");
@@ -89,6 +92,12 @@ public class TeacherController {
 
     @GetMapping("/create-course")
     private String createCourse(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
+
+        String userImgUrl = currentUser.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("user", "teacher");
 
         String prefix = env.getProperty("FIREBASE_PREFIX");
@@ -102,9 +111,14 @@ public class TeacherController {
 
     @GetMapping("/update-course/{id}")
     private String updateCourse(@PathVariable String id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
         Long courseId = Long.parseLong(id);
         Optional<Course> course = courseService.getCourseById(courseId);
         System.out.println(course.get());
+        String userImgUrl = currentUser.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("course", course.get());
         model.addAttribute("user", "teacher");
 
@@ -156,6 +170,9 @@ public class TeacherController {
             courses.get(i).setContent(content);
 
         }
+        String userImgUrl = currentUser.getUser().getImageURL();
+
+        model.addAttribute("userImgUrl", userImgUrl);
 
         model.addAttribute("userName", currentUser.getUser().getFirstName());
         model.addAttribute("courses", courses);

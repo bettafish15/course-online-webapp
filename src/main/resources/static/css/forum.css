@@ -15,8 +15,12 @@
 }
 
 .body-question .authors img {
-  max-width: 50px;
-  max-height: 80px;
+  max-width: 60px;
+  max-height: 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .body-question .question-content .comment button {
