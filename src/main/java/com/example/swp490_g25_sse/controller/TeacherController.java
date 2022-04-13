@@ -1,11 +1,15 @@
 package com.example.swp490_g25_sse.controller;
 
 import com.example.swp490_g25_sse.model.Course;
+import com.example.swp490_g25_sse.model.Feedback;
 import com.example.swp490_g25_sse.model.Teacher;
+import com.example.swp490_g25_sse.repository.FeedbackRepository;
 import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
+import com.example.swp490_g25_sse.service.FeedbackService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -37,6 +41,9 @@ public class TeacherController {
 
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private FeedbackService feedbackService;
 
     @Autowired
     private TeacherRepository teacherRepository;
@@ -132,7 +139,7 @@ public class TeacherController {
     }
 
     @GetMapping("/forum")
-    private String forumuestion(Model model) {
+    private String forumQuestion(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
 
@@ -178,5 +185,26 @@ public class TeacherController {
         model.addAttribute("courses", courses);
         model.addAttribute("user", "teacher");
         return "teacher/home-forum";
+    }
+
+    @GetMapping("/student-response")
+    private String studentResponse(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
+
+        Teacher teacher = teacherRepository.findFirstByUserId(currentUser.getUser().getId());
+
+        List<Course> courses = teacher.getCourses();
+
+        List<Feedback> feedbacks = new ArrayList<>();
+
+        courses.stream().forEach(course -> {
+            feedbacks.addAll(feedbackService.getAllFeedBack(course));
+        });
+
+        model.addAttribute("userName", currentUser.getUser().getFirstName());
+        model.addAttribute("feedbacks", feedbacks);
+        model.addAttribute("user", "teacher");
+        return "teacher/students-response";
     }
 }

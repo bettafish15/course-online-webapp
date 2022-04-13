@@ -19,4 +19,6 @@ import java.util.Optional;
  */
 public interface FeedbackService {
 	Feedback createNewFeedback(FeedbackDto feedbackDto, Student student, Course course);
+
+	List<Feedback> getAllFeedBack(Course course);
 }

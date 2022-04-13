@@ -83,11 +83,11 @@ public class Feedback {
     this.rating = rating;
   }
 
-  public String getKey() {
+  public String getContentKey() {
     return this.contentKey;
   }
 
-  public void setKey(String contentKey) {
+  public void setContentKey(String contentKey) {
     this.contentKey = contentKey;
   }
 

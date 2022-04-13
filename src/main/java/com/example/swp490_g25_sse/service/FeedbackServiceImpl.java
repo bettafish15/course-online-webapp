@@ -1,5 +1,7 @@
 package com.example.swp490_g25_sse.service;
 
+import java.util.List;
+
 import com.example.swp490_g25_sse.dto.FeedbackDto;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Feedback;
@@ -23,6 +25,11 @@ public class FeedbackServiceImpl implements FeedbackService {
     feedbackRepository.save(feedback);
 
     return feedback;
+  }
+
+  @Override
+  public List<Feedback> getAllFeedBack(Course course) {
+    return feedbackRepository.findByCourse(course);
   }
 
 }

@@ -6,7 +6,9 @@ package com.example.swp490_g25_sse.repository;
 
 import java.util.List;
 
+import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Feedback;
+import com.example.swp490_g25_sse.model.Student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -15,4 +17,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author bettafish15
  */
 public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+  List<Feedback> findByCourse(Course course);
 }
