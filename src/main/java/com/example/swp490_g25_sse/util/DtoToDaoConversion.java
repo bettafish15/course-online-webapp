@@ -36,7 +36,7 @@ public class DtoToDaoConversion {
 
         for (int i = 0; i < dtos.size(); i++) {
             Test test = new Test(course, dtos.get(i).getWeek(), dtos.get(i).getName(), dtos.get(i).getContent(),
-                    dtos.get(i).getIndex());
+                    dtos.get(i).getIndex(), dtos.get(i).getTime());
 
             tests.add(test);
         }

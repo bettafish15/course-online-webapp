@@ -147,6 +147,7 @@ public class StudentController {
     @GetMapping("/course/{id}/feedback")
     private String feedback(@PathVariable String id, Model model) {
         model.addAttribute("id", id);
+        model.addAttribute("user", "student");
 
         return "student/feedback";
     }
@@ -169,6 +170,7 @@ public class StudentController {
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
+        model.addAttribute("user", "student");
 
         feedbackService.createNewFeedback(feedbackDto, student, course);
 
@@ -192,6 +194,7 @@ public class StudentController {
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
         model.addAttribute("mostLearnCourses", mostLearnCourses);
+        model.addAttribute("user", "student");
 
         // System.out.println(top4Course.getContent().get(0).getImageUrl());
         return "student/course-information";
@@ -236,6 +239,7 @@ public class StudentController {
         model.addAttribute("firebasePrefix", prefix);
         model.addAttribute("firebaseSuffix", suffix);
         model.addAttribute("enrollmentId", studentCourseEnrollmentService.getEnrollmentInfo(student, course).getId());
+        model.addAttribute("user", "student");
 
         if (!isEnrolled) {
             return "redirect:/app/student/course/" + id;
@@ -261,6 +265,7 @@ public class StudentController {
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
+        model.addAttribute("user", "student");
 
         String prefix = env.getProperty("FIREBASE_PREFIX");
         String suffix = env.getProperty("FIREBASE_SUFFIX");
@@ -295,6 +300,7 @@ public class StudentController {
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
+        model.addAttribute("user", "student");
 
         String prefix = env.getProperty("FIREBASE_PREFIX");
         String suffix = env.getProperty("FIREBASE_SUFFIX");

@@ -17,6 +17,7 @@ public class TestDto {
     public String name;
     public Boolean isFinished;
     public Integer mark;
+    public Long time;
 
     public TestDto() {
     }
@@ -82,6 +83,14 @@ public class TestDto {
 
     public void setMark(Integer mark) {
         this.mark = mark;
+    }
+
+    public Long getTime() {
+        return this.time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 
 }

@@ -5,213 +5,120 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 -->
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/global.css" />
-    <link rel="stylesheet" href="/css/navbar.css"/>
-    <link rel="stylesheet" href="/css/footer.css"/>
-    <link rel="stylesheet" href="/css/home-screen.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
-      crossorigin="anonymous"
-    />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <header>
-      <nav class="navbar1">
-        <ul class="nav-list">
-          <li class="item"><a href="#">LOGO</a></li>
-          <li class="item"><a href="#">Khóa học</a></li>
-          <li class="item"><a href="#">Giáo viên</a></li>
-          <li class="item"><a href="#">Học Sinh</a></li>
-          <li class="item">
-            <div class="input-nav-group">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="search-icon"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                class="search-input"
-                type="text"
-                placeholder="Tìm kiếm khóa học"
-              />
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/home-screen.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar1">
+      <ul class="nav-list">
+        <li class="item"><a href="#">LOGO</a></li>
+        <li class="item"><a href="#">Khóa học</a></li>
+        <li class="item"><a href="#">Giáo viên</a></li>
+        <li class="item"><a href="#">Học Sinh</a></li>
+        <li class="item">
+          <div class="input-nav-group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input class="search-input" type="text" placeholder="Tìm kiếm khóa học" />
+          </div>
+          <div class="button-group">
+            <a href="/registration" class="btn1 btn-signup">Đăng ký</a>
+            <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon signup" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="Welcome">
+    <div class="row row-0 justify-content-between welcome-wrapper">
+      <div class="welcome-detail col-5">
+        <div class="col-12 pl-0">
+          <div class="Welcome_title">
+            <p>
+              Welcome to <br />
+              Soft Skill Learn
+            </p>
+          </div>
+        </div>
+        <div class="col-8 pl-0">
+          <div class="Welcome_Content mt-5 mb-5">
+            <p>
+              Với rất nhiều nội dung học tập theo yêu cầu và trực tiếp miễn
+              phí cho mọi cấp độ trải nghiệm, bạn sẽ tìm thấy những gì bạn cần
+              để đạt được mục tiêu của mình. Đăng nhập để theo dõi tiến trình
+              của bạn, kiếm huy hiệu, lưu trữ nội dung học tập và nhiều tính
+              năng khác đang chờ bạn.
+            </p>
+          </div>
+        </div>
+        <div class="col-5 pl-0">
+          <div class="item">
             <div class="button-group">
-              <a href="/registration" class="btn1 btn-signup">Đăng ký</a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="btn-icon signup"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"
-                />
+              <a href="#" class="btn1 btn-signup">Xem khóa học</a>
+              <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon course" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </div>
-          </li>
-        </ul>
-      </nav>
-    </header>
 
-    <div class="Welcome">
-      <div class="row row-0 justify-content-between welcome-wrapper">
-        <div class="welcome-detail col-5">
-          <div class="col-12 pl-0">
-            <div class="Welcome_title">
-              <p>
-                Welcome to <br />
-                Soft Skill Learn
-              </p>
-            </div>
-          </div>
-          <div class="col-8 pl-0">
-            <div class="Welcome_Content mt-5 mb-5">
-              <p>
-                Với rất nhiều nội dung học tập theo yêu cầu và trực tiếp miễn
-                phí cho mọi cấp độ trải nghiệm, bạn sẽ tìm thấy những gì bạn cần
-                để đạt được mục tiêu của mình. Đăng nhập để theo dõi tiến trình
-                của bạn, kiếm huy hiệu, lưu trữ nội dung học tập và nhiều tính
-                năng khác đang chờ bạn.
-              </p>
-            </div>
-          </div>
-          <div class="col-5 pl-0">
-            <div class="item">
-              <div class="button-group">
-                <a href="#" class="btn1 btn-signup">Xem khóa học</a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="btn-icon course"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
-
-              <div class="button-group">
-                <a href="/login" class="btn1 btn-signup Welcome_login">Đăng nhập</a>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="btn-icon signup Welcome_login"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
+            <div class="button-group">
+              <a href="/login" class="btn1 btn-signup Welcome_login">Đăng nhập</a>
+              <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon signup Welcome_login" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
             </div>
           </div>
         </div>
+      </div>
 
 
-        <div class="welcome-image-list col-6">
-          <div class="row row-0 row1 ">
-            <img
-              src="/images/row1-1.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row1-2.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row1-3.png"
-              class="Welcome_img m-2"
-            />
-          </div>
-          <div class="row row-0 row2 ">
-            <img
-              src="/images/row2-1.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row2-2.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row2-3.png"
-              class="Welcome_img m-2"
-            />
-          </div>
-          <div class="row row-0 row3">
-            <img
-              src="/images/row3-1.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row3-2.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row3-3.png"
-              class="Welcome_img m-2"
-            />
-          </div>
-          <div class="row row-0 row4 ">
-            <img
-              src="/images/row4-1.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row4-2.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row4-3.png"
-              class="Welcome_img m-2"
-            />
-            <img
-            src="/images/row4-4.png"
-            class="Welcome_img m-2"
-          />
-          </div>
-          <div class="row row-0 row5">
-            <img
-              src="/images/row5-1.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row5-2.png"
-              class="Welcome_img m-2"
-            />
-            <img
-              src="/images/row5-3.png"
-              class="Welcome_img m-2"
-            />
+      <div class="welcome-image-list col-6">
+        <div class="row row-0 row1 ">
+          <img src="/images/row1-1.png" class="Welcome_img m-2" />
+          <img src="/images/row1-2.png" class="Welcome_img m-2" />
+          <img src="/images/row1-3.png" class="Welcome_img m-2" />
+        </div>
+        <div class="row row-0 row2 ">
+          <img src="/images/row2-1.png" class="Welcome_img m-2" />
+          <img src="/images/row2-2.png" class="Welcome_img m-2" />
+          <img src="/images/row2-3.png" class="Welcome_img m-2" />
+        </div>
+        <div class="row row-0 row3">
+          <img src="/images/row3-1.png" class="Welcome_img m-2" />
+          <img src="/images/row3-2.png" class="Welcome_img m-2" />
+          <img src="/images/row3-3.png" class="Welcome_img m-2" />
+        </div>
+        <div class="row row-0 row4 ">
+          <img src="/images/row4-1.png" class="Welcome_img m-2" />
+          <img src="/images/row4-2.png" class="Welcome_img m-2" />
+          <img src="/images/row4-3.png" class="Welcome_img m-2" />
+          <img src="/images/row4-4.png" class="Welcome_img m-2" />
+        </div>
+        <div class="row row-0 row5">
+          <img src="/images/row5-1.png" class="Welcome_img m-2" />
+          <img src="/images/row5-2.png" class="Welcome_img m-2" />
+          <img src="/images/row5-3.png" class="Welcome_img m-2" />
         </div>
       </div>
     </div>
@@ -336,7 +243,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
               <p>Edit text here</p>
             </div>
             <div class="Roadmap_part_content">
-              <p>Doing some thing that <br/> make you</p>
+              <p>Doing some thing that <br /> make you</p>
             </div>
           </div>
         </div>
@@ -351,7 +258,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
               <p>Edit text here</p>
             </div>
             <div class="Roadmap_part_content">
-              <p>Doing some thing that <br/> make you</p>
+              <p>Doing some thing that <br /> make you</p>
             </div>
           </div>
         </div>
@@ -366,7 +273,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
               <p>Edit text here</p>
             </div>
             <div class="Roadmap_part_content">
-              <p>Doing some thing that <br/> make you</p>
+              <p>Doing some thing that <br /> make you</p>
             </div>
           </div>
         </div>
@@ -492,15 +399,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <a href="#" class="footer-link links">Học sinh</a>
       </div>
     </footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      crossorigin="anonymous"></script>
+</body>
+
 </html>

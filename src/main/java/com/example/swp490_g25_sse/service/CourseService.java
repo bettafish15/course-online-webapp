@@ -10,6 +10,7 @@ import com.example.swp490_g25_sse.dto.MilestoneDto;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
+import com.example.swp490_g25_sse.model.Teacher;
 
 import org.springframework.data.domain.Page;
 
@@ -38,6 +39,7 @@ public interface CourseService {
 	Course updateCourse(CourseDto courseDto, long id);
 
 	List<CourseDto> getMostEnrolledCourses();
+
 	List<CourseDto> getBestFeedbackCourses();
 
 	List<Course> getStudentCourses(Student student, Boolean isFinished);
@@ -45,4 +47,6 @@ public interface CourseService {
 	Boolean isAlreadyEnrolled(Course course, Student student);
 
 	Boolean isCourseFinished(StudentCourseEnrollment enroll);
+
+	List<Course> searchCourse(String searchTerm, Teacher teacher);
 }

@@ -179,10 +179,11 @@ public class CourseServiceImpl implements CourseService {
 					test.setContent(testDto.getContent());
 					test.setIndexOrder(testDto.getIndex());
 					test.setWeek(testDto.getWeek());
+					test.setTime(testDto.getTime());
 
 				} else {
 					test = new Test(course, testDto.getWeek(), testDto.getName(), testDto.getContent(),
-							testDto.getIndex());
+							testDto.getIndex(), testDto.getTime());
 				}
 
 				testRepository.save(test);
@@ -418,6 +419,19 @@ public class CourseServiceImpl implements CourseService {
 		enrollmentRepository.save(enroll);
 
 		return true;
+	}
+
+	@Override
+	public List<Course> searchCourse(String searchTerm, Teacher teacher) {
+		List<Course> courses;
+
+		if (teacher == null) {
+			courses = courseRepository.findByTitleContaining(searchTerm, PageRequest.of(0, 4));
+		} else {
+			courses = courseRepository.findByTeacherAndTitleContaining(teacher, searchTerm, PageRequest.of(0, 4));
+		}
+
+		return courses;
 	}
 
 }

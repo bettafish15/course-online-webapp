@@ -17,6 +17,7 @@ import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 import com.example.swp490_g25_sse.model.Teacher;
 import com.example.swp490_g25_sse.model.Test;
 import com.example.swp490_g25_sse.model.TestResult;
+import com.example.swp490_g25_sse.repository.TeacherRepository;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
 import com.example.swp490_g25_sse.service.LectureResultService;
@@ -44,6 +45,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -72,6 +74,9 @@ public class CourseController {
 
     @Autowired
     private TestResultService testResultService;
+
+    @Autowired
+    private TeacherRepository teacherRepository;
 
     @GetMapping(value = "/{id}", produces = "application/json")
     public CourseDto getCourseById(@PathVariable long id) {
@@ -144,7 +149,19 @@ public class CourseController {
     public List<Course> queryCourses() {
         return courseService.getCourses();
     }
-    //
+
+    @GetMapping(value = "/search", produces = "application/json")
+    public List<Course> searchCourse(@RequestParam("searchName") String searchName) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetailsService currentUser = (CustomUserDetailsService) auth.getPrincipal();
+
+        Teacher teacher = null;
+        if (currentUser.getRole().equals("ROLE_TEACHER")) {
+            teacher = teacherRepository.findFirstByUserId(currentUser.getUser().getId());
+        }
+
+        return courseService.searchCourse(searchName, teacher);
+    }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
     public Course createCourse(@RequestBody CourseDto dto) {

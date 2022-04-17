@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="/css/course-screen.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>Document</title>
 </head>
 
@@ -48,7 +49,8 @@
                       <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
                     </div>
                     <div class="course-detail">
-                      <div class="owner-name" id="owner-name" th:text="${course.teacher.user.firstName} + ' ' + ${course.teacher.user.lastName}"></div>
+                      <div class="owner-name" id="owner-name"
+                        th:text="${course.teacher.user.firstName} + ' ' + ${course.teacher.user.lastName}"></div>
                       <p class="course-name" th:utext="${course?.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"

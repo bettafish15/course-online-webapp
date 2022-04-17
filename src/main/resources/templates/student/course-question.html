@@ -13,7 +13,7 @@
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
   <title>Document</title>
   <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -23,7 +23,8 @@
     <div th:replace="fragments/navbar"></div>
     <main class="main-dashboard col-10 p-0 bg-w">
       <div class="dashboard-content">
-        <form th:action="@{/app/forum/creat/{id}(id=${course.id})}" class="question-from" th:object="${question}" method="post">
+        <form th:action="@{/app/forum/creat/{id}(id=${course.id})}" class="question-from" th:object="${question}"
+          method="post">
           <div class="question">
             Question
           </div>
@@ -34,11 +35,11 @@
           <div class="title">
             Tag <span>*</span>
           </div>
-          <input th:field="*{tag}"  class="input mt-3" required type="text" placeholder="Write something here...">
+          <input th:field="*{tag}" class="input mt-3" required type="text" placeholder="Write something here...">
           <div class="title mb-3">
             Content <span>*</span>
           </div>
-          <textarea th:field="*{content}"  id="editor" name="content" class="text-area"></textarea>
+          <textarea th:field="*{content}" id="editor" name="content" class="text-area"></textarea>
           <input type="hidden" th:value="${course.id}" th:attr="name='courseId'">
           <input type="hidden" th:value="${studentId}" th:attr="name='studentId'">
 

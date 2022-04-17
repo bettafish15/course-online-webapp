@@ -28,8 +28,8 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity()
 @Table(name = "tests", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"week", "index_order"}),
-    @UniqueConstraint(columnNames = {"week", "name"})})
+        @UniqueConstraint(columnNames = { "week", "index_order" }),
+        @UniqueConstraint(columnNames = { "week", "name" }) })
 public class Test {
 
     @Id
@@ -53,22 +53,26 @@ public class Test {
     @Column(name = "index_order")
     private Long indexOrder;
 
+    public Long time;
+
     public Test() {
     }
 
-    public Test(String week, String name, String content, Long indexOrder) {
+    public Test(String week, String name, String content, Long indexOrder, Long time) {
         this.week = week;
         this.name = name;
         this.content = content;
         this.indexOrder = indexOrder;
+        this.time = time;
     }
 
-    public Test(Course course, String week, String name, String content, Long indexOrder) {
+    public Test(Course course, String week, String name, String content, Long indexOrder, Long time) {
         this.course = course;
         this.week = week;
         this.name = name;
         this.content = content;
         this.indexOrder = indexOrder;
+        this.time = time;
     }
 
     public Long getId() {
@@ -117,6 +121,14 @@ public class Test {
 
     public void setIndexOrder(Long indexOrder) {
         this.indexOrder = indexOrder;
+    }
+
+    public Long getTime() {
+        return this.time;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
     }
 
 }
