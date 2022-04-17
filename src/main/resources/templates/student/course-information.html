@@ -31,7 +31,7 @@
 
               <div class="d-flex mt-5">
                 <div class="author d-flex">
-                  <img src="/images/course-author.jpg" alt="" class="author-img" />
+                  <img th:src="${course.teacher.user.imageURL}" alt="" class="author-img" />
                   <div class="author-name pl-3" id="fullName"></div>
                 </div>
                 <div class="button-group ml-auto">
@@ -83,7 +83,7 @@
                       <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
                     </div>
                     <div class="course-detail">
-                      <p class="owner-name">Bruno Lopes</p>
+                      <div class="owner-name" id="owner-name" th:text="${course.teacher.user.firstName} + ' ' + ${course.teacher.user.lastName}"></div>
                       <p class="course-name" th:utext="${course?.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"

@@ -196,6 +196,8 @@ public class TeacherController {
 
         Teacher teacher = teacherRepository.findFirstByUserId(currentUser.getUser().getId());
 
+        String userImgUrl = currentUser.getUser().getImageURL();
+
         List<Course> courses = teacher.getCourses();
 
         List<Feedback> feedbacks = new ArrayList<>();
@@ -204,6 +206,7 @@ public class TeacherController {
             feedbacks.addAll(feedbackService.getAllFeedBack(course));
         });
 
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", currentUser.getUser().getFirstName());
         model.addAttribute("feedbacks", feedbacks);
         model.addAttribute("user", "teacher");
