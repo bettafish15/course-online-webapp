@@ -107,6 +107,15 @@
   top: 14rem;
 }
 
+.owner-img {
+  max-width: 32px;
+  max-height: 32px;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .course-detail {
   padding: 1rem 2rem;
   background-color: #2c343a;

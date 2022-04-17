@@ -105,10 +105,10 @@ public class MainController {
             System.out.println("Error");
         }
 
-        if (currentUser.getRole() == "ROLE_STUDENT") {
+        if (currentUser.getRole().equals("ROLE_STUDENT")) {
             model.addAttribute("user", "student");
         }
-        if (currentUser.getRole() == "ROLE_TEACHER") {
+        if (currentUser.getRole().equals("ROLE_TEACHER")) {
             model.addAttribute("user", "teacher");
         }
 
@@ -121,14 +121,20 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
         AccountInfoDto accountInfo = new AccountInfoDto();
+        String userImgUrl = userDetails.getUser().getImageURL();
+        UserInfoDto userInfo = new UserInfoDto(userDetails.getUser().getFirstName(),
+                userDetails.getUser().getLastName(), userDetails.getUser().getEmail(),
+                userDetails.getUser().getImageURL());
         model.addAttribute("accountInfo", accountInfo);
-        if (userDetails.getRole() == "ROLE_STUDENT") {
+        if (userDetails.getRole().equals("ROLE_STUDENT")) {
             model.addAttribute("user", "student");
         }
-        if (userDetails.getRole() == "ROLE_TEACHER") {
+        if (userDetails.getRole().equals("ROLE_TEACHER")) {
             model.addAttribute("user", "teacher");
         }
+        model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
+        model.addAttribute("userInfo", userInfo);
         return "account-setting";
     }
 

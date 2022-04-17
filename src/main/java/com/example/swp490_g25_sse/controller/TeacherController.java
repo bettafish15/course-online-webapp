@@ -106,6 +106,7 @@ public class TeacherController {
 
         model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("user", "teacher");
+        model.addAttribute("userName", currentUser.getUser().getFirstName());
 
         String prefix = env.getProperty("FIREBASE_PREFIX");
         String suffix = env.getProperty("FIREBASE_SUFFIX");
@@ -128,6 +129,7 @@ public class TeacherController {
         model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("course", course.get());
         model.addAttribute("user", "teacher");
+        model.addAttribute("userName", currentUser.getUser().getFirstName());
 
         String prefix = env.getProperty("FIREBASE_PREFIX");
         String suffix = env.getProperty("FIREBASE_SUFFIX");

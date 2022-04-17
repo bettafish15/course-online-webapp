@@ -16,8 +16,14 @@
 
 <body>
     <div class="row">
-        <div th:if="'teacher' == ${user}" th:replace="fragments/teacher-sidebar"></div>
-        <div th:if="'student' == ${user}" th:replace="fragments/student-course-list-sidebar"></div>
+        <th:block th:switch="${user}">
+      <th:block th:case="'teacher'">
+        <div th:replace="fragments/teacher-sidebar"></div>
+      </th:block>
+      <th:block th:case="'student'">
+        <div th:replace="fragments/student-course-list-sidebar"></div>
+      </th:block>
+    </th:block>
 
         <!-- NAVBAR FOR USER -->
         <div th:replace="fragments/navbar"></div>
@@ -27,9 +33,9 @@
                     <div class="col-4 main-setting">
                         <div class="setting-info">
                             <div class="setting-avatar">
-                                <img src="/images/bruno-lopes.jpeg" />
+                                <img th:src="${userImgUrl}" />
                             </div>
-                            <span class="setting-name">Bruno Lopes</span>
+                            <span class="setting-name" id="setting-name"></span>
                         </div>
                         <div class="settings">
                             <svg xmlns="http://www.w3.org/2000/svg" class="setting-icon" fill="none" viewBox="0 0 24 24"
@@ -110,5 +116,15 @@
         });
     }
 </script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var firstName = /*[[${userInfo.firstName}]]*/ 'value';
+    var lastName = /*[[${userInfo.lastName}]]*/ 'value';
+  
+    var settingName = firstName + " " + lastName;
+    console.log(settingName);
+    document.getElementById("setting-name").textContent = settingName;
+    /*]]>*/
+  </script>
 
 </html>

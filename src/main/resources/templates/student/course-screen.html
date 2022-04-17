@@ -45,10 +45,10 @@
                       <img th:src="${course.courseImgUrl}" class="course-img" />
                     </div>
                     <div class="course-card-owner-img">
-                      <img src="/images/user.png" class="owner-img" />
+                      <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
                     </div>
                     <div class="course-detail">
-                      <p class="owner-name">Bruno Lopes</p>
+                      <div class="owner-name" id="owner-name" th:text="${course.teacher.user.firstName} + ' ' + ${course.teacher.user.lastName}"></div>
                       <p class="course-name" th:utext="${course?.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
@@ -75,7 +75,7 @@
                     <img th:src="${course.courseImgUrl}" class="course-img" />
                   </div>
                   <div class="course-card-owner-img">
-                    <img src="/images/user.png" class="owner-img" />
+                    <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
                   </div>
                   <div class="course-detail">
                     <p class="owner-name">Bruno Lopes</p>
@@ -119,5 +119,6 @@
     });
   }
 </script>
+
 
 </html>

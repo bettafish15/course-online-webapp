@@ -6,6 +6,8 @@ package com.example.swp490_g25_sse.dto;
 
 import java.util.List;
 
+import com.example.swp490_g25_sse.model.Teacher;
+
 /**
  *
  * @author bettafish15
@@ -20,6 +22,7 @@ public class CourseDto {
     public List<TestDto> testDtos;
     public Long feedbackRating;
     public Long totalEnrolls;
+    public Teacher teacher;
 
     public CourseDto() {
     }
@@ -95,6 +98,14 @@ public class CourseDto {
 
     public void setTotalEnrolls(Long totalEnrolls) {
         this.totalEnrolls = totalEnrolls;
+    }
+
+    public Teacher getTeacher() {
+        return this.teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
 }
