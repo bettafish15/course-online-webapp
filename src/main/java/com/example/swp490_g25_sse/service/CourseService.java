@@ -37,7 +37,8 @@ public interface CourseService {
 
 	Course updateCourse(CourseDto courseDto, long id);
 
-	Page<Course> getMostEnrolledCourses();
+	List<CourseDto> getMostEnrolledCourses();
+	List<CourseDto> getBestFeedbackCourses();
 
 	List<Course> getStudentCourses(Student student, Boolean isFinished);
 

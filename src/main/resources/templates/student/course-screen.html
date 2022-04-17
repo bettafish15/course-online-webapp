@@ -38,18 +38,18 @@
             </div>
 
             <div class="course-list">
-              <th:block th:each="course : ${courses}">
+              <th:block th:each="course : ${mostLearnCourses}">
                 <a th:href="@{/app/student/course/{id}(id=${course.id})}">
                   <div class="course-card">
                     <div class="course-card-img">
-                      <img th:src="${course.imageUrl}" class="course-img" />
+                      <img th:src="${course.courseImgUrl}" class="course-img" />
                     </div>
                     <div class="course-card-owner-img">
                       <img src="/images/user.png" class="owner-img" />
                     </div>
                     <div class="course-detail">
                       <p class="owner-name">Bruno Lopes</p>
-                      <p class="course-name" th:utext="${course?.title}"></p>
+                      <p class="course-name" th:utext="${course?.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
@@ -65,21 +65,21 @@
             </div>
 
             <div class="top-course">
-              <span>Top Khóa học có nhiều lượt học</span>
+              <span>Top Khóa học có lượt đánh giá cao</span>
             </div>
 
             <div class="course-list">
-              <th:block th:each="course : ${courses}">
+              <th:block th:each="course : ${bestFeedbackCourses}">
                 <div class="course-card">
                   <div class="course-card-img">
-                    <img th:src="${course.imageUrl}" class="course-img" />
+                    <img th:src="${course.courseImgUrl}" class="course-img" />
                   </div>
                   <div class="course-card-owner-img">
                     <img src="/images/user.png" class="owner-img" />
                   </div>
                   <div class="course-detail">
                     <p class="owner-name">Bruno Lopes</p>
-                    <p class="course-name">Kỹ năng làm việc nhóm</p>
+                    <p class="course-name" th:utext="${course?.courseTitle}"></p>
                     <div class="course-views">
                       <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">

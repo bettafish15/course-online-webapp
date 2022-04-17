@@ -1,8 +1,10 @@
 package com.example.swp490_g25_sse.controller;
 
 import java.io.OutputStream;
+import java.util.Collection;
 import java.util.List;
 
+import com.example.swp490_g25_sse.dto.CourseDto;
 import com.example.swp490_g25_sse.dto.CourseOverviewDto;
 import com.example.swp490_g25_sse.dto.FeedbackDto;
 import com.example.swp490_g25_sse.dto.MilestoneDto;
@@ -71,13 +73,14 @@ public class StudentController {
     private String index(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         CustomUserDetailsService userDetails = (CustomUserDetailsService) auth.getPrincipal();
-        Page<Course> top4Course = courseService.getMostEnrolledCourses();
-        List<Course> courses = top4Course.getContent();
+        List<CourseDto> mostLearnCourses = courseService.getMostEnrolledCourses();
+        List<CourseDto> bestFeedbackCourses = courseService.getBestFeedbackCourses();
         String userImgUrl = userDetails.getUser().getImageURL();
 
         model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
-        model.addAttribute("courses", courses);
+        model.addAttribute("mostLearnCourses", mostLearnCourses);
+        model.addAttribute("bestFeedbackCourses", bestFeedbackCourses);
         model.addAttribute("user", "student");
 
         // System.out.println(top4Course.getContent().get(0).getImageUrl());

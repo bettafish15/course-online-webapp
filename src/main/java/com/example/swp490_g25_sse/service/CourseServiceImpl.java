@@ -28,7 +28,10 @@ import com.example.swp490_g25_sse.repository.TestRepository;
 import com.example.swp490_g25_sse.repository.TestResultRepository;
 import com.example.swp490_g25_sse.repository.UserRepository;
 import com.example.swp490_g25_sse.util.DtoToDaoConversion;
+
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -38,6 +41,7 @@ import java.util.Set;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -75,6 +79,9 @@ public class CourseServiceImpl implements CourseService {
 
 	@Autowired
 	private StudentCourseEnrollmentRepository enrollmentRepository;
+
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Override
 	public Optional<Course> getCourseById(long id) {
@@ -190,10 +197,31 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public Page<Course> getMostEnrolledCourses() {
+	public List<CourseDto> getMostEnrolledCourses() {
 		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
-		Page<Course> courses = courseRepository.findAll(PageRequest.of(0, 4));
-		return courses;
+		List<Object[]> resultSet = courseRepository.countTopEnrolledCourse(4);
+
+		List<Long> courseIds = resultSet.stream().map(el -> (((BigInteger) el[0]).longValue())).toList();
+
+		return courseRepository.findByIdIn(courseIds).stream().map(course -> {
+			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+
+			return courseDto;
+		}).toList();
+	}
+
+	@Override
+	public List<CourseDto> getBestFeedbackCourses() {
+		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
+		List<Object[]> resultSet = courseRepository.countTopFeedbackCourse(4);
+
+		List<Long> courseIds = resultSet.stream().map(el -> (((BigInteger) el[0]).longValue())).toList();
+
+		return courseRepository.findByIdIn(courseIds).stream().map(course -> {
+			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+
+			return courseDto;
+		}).toList();
 	}
 
 	@Override
