@@ -70,18 +70,21 @@
           <div class="sidebar2-title">
             <span>Khóa học nổi bật bạn có thể thích</span>
             <div class="row">
+              
+            <th:block th:each="course : ${mostLearnCourses}">
+              <a th:href="@{/app/student/course/{id}(id=${course.id})}">
               <div class="col-12 pt-3 pb-3">
                 <div class="course-list">
                   <div class="course-card">
                     <div class="course-card-img">
-                      <img src="/images/course-img.png" class="course-img" />
+                      <img th:src="${course.courseImgUrl}" class="course-img" />
                     </div>
                     <div class="course-card-owner-img">
-                      <img src="/images/user.png" class="owner-img" />
+                      <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
                     </div>
                     <div class="course-detail">
                       <p class="owner-name">Bruno Lopes</p>
-                      <p class="course-name">Kỹ năng làm việc nhóm</p>
+                      <p class="course-name" th:utext="${course?.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor" stroke-width="2">
@@ -89,64 +92,17 @@
                           <path stroke-linecap="round" stroke-linejoin="round"
                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
-                        <span class="view-amount">28 Nghìn lượt học</span>
+                        <span class="view-amount" th:text="${course?.totalEnrolls + ' Lượt học'}"></span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              </a>
+            </th:block>
+              
 
-              <div class="col-12 pt-3 pb-3">
-                <div class="course-list">
-                  <div class="course-card">
-                    <div class="course-card-img">
-                      <img src="/images/course-img.png" class="course-img" />
-                    </div>
-                    <div class="course-card-owner-img">
-                      <img src="/images/user.png" class="owner-img" />
-                    </div>
-                    <div class="course-detail">
-                      <p class="owner-name">Bruno Lopes</p>
-                      <p class="course-name">Kỹ năng làm việc nhóm</p>
-                      <div class="course-views">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
-                          stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        <span class="view-amount">28 Nghìn lượt học</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12 pt-3 pb-3">
-                <div class="course-list">
-                  <div class="course-card">
-                    <div class="course-card-img">
-                      <img src="/images/course-img.png" class="course-img" />
-                    </div>
-                    <div class="course-card-owner-img">
-                      <img src="/images/user.png" class="owner-img" />
-                    </div>
-                    <div class="course-detail">
-                      <p class="owner-name">Bruno Lopes</p>
-                      <p class="course-name">Kỹ năng làm việc nhóm</p>
-                      <div class="course-views">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
-                          stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                        </svg>
-                        <span class="view-amount">28 Nghìn lượt học</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>

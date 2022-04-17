@@ -185,11 +185,13 @@ public class StudentController {
         Student student = studentService.getStudentInfo(userDetails.getUser());
         Boolean isEnrolled = courseService.isAlreadyEnrolled(course, student);
         String userImgUrl = userDetails.getUser().getImageURL();
+        List<CourseDto> mostLearnCourses = courseService.getMostEnrolledCourses();
 
         model.addAttribute("userImgUrl", userImgUrl);
         model.addAttribute("userName", userDetails.getUser().getFirstName());
         model.addAttribute("course", course);
         model.addAttribute("isEnrolled", isEnrolled);
+        model.addAttribute("mostLearnCourses", mostLearnCourses);
 
         // System.out.println(top4Course.getContent().get(0).getImageUrl());
         return "student/course-information";

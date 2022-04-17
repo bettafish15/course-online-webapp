@@ -123,6 +123,7 @@ a.btn-signup {
   padding: 1rem 2rem;
   background-color: #2c343a;
   text-align: left;
+  width: 285px;
 }
 
 .owner-name {
@@ -134,4 +135,10 @@ a.btn-signup {
   width: 16px;
   height: 16px;
   color: #95999c;
+}
+
+.course-img {
+  min-width: 285px;
+  width: 285px;
+  max-width: 285px;
 }
