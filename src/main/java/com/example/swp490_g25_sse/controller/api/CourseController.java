@@ -129,6 +129,7 @@ public class CourseController {
                     testDto.setIndex(item.getIndexOrder());
                     testDto.setName(item.getName());
                     testDto.setWeek(item.getWeek());
+                    testDto.setTime(item.getTime());
 
                     TestResult testResult = testResultService.findFirstByEnrollmentAndTest(enroll, item);
 
