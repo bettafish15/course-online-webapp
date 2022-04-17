@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -201,11 +202,23 @@ public class CourseServiceImpl implements CourseService {
 		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
 		List<Object[]> resultSet = courseRepository.countTopEnrolledCourse(4);
 
-		List<Long> courseIds = resultSet.stream().map(el -> (((BigInteger) el[0]).longValue())).toList();
+		List<Long[]> courseEnrolledInfo = resultSet.stream().map(el -> {
+			Long[] arr = new Long[2];
 
-		return courseRepository.findByIdIn(courseIds).stream().map(course -> {
+			arr[0] = (((BigInteger) el[0]).longValue());
+			arr[1] = (((Integer) el[1]).longValue());
+
+			return arr;
+		}).toList();
+
+		AtomicInteger index = new AtomicInteger();
+
+		return courseRepository.findByIdIn(courseEnrolledInfo.stream().map(el -> el[0]).toList()).stream().map(course -> {
 			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
 
+			courseDto.setTotalEnrolls(courseEnrolledInfo.get(index.get())[1]);
+
+			index.getAndIncrement();
 			return courseDto;
 		}).toList();
 	}
@@ -215,11 +228,23 @@ public class CourseServiceImpl implements CourseService {
 		// Page<Course> courses = courseRepository.findAll(Pageable.ofSize(10));
 		List<Object[]> resultSet = courseRepository.countTopFeedbackCourse(4);
 
-		List<Long> courseIds = resultSet.stream().map(el -> (((BigInteger) el[0]).longValue())).toList();
+		List<Long[]> courseFeedbackInfo = resultSet.stream().map(el -> {
+			Long[] arr = new Long[2];
 
-		return courseRepository.findByIdIn(courseIds).stream().map(course -> {
+			arr[0] = (((BigInteger) el[0]).longValue());
+			arr[1] = (((Integer) el[1]).longValue());
+
+			return arr;
+		}).toList();
+
+		AtomicInteger index = new AtomicInteger();
+
+		return courseRepository.findByIdIn(courseFeedbackInfo.stream().map(el -> el[0]).toList()).stream().map(course -> {
 			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
 
+			courseDto.setFeedbackRating(courseFeedbackInfo.get(index.get())[1]);
+
+			index.getAndIncrement();
 			return courseDto;
 		}).toList();
 	}

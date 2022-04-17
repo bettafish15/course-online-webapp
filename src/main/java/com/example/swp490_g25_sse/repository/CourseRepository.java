@@ -37,9 +37,10 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             + "by COUNT(*) desc", nativeQuery = true)
     List<Object[]> countTopEnrolledCourse(Integer limit);
 
-    @Query(value = "select top (?1) course_id, count(*) from "
+    @Query(value = "select top (?1) course_id, avg(rating) from "
             + "(select c.id as course_id, "
-            + "f.id as feedback_id "
+            + "f.id as feedback_id, "
+            + "f.rating as rating "
             + "from "
             + "courses c "
             + "inner join "
@@ -48,7 +49,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
             + "as temp "
             + "group by "
             + "course_id order "
-            + "by COUNT(*) desc", nativeQuery = true)
+            + "by avg(rating) desc", nativeQuery = true)
     List<Object[]> countTopFeedbackCourse(Integer limit);
 
     List<Course> findByIdIn(List<Long> ids);

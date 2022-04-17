@@ -18,8 +18,8 @@ public class CourseDto {
     public String content;
     public List<LectureDto> lectureDtos;
     public List<TestDto> testDtos;
-    public Integer feedbackRating;
-    public Integer totalEnrolls;
+    public Long feedbackRating;
+    public Long totalEnrolls;
 
     public CourseDto() {
     }
@@ -81,19 +81,19 @@ public class CourseDto {
         this.id = id;
     }
 
-    public Integer getFeedbackRating() {
+    public Long getFeedbackRating() {
         return this.feedbackRating;
     }
 
-    public void setFeedbackRating(Integer feedbackRating) {
+    public void setFeedbackRating(Long feedbackRating) {
         this.feedbackRating = feedbackRating;
     }
 
-    public Integer getTotalEnrolls() {
+    public Long getTotalEnrolls() {
         return this.totalEnrolls;
     }
 
-    public void setTotalEnrolls(Integer totalEnrolls) {
+    public void setTotalEnrolls(Long totalEnrolls) {
         this.totalEnrolls = totalEnrolls;
     }
 
