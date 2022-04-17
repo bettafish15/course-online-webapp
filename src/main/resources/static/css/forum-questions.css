@@ -110,3 +110,7 @@
 .create-btn:hover {
   transform: translateY(4px);
 }
+
+.question-content {
+  white-space: pre-wrap;
+}
