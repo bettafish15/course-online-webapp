@@ -10,7 +10,7 @@ app.jwtExpirationMs= 86400000
 spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
 spring.datasource.url=jdbc:sqlserver://${MSSQL_HOST:db}:${MSSQL_PORT:1433};databaseName=master
 spring.datasource.username=${MSSQL_USERNAME:sa}
-spring.datasource.password=${MSSQL_PASSWORD:123}
+spring.datasource.password=${MSSQL_PASSWORD:Matkhaumoi@123}
 spring.jpa.show-sql=true
 
 ## Hibernate Properties
