@@ -214,14 +214,15 @@ public class CourseServiceImpl implements CourseService {
 
 		AtomicInteger index = new AtomicInteger();
 
-		return courseRepository.findByIdIn(courseEnrolledInfo.stream().map(el -> el[0]).toList()).stream().map(course -> {
-			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+		return courseRepository.findByIdIn(courseEnrolledInfo.stream().map(el -> el[0]).toList()).stream()
+				.map(course -> {
+					CourseDto courseDto = modelMapper.map(course, CourseDto.class);
 
-			courseDto.setTotalEnrolls(courseEnrolledInfo.get(index.get())[1]);
+					courseDto.setTotalEnrolls(courseEnrolledInfo.get(index.get())[1]);
 
-			index.getAndIncrement();
-			return courseDto;
-		}).toList();
+					index.getAndIncrement();
+					return courseDto;
+				}).toList();
 	}
 
 	@Override
@@ -240,14 +241,15 @@ public class CourseServiceImpl implements CourseService {
 
 		AtomicInteger index = new AtomicInteger();
 
-		return courseRepository.findByIdIn(courseFeedbackInfo.stream().map(el -> el[0]).toList()).stream().map(course -> {
-			CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+		return courseRepository.findByIdIn(courseFeedbackInfo.stream().map(el -> el[0]).toList()).stream()
+				.map(course -> {
+					CourseDto courseDto = modelMapper.map(course, CourseDto.class);
 
-			courseDto.setFeedbackRating(courseFeedbackInfo.get(index.get())[1]);
+					courseDto.setFeedbackRating(courseFeedbackInfo.get(index.get())[1]);
 
-			index.getAndIncrement();
-			return courseDto;
-		}).toList();
+					index.getAndIncrement();
+					return courseDto;
+				}).toList();
 	}
 
 	@Override
@@ -432,6 +434,18 @@ public class CourseServiceImpl implements CourseService {
 		}
 
 		return courses;
+	}
+
+	@Override
+	public long getNumberOfFinishedCourse(Student student, Boolean isFinished) {
+		long courseCount = enrollmentRepository.countByStudentAndIsFinished(student, isFinished);
+		return courseCount;
+	}
+
+	@Override
+	public long getNumberOfStudentCourses(Student student) {
+		long courseCount = enrollmentRepository.countByStudent(student);
+		return courseCount;
 	}
 
 }

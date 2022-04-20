@@ -49,4 +49,8 @@ public interface CourseService {
 	Boolean isCourseFinished(StudentCourseEnrollment enroll);
 
 	List<Course> searchCourse(String searchTerm, Teacher teacher);
+
+	long getNumberOfFinishedCourse(Student student, Boolean isFinished);
+
+	long getNumberOfStudentCourses(Student student);
 }

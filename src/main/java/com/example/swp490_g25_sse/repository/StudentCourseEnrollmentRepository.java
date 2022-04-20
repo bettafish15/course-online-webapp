@@ -14,4 +14,10 @@ public interface StudentCourseEnrollmentRepository extends JpaRepository<Student
    java.util.List<StudentCourseEnrollment> findByStudent(Student student);
 
    Page<StudentCourseEnrollment> findByStudentAndIsFinished(Student student, Boolean isFinished, Pageable pageable);
+
+   int countByIsFinishedAndStudentId(Boolean isFinished, Student student);
+
+   long countByStudentAndIsFinished(Student student, Boolean isFinished);
+
+   long countByStudent(Student student);
 }

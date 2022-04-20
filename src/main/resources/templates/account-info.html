@@ -57,16 +57,29 @@
               </svg>
               <a href="/account-info" class="setting-tag">Thông tin cá nhân</a>
             </div>
-            <div class="settings">
+            <!-- <div class="settings">
               <svg xmlns="http://www.w3.org/2000/svg" class="setting-icon" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round"
                   d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
               <a href="#" class="setting-tag">Thông báo</a>
-            </div>
+            </div> -->
           </div>
-          <div class="col-8">
+
+          <div class="col-8 user-info">
+            <th:block th:switch="${user}">
+              <th:block th:case="'student'">
+                <div class="progress-wrapper">
+                  <p class="detail-header">Số khóa học đã hoàn thành: <span id="finishedCourses">4</span>/<span
+                      id="totalCourses">16</span></p>
+                  <div id="progressbar">
+                    <div id="percentage">50%</div>
+                  </div>
+                </div>
+              </th:block>
+            </th:block>
+
             <form class="setting-details" th:action="@{/account-info}" th:object="${userInfo}" method="post">
               <p class="detail-header">Thông tin cá nhân</p>
               <div class="double-input">
@@ -153,7 +166,23 @@
   var settingName = firstName + " " + lastName;
   console.log(settingName);
   document.getElementById("setting-name").textContent = settingName;
+
+  var finishedCourses = document.getElementById('finishedCourses');
+  var totalCourses = document.getElementById('totalCourses');
+  var percentage = document.getElementById('percentage');
+
+  finishedCourses.innerText = /*[[${numberOfFinishedCourses}]]*/ 'value';
+  totalCourses.innerText = /*[[${numberOfCourses}]]*/ 'value';
   /*]]>*/
+
+  if (finishedCourses.innerText == 0) {
+    percentage.innerText = '0%';
+    percentage.style.width = percentage.innerText;
+  } else {
+    percentage.innerText = (parseInt(finishedCourses.innerText) / parseInt(totalCourses.innerText)) * 100 + '%';
+    percentage.style.width = percentage.innerText;
+  }
+
 </script>
 
 </html>

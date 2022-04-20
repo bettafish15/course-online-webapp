@@ -8,7 +8,10 @@ import com.example.swp490_g25_sse.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.swp490_g25_sse.dto.AccountInfoDto;
 import com.example.swp490_g25_sse.dto.UserInfoDto;
+import com.example.swp490_g25_sse.model.Student;
+import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
+import com.example.swp490_g25_sse.service.StudentService;
 import com.example.swp490_g25_sse.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,6 +40,12 @@ public class MainController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CourseService courseService;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping("/")
     private String index() {
@@ -83,9 +92,16 @@ public class MainController {
                 userDetails.getUser().getImageURL());
 
         String userImgUrl = userDetails.getUser().getImageURL();
-
+        Student student = studentService.getStudentInfo(userDetails.getUser());
         if (userDetails.getRole().equals("ROLE_STUDENT")) {
+            long numberOfFinishedCourses = courseService.getNumberOfFinishedCourse(student, true);
+            long numberOfCourses = courseService.getNumberOfStudentCourses(student);
+            System.out.println(numberOfFinishedCourses);
+            System.out.println(numberOfCourses);
+
             model.addAttribute("user", "student");
+            model.addAttribute("numberOfFinishedCourses", numberOfFinishedCourses);
+            model.addAttribute("numberOfCourses", numberOfCourses);
         }
         if (userDetails.getRole().equals("ROLE_TEACHER")) {
             model.addAttribute("user", "teacher");
