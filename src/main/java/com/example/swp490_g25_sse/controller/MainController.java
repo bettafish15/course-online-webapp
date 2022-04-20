@@ -96,9 +96,6 @@ public class MainController {
         if (userDetails.getRole().equals("ROLE_STUDENT")) {
             long numberOfFinishedCourses = courseService.getNumberOfFinishedCourse(student, true);
             long numberOfCourses = courseService.getNumberOfStudentCourses(student);
-            System.out.println(numberOfFinishedCourses);
-            System.out.println(numberOfCourses);
-
             model.addAttribute("user", "student");
             model.addAttribute("numberOfFinishedCourses", numberOfFinishedCourses);
             model.addAttribute("numberOfCourses", numberOfCourses);

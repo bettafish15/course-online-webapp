@@ -438,6 +438,9 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public long getNumberOfFinishedCourse(Student student, Boolean isFinished) {
+
+		List<StudentCourseEnrollment> studentEnrollments = enrollmentRepository.findByStudent(student);
+		studentEnrollments.stream().forEach(enroll -> this.isCourseFinished(enroll));
 		long courseCount = enrollmentRepository.countByStudentAndIsFinished(student, isFinished);
 		return courseCount;
 	}

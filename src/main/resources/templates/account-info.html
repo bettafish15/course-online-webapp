@@ -179,7 +179,7 @@
     percentage.innerText = '0%';
     percentage.style.width = percentage.innerText;
   } else {
-    percentage.innerText = (parseInt(finishedCourses.innerText) / parseInt(totalCourses.innerText)) * 100 + '%';
+    percentage.innerText = ((parseInt(finishedCourses.innerText) / parseInt(totalCourses.innerText)) * 100).toFixed(1) + '%';
     percentage.style.width = percentage.innerText;
   }
 
