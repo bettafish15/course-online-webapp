@@ -451,4 +451,10 @@ public class CourseServiceImpl implements CourseService {
 		return courseCount;
 	}
 
+	@Override
+	public Page<Course> get4NewestCourses() {
+		Page<Course> courses = courseRepository.findAll(PageRequest.of(0, 4));
+		return courses;
+	}
+
 }

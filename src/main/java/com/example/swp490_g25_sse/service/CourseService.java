@@ -53,4 +53,6 @@ public interface CourseService {
 	long getNumberOfFinishedCourse(Student student, Boolean isFinished);
 
 	long getNumberOfStudentCourses(Student student);
+
+	Page<Course> get4NewestCourses();
 }

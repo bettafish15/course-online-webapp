@@ -6,8 +6,11 @@ package com.example.swp490_g25_sse.controller;
 
 import com.example.swp490_g25_sse.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+
 import com.example.swp490_g25_sse.dto.AccountInfoDto;
 import com.example.swp490_g25_sse.dto.UserInfoDto;
+import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
@@ -48,7 +51,10 @@ public class MainController {
     private StudentService studentService;
 
     @GetMapping("/")
-    private String index() {
+    private String index(Model model) {
+        Page<Course> courses = courseService.get4NewestCourses();
+
+        model.addAttribute("courses", courses);
         return "index";
     }
 
@@ -59,6 +65,7 @@ public class MainController {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
 
             /* The user is logged in :) */
+
             return "forward:/app";
         }
 
