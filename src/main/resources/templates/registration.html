@@ -59,6 +59,14 @@
                     <option th:value="'ROLE_STUDENT'" th:text="'Học sinh'"></option>
                 </select>
 
+                <!-- fail message -->
+                <div th:if="${errMsg != null}">
+                    <div class="alert-message" th:text="${errMsg}"></div>
+                </div>
+                <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="success-message">Bạn đã đăng ký thành công</div>
+                </div>
                 <div class="button-group">
                     <button type="submit" class="btn1 btn-signup">Đăng ký</button>
                     <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon signup" fill="none" viewBox="0 0 24 24"
@@ -72,10 +80,10 @@
 
 
     <!-- success message -->
-    <div th:if="${param.success}">
+    <!-- <div th:if="${param.success}">
         <div class="alert alert-info">You've successfully registered
             to our awesome app!</div>
-    </div>
+    </div> -->
 
     <!-- FOOTER -->
     <footer class="footer row row-0 align-items-center">

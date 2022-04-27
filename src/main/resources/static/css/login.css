@@ -12,6 +12,7 @@
   font-weight: 600;
   font-size: 5.4rem;
 }
+
 .button-group {
   margin: 0 auto;
 }
@@ -44,8 +45,8 @@
   gap: 1.2rem;
 }
 
-.checkbox-input > input[type="checkbox"],
-.checkbox-input > input[type="checkbox"]:checked {
+.checkbox-input>input[type="checkbox"],
+.checkbox-input>input[type="checkbox"]:checked {
   appearance: none;
   width: 2.5rem;
   height: 2.5rem;
@@ -55,7 +56,7 @@
   position: relative;
 }
 
-.checkbox-input > input[type="checkbox"]:checked::before {
+.checkbox-input>input[type="checkbox"]:checked::before {
   content: "✓";
   font-size: 2.4rem;
   color: var(--primary-color);
@@ -64,7 +65,7 @@
   right: 0;
 }
 
-.checkbox-input > label {
+.checkbox-input>label {
   font-size: 2.2rem;
   font-weight: 300;
   font-style: italic;
@@ -81,12 +82,36 @@
   font-style: italic;
 }
 
-.register > a {
+.register>a {
   color: var(--primary-color);
 }
 
-.register > a:hover {
+.register>a:hover {
   color: #aaa;
   text-decoration: none;
   opacity: 0.8;
+}
+
+.alert-message {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  font-size: 2.2rem;
+}
+
+.success-message {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  font-size: 2.2rem;
 }

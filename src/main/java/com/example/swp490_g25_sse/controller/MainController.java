@@ -81,6 +81,19 @@ public class MainController {
 
             courseDtos.add(courseDto);
         });
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth.getPrincipal().equals("anonymousUser")) {
+            model.addAttribute("user", "anonymousUser");
+        } else {
+            CustomUserDetailsService user = (CustomUserDetailsService) auth.getPrincipal();
+            if (user.getRole().equals("ROLE_STUDENT")) {
+                model.addAttribute("user", "student");
+            } else if (user.getRole().equals("ROLE_TEACHER")) {
+                model.addAttribute("user", "teacher");
+            }
+        }
+
         model.addAttribute("courses", courseDtos);
         return "index";
     }

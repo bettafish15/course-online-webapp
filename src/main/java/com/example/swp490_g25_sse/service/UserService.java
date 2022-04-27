@@ -17,8 +17,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService {
 
     User save(UserRegistrationDto registrationDto);
-    
+
     User updateInfo(UserInfoDto userInfoDto, User user);
-    
+
     User updateAccount(AccountInfoDto accountInfoDto);
+
+    boolean checkIfUserExist(String email);
 }

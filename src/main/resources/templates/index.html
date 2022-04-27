@@ -25,10 +25,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
   <header>
     <nav class="navbar1">
       <ul class="nav-list">
-        <li class="item"><a href="#">LOGO</a></li>
-        <li class="item"><a href="#">Khóa học</a></li>
-        <li class="item"><a href="#">Giáo viên</a></li>
-        <li class="item"><a href="#">Học Sinh</a></li>
+        <li class="item"><a href="/">LOGO</a></li>
+        <li class="item"><a href="/app/student/">Khóa học</a></li>
+        <!-- <li class="item"><a href="/app/teacher/">Giáo viên</a></li>
+        <li class="item"><a href="/app/student/">Học Sinh</a></li> -->
+
+        <th:block th:switch="${user}">
+          <th:block th:case="'teacher'">
+            <li class="item"><a href="/app/teacher/">Giáo viên</a></li>
+          </th:block>
+        </th:block>
+        <th:block th:switch="${user}">
+          <th:block th:case="'teacher'">
+            <li class="item"><a href="/app/student/">Học Sinh</a></li>
+          </th:block>
+        </th:block>
         <li class="item">
           <div class="input-nav-group">
             <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" fill="none" viewBox="0 0 24 24"

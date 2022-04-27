@@ -7,6 +7,7 @@ package com.example.swp490_g25_sse.controller;
 import com.example.swp490_g25_sse.dto.UserRegistrationDto;
 import com.example.swp490_g25_sse.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,11 @@ public class UserRegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
+    public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto, Model model) {
+        if (userService.checkIfUserExist(registrationDto.getEmail())) {
+            model.addAttribute("errMsg", "Email đã được sử dụng");
+            return "registration";
+        }
         userService.save(registrationDto);
         return "redirect:/registration?success";
     }
