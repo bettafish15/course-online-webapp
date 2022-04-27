@@ -5,13 +5,20 @@
 package com.example.swp490_g25_sse.controller;
 
 import com.example.swp490_g25_sse.util.JwtUtils;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.swp490_g25_sse.dto.AccountInfoDto;
+import com.example.swp490_g25_sse.dto.CourseDto;
 import com.example.swp490_g25_sse.dto.UserInfoDto;
 import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Student;
+import com.example.swp490_g25_sse.repository.StudentCourseEnrollmentRepository;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.CustomUserDetailsService;
 import com.example.swp490_g25_sse.service.StudentService;
@@ -50,11 +57,31 @@ public class MainController {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private StudentCourseEnrollmentRepository studentCourseEnrollmentRepository;
+
     @GetMapping("/")
     private String index(Model model) {
+        List<CourseDto> courseDtos = new ArrayList<>();
         Page<Course> courses = courseService.get4NewestCourses();
+        for (Course course : courses) {
+            if (course.getTitle().length() > 20) {
+                course.setTitle(course.getTitle().substring(0, 20) + "...");
+            }
+        }
 
-        model.addAttribute("courses", courses);
+        courses.stream().forEach(course -> {
+
+            CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+
+            courseDto.setTotalEnrolls(studentCourseEnrollmentRepository.countByCourse(course));
+
+            courseDtos.add(courseDto);
+        });
+        model.addAttribute("courses", courseDtos);
         return "index";
     }
 

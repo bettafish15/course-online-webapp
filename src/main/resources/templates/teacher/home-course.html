@@ -31,13 +31,13 @@
           <th:block th:each="course : ${courses}">
             <div class="course-card">
               <div class="course-img">
-                <img th:src="${course.imageUrl}" />
+                <img th:src="${course.courseImgUrl}" />
               </div>
               <div class="course-info">
-                <p class="course-title" th:utext="${course.title}"></p>
+                <p class="course-title" th:utext="${course.courseTitle}"></p>
                 <div class="course-description" th:utext="${course.content}"></div>
               </div>
-              <p class="course-views">Người đăng ký: 4652 người</p>
+              <p class="course-views" th:utext="${'Số người đăng ký: ' + course.totalEnrolls}"></p>
               <div class="button-control">
                 <button type="button" class="btn btn-success" th:with="id=${course.id}"
                   th:onclick="updateCourse([[${id}]])">

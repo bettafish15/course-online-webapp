@@ -1,6 +1,7 @@
 package com.example.swp490_g25_sse.controller;
 
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import com.example.swp490_g25_sse.model.Course;
 import com.example.swp490_g25_sse.model.Feedback;
 import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
+import com.example.swp490_g25_sse.repository.StudentCourseEnrollmentRepository;
 import com.example.swp490_g25_sse.service.CourseService;
 import com.example.swp490_g25_sse.service.StudentService;
 import com.example.swp490_g25_sse.service.TestResultService;
@@ -20,6 +22,7 @@ import com.example.swp490_g25_sse.service.FeedbackService;
 import com.example.swp490_g25_sse.service.LectureResultService;
 import com.example.swp490_g25_sse.service.StudentCourseEnrollmentService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.domain.Page;
@@ -69,6 +72,12 @@ public class StudentController {
     @Autowired
     private TestResultService testResultService;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
+    @Autowired
+    private StudentCourseEnrollmentRepository studentCourseEnrollmentRepository;
+
     @GetMapping("")
     private String index(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -103,6 +112,7 @@ public class StudentController {
         String rawContent = "";
         String content = "";
         List<Course> courses = null;
+        List<CourseDto> courseDtos = new ArrayList<>();
         courses = courseService.getStudentCourses(student, isFinished);
         if (!courses.isEmpty()) {
             for (int i = 0; i < courses.size(); i++) {
@@ -131,12 +141,21 @@ public class StudentController {
             }
         }
 
+        courses.stream().forEach(course -> {
+
+            CourseDto courseDto = modelMapper.map(course, CourseDto.class);
+
+            courseDto.setTotalEnrolls(studentCourseEnrollmentRepository.countByCourse(course));
+
+            courseDtos.add(courseDto);
+        });
+
         String userImgUrl = userDetails.getUser().getImageURL();
 
         model.addAttribute("userImgUrl", userImgUrl);
 
         model.addAttribute("userName", userDetails.getUser().getFirstName());
-        model.addAttribute("courses", courses);
+        model.addAttribute("courses", courseDtos);
         model.addAttribute("user", "student");
         model.addAttribute("isFinished", isFinished);
 

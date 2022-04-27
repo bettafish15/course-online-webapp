@@ -316,7 +316,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <a th:href="@{/app/student/course/{id}(id=${course.id})}">
                   <div class="course-card">
                     <div class="course-card-img">
-                      <img th:src="${course.imageUrl}" class="course-img" />
+                      <img th:src="${course.courseImgUrl}" class="course-img" />
                     </div>
                     <div class="course-card-owner-img">
                       <img th:src="${course.teacher.user.imageURL}" class="owner-img" />
@@ -324,14 +324,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <div class="course-detail">
                       <div class="owner-name" id="owner-name"
                         th:text="${course.teacher.user.firstName} + ' ' + ${course.teacher.user.lastName}"></div>
-                      <p class="course-name" th:utext="${course.title}"></p>
+                      <p class="course-name" th:utext="${course.courseTitle}"></p>
                       <div class="course-views">
                         <svg xmlns="http://www.w3.org/2000/svg" class="views-icon" fill="none" viewBox="0 0 24 24"
                           stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
-                        <!-- <span class="view-amount" th:text="${course?.totalEnrolls + ' Lượt học'}"></span> -->
+                        <span class="view-amount" th:text="${course?.totalEnrolls + ' Lượt học'}"></span>
                       </div>
                     </div>
                   </div>

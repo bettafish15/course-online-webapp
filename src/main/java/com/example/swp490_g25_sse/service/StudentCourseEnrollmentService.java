@@ -5,7 +5,8 @@ import com.example.swp490_g25_sse.model.Student;
 import com.example.swp490_g25_sse.model.StudentCourseEnrollment;
 
 public interface StudentCourseEnrollmentService {
-  StudentCourseEnrollment save(StudentCourseEnrollment enrollment); 
+  StudentCourseEnrollment save(StudentCourseEnrollment enrollment);
 
-  StudentCourseEnrollment getEnrollmentInfo(Student student, Course course); 
+  StudentCourseEnrollment getEnrollmentInfo(Student student, Course course);
+
 }

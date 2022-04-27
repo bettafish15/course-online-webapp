@@ -36,6 +36,7 @@
   color: var(--primary-color);
   background-color: #fff;
 }
+
 .Welcome_img {
   width: 222px;
   height: 100px;
@@ -120,7 +121,7 @@
   text-align: center;
 }
 
-.Roadmap_part_img > img {
+.Roadmap_part_img>img {
   width: 30rem;
   height: 30rem;
   border: 2px solid #df822c;
@@ -144,10 +145,12 @@
   font-size: 1.5rem;
   color: var(--primary-color);
 }
+
 .Roadmap_part_title p {
   font-size: 2rem;
   color: var(--primary-color);
 }
+
 .Roadmap_title p {
   font-size: 2.5rem;
   text-align: center;
@@ -176,6 +179,7 @@
   width: 100%;
   height: 100%;
 }
+
 .Course_Content {
   color: #fff;
   height: auto;
@@ -189,6 +193,7 @@
   font-size: 1.5rem;
   color: #95999c;
 }
+
 .Course_Title p {
   font-size: 2rem;
 }
@@ -201,4 +206,3 @@
 .Courses {
   padding: 0 10rem;
 }
-
