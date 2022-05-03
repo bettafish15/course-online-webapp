@@ -52,6 +52,8 @@
                     minlength="4" required />
                 <input id="password" th:field="*{password}" class="input-field" type="password" placeholder="Mật khẩu"
                     name="pwd" required />
+                <input id="cfPassword" th:field="*{cfPassword}" class="input-field" type="password"
+                    placeholder="Xác nhận mật khẩu" name="cfpwd" required />
 
                 <select class="form-select form-select-lg mb-3 input-field" aria-label="Default select example"
                     th:field="*{role}">

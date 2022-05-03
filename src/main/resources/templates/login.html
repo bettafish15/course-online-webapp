@@ -47,6 +47,9 @@
                     <input type="checkbox" name="remember" id="remember" />
                     <label for="remember">remember me</label>
                 </div>
+                <div th:if="${param.error}">
+                    <div class="alert-message">Email hoặc mật khẩu không đúng</div>
+                </div>
                 <div class="button-group">
                     <button id="login-submit" type="submit" class="btn1 btn-signup">Đăng nhập</button>
                     <svg xmlns="http://www.w3.org/2000/svg" class="btn-icon signup" fill="none" viewBox="0 0 24 24"
@@ -54,6 +57,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </div>
+
 
                 <p class="register">Bạn chưa có tài khoản? <a href="/registration">Đăng ký</a></span></p>
             </div>
