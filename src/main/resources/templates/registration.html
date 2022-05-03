@@ -45,13 +45,13 @@
             <p class="form-header">Đăng Ký</p>
             <div class="col-md-4 input-wrapper">
                 <input id="firstName" th:field="*{firstName}" class="input-field" type="text" placeholder="First Name"
-                    name="id" />
+                    name="id" maxlength="50" required />
                 <input id="lastName" th:field="*{lastName}" class="input-field" type="text" placeholder="Last Name"
-                    name="id" />
-                <input id="email" th:field="*{email}" class="input-field" type="email" placeholder="Email"
-                    name="email" />
+                    name="id" maxlength="50" required />
+                <input id="email" th:field="*{email}" class="input-field" type="email" placeholder="Email" name="email"
+                    minlength="4" required />
                 <input id="password" th:field="*{password}" class="input-field" type="password" placeholder="Mật khẩu"
-                    name="pwd" />
+                    name="pwd" required />
 
                 <select class="form-select form-select-lg mb-3 input-field" aria-label="Default select example"
                     th:field="*{role}">

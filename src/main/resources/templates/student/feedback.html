@@ -26,9 +26,9 @@
   </script>
   <form th:action="@{'/app/student/course/' + ${id} + '/feedback'}" method="post" th:object="${feedback}">
     <div class="feedback-wrapper">
-      <p class="feedback-header">FEEDBACK</p>
-      <p class="feedback-call-action">RATE YOUR EXPERIENCE</p>
-      <p class="feedback-question">Are you satisfied with the course?</p>
+      <p class="feedback-header">ĐÁNH GIÁ</p>
+      <p class="feedback-call-action">TRẢI NGHIỆM CỦA BẠN</p>
+      <p class="feedback-question">Bạn có hài lòng với khóa học không?</p>
       <div class="rate-wrapper">
         <div class="stars">
           <input th:field="${feedback.rating}" class="star star-5" id="star-5" type="radio" name="star" value="5" />
@@ -43,33 +43,32 @@
           <label class="star star-1" for="star-1"></label>
         </div>
       </div>
-      <p class="improve">Tell us what can be Improved?</p>
+      <p class="improve">Có gì cần hoàn thiện hơn?</p>
       <div class="select-wrapper">
         <div class="select-answer">
-          <label class="criteria" for="box-1">Key school</label>
+          <label class="criteria" for="box-1">Trường điểm</label>
           <input th:field="${feedback.contentKey}" type="checkbox" id="box-1" value="Key school" />
         </div>
         <div class="select-answer">
-          <label class="criteria" for="box-2">Overall Services</label>
+          <label class="criteria" for="box-2">Đánh giá tổng quát</label>
           <input th:field="${feedback.contentKey}" type="checkbox" id="box-2" value="Overall Services" />
         </div>
         <div class="select-answer">
-          <label class="criteria" for="box-3">Course Quality</label>
+          <label class="criteria" for="box-3">Chất lượng</label>
           <input th:field="${feedback.contentKey}" type="checkbox" id="box-3" value="Course Quality" />
         </div>
         <div class="select-answer">
-          <label class="criteria" for="box-4">Transperancy</label>
+          <label class="criteria" for="box-4">Rõ ràng</label>
           <input th:field="${feedback.contentKey}" type="checkbox" id="box-4" value="Transperancy" />
         </div>
         <div class="select-answer">
-          <label class="criteria" for="box-5">Interface</label>
+          <label class="criteria" for="box-5">Giao diện</label>
           <input th:field="${feedback.contentKey}" type="checkbox" id="box-5" value="Interface" />
         </div>
       </div>
-      <textarea th:field="${feedback.content}" class="improve-feedback" rows="10"
-        placeholder="Tell us how can we improve...."></textarea>
+      <textarea th:field="${feedback.content}" class="improve-feedback" rows="10" placeholder="Bổ sung...."></textarea>
       <button class="control-btn submit" type="submit">
-        SEND YOUR FEEDBACK
+        GỬI ĐÁNH GIÁ
       </button>
     </div>
   </form>

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/css/milestone.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
     integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <title>Document</title>
 </head>
 
@@ -55,7 +55,8 @@
                           <td th:text="${item.test.name}">Alfreds Futterkiste</td>
                           <td th:text="${item.isFinished ? 'Đã hoàn thành' : '___'}">
                             Maria Anders</td>
-                          <td>___</td>
+                          <td th:text="${item.isFinished ? item.finishTime/60 + 'm' + item.finishTime%60 + 's' : '___'}"
+                            id="finishTime"></td>
                           <td th:text="${item.isFinished ? item.mark : '___'}">
                             Germany
                           </td>
@@ -81,6 +82,7 @@
     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
     crossorigin="anonymous"></script>
 </body>
+
 <script>
   const menus = document.querySelectorAll(".item-wrapper");
   for (const menu of menus) {

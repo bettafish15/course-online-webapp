@@ -36,14 +36,18 @@ public class TestResult {
 
   private Integer mark;
 
+  private Integer finishTime;
+
   public TestResult() {
   }
 
-  public TestResult(StudentCourseEnrollment enrollment, Test test, Boolean isFinished, Integer mark) {
+  public TestResult(StudentCourseEnrollment enrollment, Test test, Boolean isFinished, Integer mark,
+      Integer finishTime) {
     this.enrollment = enrollment;
     this.test = test;
     this.isFinished = isFinished;
     this.mark = mark;
+    this.finishTime = finishTime;
   }
 
   public Long getId() {
@@ -90,4 +94,11 @@ public class TestResult {
     this.mark = mark;
   }
 
+  public Integer getFinishTime() {
+    return this.finishTime;
+  }
+
+  public void setFinishTime(Integer finishTime) {
+    this.finishTime = finishTime;
+  }
 }

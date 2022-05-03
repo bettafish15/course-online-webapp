@@ -16,15 +16,17 @@ public class TestResultServiceImpl implements TestResultService {
 
   @Override
   public TestResult createTestReport(StudentCourseEnrollment enrollment, Test test) {
-    return testResultRepository.save(new TestResult(enrollment, test, false, 0));
+    return testResultRepository.save(new TestResult(enrollment, test, false, 0, 0));
   }
 
   @Override
-  public TestResult updateTestResult(StudentCourseEnrollment enrollment, Test test, Boolean isFinished, Integer mark) {
+  public TestResult updateTestResult(StudentCourseEnrollment enrollment, Test test, Boolean isFinished, Integer mark,
+      Integer finishTime) {
     TestResult result = testResultRepository.findFirstByEnrollmentAndTest(enrollment, test);
 
     result.setIsFinished(true);
     result.setMark(mark);
+    result.setFinishTime(finishTime);
     return testResultRepository.save(result);
   }
 

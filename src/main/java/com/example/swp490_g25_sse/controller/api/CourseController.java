@@ -265,6 +265,6 @@ public class CourseController {
 
         Student student = studentService.getStudentInfo(currentUser.getUser());
         StudentCourseEnrollment enrollment = enrollService.getEnrollmentInfo(student, course.get());
-        testResultService.updateTestResult(enrollment, test, true, body.get("mark"));
+        testResultService.updateTestResult(enrollment, test, true, body.get("mark"), body.get("finishTime"));
     }
 }
