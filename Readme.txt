@@ -1,1 +1,1 @@
-This is the project folder
+A learning course website powered by SpringBoot
